@@ -23,7 +23,8 @@ from PySide6.QtWidgets import (
     QWidget,
 )
 
-from .content import EXERCISES, STAGES, STAGES_BY_ID
+from .curriculum import EXERCISES, STAGES, STAGES_BY_ID
+from .study_views import StudyDialog
 from .engine import check_solution
 from .editor import PythonEditor
 from .models import Exercise
@@ -38,6 +39,20 @@ KIND_LABELS = {
 }
 
 STYLE = """
+QPushButton#guide {
+    border: 1px solid #385b80;
+    color: #b6d7fa;
+    background: #1a2b3f;
+}
+QPushButton#guide:hover {
+    background: #28435c;
+    color: #ffffff;
+}
+QLineEdit {
+    background: #151f2c;
+    selection-background-color: #3f658b;
+}
+
 QMainWindow, QWidget {
     background: #10141d;
     color: #e9edf5;
@@ -211,15 +226,21 @@ class CodeRiseWindow(QMainWindow):
         sidebar_layout.addWidget(self.progress_bar)
         sidebar_layout.addSpacing(16)
 
-        heading = QLabel("ЗАДАНИЯ")
+        heading = QLabel("ЗАДАНИЯ  /  ОТ G ДО SSS")
         heading.setObjectName("minor")
         sidebar_layout.addWidget(heading)
+
+        self.search_input = QLineEdit()
+        self.search_input.setPlaceholderText("Найти задание или главу…")
+        self.search_input.setClearButtonEnabled(True)
+        sidebar_layout.addWidget(self.search_input)
 
         self.exercise_list = QListWidget()
         self.exercise_list.setVerticalScrollMode(
             QAbstractItemView.ScrollMode.ScrollPerPixel
         )
         self.exercise_list.currentItemChanged.connect(self.on_selection_changed)
+        self.search_input.textChanged.connect(self.filter_list)
         sidebar_layout.addWidget(self.exercise_list, stretch=1)
 
         scroll = QScrollArea()
@@ -301,6 +322,23 @@ class CodeRiseWindow(QMainWindow):
         actions.addWidget(self.next_button)
         main_layout.addLayout(actions)
 
+        help_actions = QHBoxLayout()
+        help_actions.setSpacing(10)
+        self.study_button = QPushButton("Что за что отвечает?")
+        self.study_button.setObjectName("guide")
+        self.study_button.clicked.connect(lambda: self.open_study(0))
+        help_actions.addWidget(self.study_button)
+        self.theory_button = QPushButton("Теория главы")
+        self.theory_button.setObjectName("guide")
+        self.theory_button.clicked.connect(lambda: self.open_study(1))
+        help_actions.addWidget(self.theory_button)
+        self.solutions_button = QPushButton("Два решения")
+        self.solutions_button.setObjectName("guide")
+        self.solutions_button.clicked.connect(lambda: self.open_study(2))
+        help_actions.addWidget(self.solutions_button)
+        help_actions.addStretch()
+        main_layout.addLayout(help_actions)
+
         self.hint_label = QLabel()
         self.hint_label.setObjectName("hint")
         self.hint_label.setWordWrap(True)
@@ -331,7 +369,7 @@ class CodeRiseWindow(QMainWindow):
     def update_progress(self) -> None:
         completed = sum(ex.id in self.store.solved for ex in EXERCISES)
         self.progress_label.setText(
-            f"Решено {completed} из {len(EXERCISES)}"
+            f"Решено {completed}/{len(EXERCISES)}   •   {completed * 20} XP"
         )
         self.progress_bar.setValue(completed)
 
@@ -342,15 +380,16 @@ class CodeRiseWindow(QMainWindow):
         selected_row = 0
 
         for stage in STAGES:
+            stage_exercises = [e for e in EXERCISES if e.stage == stage.code]
+            finished = sum(e.id in self.store.solved for e in stage_exercises)
             header = QListWidgetItem(
-                f" {stage.rank}  {stage.title.upper()}"
+                f" {stage.rank}  {stage.title.upper()}   {finished}/{len(stage_exercises)}"
             )
             header.setFlags(Qt.ItemFlag.NoItemFlags)
             header.setForeground(QBrush(QColor("#8495ae")))
             header.setSizeHint(QSize(244, 36))
             self.exercise_list.addItem(header)
 
-            stage_exercises = [e for e in EXERCISES if e.stage == stage.code]
             for number, exercise in enumerate(stage_exercises, start=1):
                 done = exercise.id in self.store.solved
                 prefix = "✓" if done else f"{number:02}"
@@ -366,6 +405,32 @@ class CodeRiseWindow(QMainWindow):
         self.exercise_list.setCurrentRow(selected_row)
         self.exercise_list.blockSignals(False)
         self.update_progress()
+        self.filter_list(self.search_input.text())
+
+    def filter_list(self, query: str) -> None:
+        term = query.casefold().strip()
+        visible_stage = False
+        header_row = None
+        for row in range(self.exercise_list.count()):
+            item = self.exercise_list.item(row)
+            exercise_id = item.data(Qt.ItemDataRole.UserRole)
+            if not exercise_id:
+                if header_row is not None:
+                    self.exercise_list.item(header_row).setHidden(not visible_stage)
+                header_row, visible_stage = row, False
+                item.setHidden(bool(term))
+                continue
+            exercise = next(ex for ex in EXERCISES if ex.id == exercise_id)
+            stage = STAGES_BY_ID[exercise.stage]
+            matches = not term or term in exercise.title.casefold() or term in stage.title.casefold() or term in stage.rank.casefold()
+            item.setHidden(not matches)
+            visible_stage = visible_stage or matches
+        if header_row is not None:
+            self.exercise_list.item(header_row).setHidden(not visible_stage)
+
+    def open_study(self, tab: int = 0) -> None:
+        if self.current is not None:
+            StudyDialog(self.current, self, tab=tab).exec()
 
     def on_selection_changed(
         self, current_item: QListWidgetItem | None, _previous: QListWidgetItem | None
