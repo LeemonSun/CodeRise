@@ -3,7 +3,7 @@
 import sys
 from html import escape
 
-from PySide6.QtCore import QSize, Qt
+from PySide6.QtCore import QSize, Qt, QTimer
 from PySide6.QtGui import QBrush, QColor, QFont, QKeySequence, QShortcut
 from PySide6.QtWidgets import (
     QAbstractItemView,
@@ -252,6 +252,12 @@ class CodeRiseWindow(QMainWindow):
         self.search_input.setClearButtonEnabled(True)
         sidebar_layout.addWidget(self.search_input)
 
+        self.review_button = QPushButton("Вернуться к сложным заданиям")
+        self.review_button.setObjectName("guide")
+        self.review_button.setToolTip("Переход к заданию, где уже были ошибки")
+        self.review_button.clicked.connect(self.open_review)
+        sidebar_layout.addWidget(self.review_button)
+
         self.exercise_list = QListWidget()
         self.exercise_list.setVerticalScrollMode(
             QAbstractItemView.ScrollMode.ScrollPerPixel
@@ -396,13 +402,20 @@ class CodeRiseWindow(QMainWindow):
         shortcut_hint = QShortcut(QKeySequence("Ctrl+H"), self)
         shortcut_hint.activated.connect(self.toggle_hint)
 
+        self.draft_timer = QTimer(self)
+        self.draft_timer.setSingleShot(True)
+        self.draft_timer.setInterval(650)
+        self.draft_timer.timeout.connect(self.save_current_draft)
+        self.code_editor.textChanged.connect(self.schedule_draft_save)
+        self.answer_input.textChanged.connect(self.schedule_draft_save)
+
         self.rebuild_sidebar()
         self.show_exercise(EXERCISES[0])
 
     def update_progress(self) -> None:
         completed = sum(ex.id in self.store.solved for ex in EXERCISES)
         self.progress_label.setText(
-            f"Решено {completed}/{len(EXERCISES)}   •   {completed * 20} XP"
+            f"Решено {completed}/{len(EXERCISES)}   •   {completed * 20} XP   •   {sum(self.store.failures.values())} ошибок"
         )
         self.progress_bar.setValue(completed)
 
@@ -425,7 +438,7 @@ class CodeRiseWindow(QMainWindow):
 
             for number, exercise in enumerate(stage_exercises, start=1):
                 done = exercise.id in self.store.solved
-                prefix = "✓" if done else f"{number:02}"
+                prefix = "✓" if done else ("↻" if self.store.failures.get(exercise.id) else f"{number:02}")
                 item = QListWidgetItem(f" {prefix}   {exercise.title}")
                 item.setData(Qt.ItemDataRole.UserRole, exercise.id)
                 item.setSizeHint(QSize(244, 38))
@@ -509,6 +522,24 @@ class CodeRiseWindow(QMainWindow):
         layout.addWidget(close_button)
         dialog.exec()
 
+    def open_review(self) -> None:
+        pending = [
+            exercise for exercise in EXERCISES
+            if exercise.id not in self.store.solved and self.store.failures.get(exercise.id, 0) > 0
+        ]
+        if not pending:
+            self.status_label.setText("Непройденных заданий с ошибками пока нет.")
+            return
+        pending.sort(key=lambda exercise: -self.store.failures[exercise.id])
+        self.search_input.clear()
+        next_id = pending[0].id
+        for row in range(self.exercise_list.count()):
+            item = self.exercise_list.item(row)
+            if item.data(Qt.ItemDataRole.UserRole) == next_id:
+                self.exercise_list.setCurrentRow(row)
+                self.exercise_list.scrollToItem(item)
+                break
+
     def on_selection_changed(
         self, current_item: QListWidgetItem | None, _previous: QListWidgetItem | None
     ) -> None:
@@ -517,6 +548,7 @@ class CodeRiseWindow(QMainWindow):
         exercise_id = current_item.data(Qt.ItemDataRole.UserRole)
         if not exercise_id:
             return
+        self.draft_timer.stop()
         self.save_current_draft()
         exercise = next(ex for ex in EXERCISES if ex.id == exercise_id)
         self.show_exercise(exercise)
@@ -551,6 +583,10 @@ class CodeRiseWindow(QMainWindow):
         )
         self.next_button.setEnabled(exercise != EXERCISES[-1])
 
+    def schedule_draft_save(self) -> None:
+        if self.current is not None:
+            self.draft_timer.start()
+
     def save_current_draft(self) -> None:
         if self.current is None:
             return
@@ -571,6 +607,9 @@ class CodeRiseWindow(QMainWindow):
         )
         self.save_current_draft()
         result = check_solution(self.current, submission)
+        self.store.record_attempt(self.current.id, result.ok)
+        self.store.save()
+        self.update_progress()
         self.result_box.setPlainText(
             result.message + ("\n\n" + result.details if result.details else "")
         )
@@ -584,6 +623,7 @@ class CodeRiseWindow(QMainWindow):
             self.status_label.setText("✓ Задание выполнено.")
         else:
             self.explanation_label.hide()
+            self.rebuild_sidebar()
             self.status_label.setText("Исправь код и проверь ещё раз.")
 
     def toggle_hint(self) -> None:
@@ -618,6 +658,7 @@ class CodeRiseWindow(QMainWindow):
                 break
 
     def closeEvent(self, event) -> None:
+        self.draft_timer.stop()
         self.save_current_draft()
         super().closeEvent(event)
 
