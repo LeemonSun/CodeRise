@@ -1,0 +1,5233 @@
+{
+  "stages": [
+    {
+      "code": "functions",
+      "title": "Функции и словари",
+      "rank": "C",
+      "subtitle": "Аргументы, множества, разбиение задач"
+    },
+    {
+      "code": "files",
+      "title": "Файлы и ошибки",
+      "rank": "B",
+      "subtitle": "JSON, файлы, исключения и модули"
+    },
+    {
+      "code": "objects",
+      "title": "Классы и ООП",
+      "rank": "A",
+      "subtitle": "Классы, методы, наследование"
+    },
+    {
+      "code": "algorithms",
+      "title": "Алгоритмы",
+      "rank": "S",
+      "subtitle": "Поиск, сортировка, сложность, тесты"
+    },
+    {
+      "code": "projects",
+      "title": "Проекты",
+      "rank": "SS",
+      "subtitle": "Несколько шагов в одной программе"
+    },
+    {
+      "code": "mastery",
+      "title": "Самостоятельная работа",
+      "rank": "SSS",
+      "subtitle": "Задачи как в настоящем проекте"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "start07",
+      "stage": "start",
+      "title": "Переменная меняется",
+      "kind": "write",
+      "prompt": "Введи число, прибавь к нему 5 и выведи результат.",
+      "starter": "# Твой код\n",
+      "tests": [
+        {
+          "stdin": "2\n",
+          "expected": "7"
+        },
+        {
+          "stdin": "-5\n",
+          "expected": "0"
+        },
+        {
+          "stdin": "100\n",
+          "expected": "105"
+        }
+      ],
+      "answer": "",
+      "hint": "input() читает строку. int() превращает её в число.",
+      "explanation": "Выражение справа вычисляется, а оператор = записывает новое значение в переменную.",
+      "walkthrough": "1. Разбери входные данные.\n2. Выбери действие для каждого случая.\n3. Выведи результат и проверь на примерах.",
+      "methods": [
+        [
+          "Пошаговый вариант",
+          "n = int(input())\nn = n + 5\nprint(n)\n"
+        ],
+        [
+          "Другой способ",
+          "print(int(input()) + 5)\n"
+        ]
+      ],
+      "concepts": [
+        "input",
+        "int",
+        "присваивание"
+      ],
+      "difficulty": 1
+    },
+    {
+      "id": "start08",
+      "stage": "start",
+      "title": "Остаток от деления",
+      "kind": "write",
+      "prompt": "Введи число. Выведи остаток от деления на 3.",
+      "starter": "# Твой код\n",
+      "tests": [
+        {
+          "stdin": "10\n",
+          "expected": "1"
+        },
+        {
+          "stdin": "9\n",
+          "expected": "0"
+        },
+        {
+          "stdin": "17\n",
+          "expected": "2"
+        }
+      ],
+      "answer": "",
+      "hint": "Для остатка используют знак %.",
+      "explanation": "10 % 3 равно 1, потому что 3 помещается в 10 три раза и остаётся 1.",
+      "walkthrough": "1. Разбери входные данные.\n2. Выбери действие для каждого случая.\n3. Выведи результат и проверь на примерах.",
+      "methods": [
+        [
+          "Пошаговый вариант",
+          "n = int(input())\nr = n % 3\nprint(r)\n"
+        ],
+        [
+          "Другой способ",
+          "print(int(input()) % 3)\n"
+        ]
+      ],
+      "concepts": [
+        "%",
+        "int",
+        "print"
+      ],
+      "difficulty": 1
+    },
+    {
+      "id": "start09",
+      "stage": "start",
+      "title": "Поменяй местами",
+      "kind": "write",
+      "prompt": "Введи два слова с разных строк. Выведи второе, затем первое, каждое с новой строки.",
+      "starter": "# Твой код\n",
+      "tests": [
+        {
+          "stdin": "кот\nдом\n",
+          "expected": "дом\nкот"
+        },
+        {
+          "stdin": "лев\nмир\n",
+          "expected": "мир\nлев"
+        }
+      ],
+      "answer": "",
+      "hint": "Сохрани обе строки в разных переменных.",
+      "explanation": "Значения можно вывести в любом порядке, независимо от порядка ввода.",
+      "walkthrough": "1. Разбери входные данные.\n2. Выбери действие для каждого случая.\n3. Выведи результат и проверь на примерах.",
+      "methods": [
+        [
+          "Пошаговый вариант",
+          "a = input()\nb = input()\nprint(b)\nprint(a)\n"
+        ],
+        [
+          "Другой способ",
+          "words = [input(), input()]\nprint(*words[::-1], sep='\\n')\n"
+        ]
+      ],
+      "concepts": [
+        "input",
+        "список",
+        "print"
+      ],
+      "difficulty": 1
+    },
+    {
+      "id": "start10",
+      "stage": "start",
+      "title": "Площадь прямоугольника",
+      "kind": "write",
+      "prompt": "Введи ширину и высоту, каждую с новой строки. Выведи площадь.",
+      "starter": "# Твой код\n",
+      "tests": [
+        {
+          "stdin": "3\n4\n",
+          "expected": "12"
+        },
+        {
+          "stdin": "7\n8\n",
+          "expected": "56"
+        },
+        {
+          "stdin": "0\n3\n",
+          "expected": "0"
+        }
+      ],
+      "answer": "",
+      "hint": "Площадь — ширина, умноженная на высоту.",
+      "explanation": "Знак * в Python умножает числа.",
+      "walkthrough": "1. Разбери входные данные.\n2. Выбери действие для каждого случая.\n3. Выведи результат и проверь на примерах.",
+      "methods": [
+        [
+          "Пошаговый вариант",
+          "width = int(input())\nheight = int(input())\nprint(width * height)\n"
+        ],
+        [
+          "Другой способ",
+          "sides = [int(input()) for _ in range(2)]\nprint(sides[0] * sides[1])\n"
+        ]
+      ],
+      "concepts": [
+        "*",
+        "int",
+        "переменная"
+      ],
+      "difficulty": 1
+    },
+    {
+      "id": "start11",
+      "stage": "start",
+      "title": "Сколько минут?",
+      "kind": "write",
+      "prompt": "Введи количество секунд. Выведи число полных минут и оставшихся секунд через пробел.",
+      "starter": "# Твой код\n",
+      "tests": [
+        {
+          "stdin": "125\n",
+          "expected": "2 5"
+        },
+        {
+          "stdin": "60\n",
+          "expected": "1 0"
+        },
+        {
+          "stdin": "9\n",
+          "expected": "0 9"
+        }
+      ],
+      "answer": "",
+      "hint": "// даёт целую часть от деления, % — остаток.",
+      "explanation": "divmod(s, 60) возвращает сразу два числа: минуты и остаток секунд.",
+      "walkthrough": "1. Разбери входные данные.\n2. Выбери действие для каждого случая.\n3. Выведи результат и проверь на примерах.",
+      "methods": [
+        [
+          "Пошаговый вариант",
+          "seconds = int(input())\nminutes = seconds // 60\nrest = seconds % 60\nprint(minutes, rest)\n"
+        ],
+        [
+          "Другой способ",
+          "s = int(input())\nprint(*divmod(s, 60))\n"
+        ]
+      ],
+      "concepts": [
+        "//",
+        "%",
+        "divmod"
+      ],
+      "difficulty": 1
+    },
+    {
+      "id": "start12",
+      "stage": "start",
+      "title": "Цена со скидкой",
+      "kind": "write",
+      "prompt": "Введи целую цену и скидку в процентах. Выведи итоговую цену как целое число. Скидка кратна 10, цена кратна 100.",
+      "starter": "# Твой код\n",
+      "tests": [
+        {
+          "stdin": "1000\n20\n",
+          "expected": "800"
+        },
+        {
+          "stdin": "500\n10\n",
+          "expected": "450"
+        },
+        {
+          "stdin": "200\n0\n",
+          "expected": "200"
+        }
+      ],
+      "answer": "",
+      "hint": "От полной цены нужно оставить 100 - скидка процентов.",
+      "explanation": "Процент — это сотая часть. Скидка 20% означает, что остаётся 80% цены.",
+      "walkthrough": "1. Разбери входные данные.\n2. Выбери действие для каждого случая.\n3. Выведи результат и проверь на примерах.",
+      "methods": [
+        [
+          "Пошаговый вариант",
+          "price = int(input())\ndiscount = int(input())\nprint(price * (100 - discount) // 100)\n"
+        ],
+        [
+          "Другой способ",
+          "p, d = int(input()), int(input())\nprint(p - p * d // 100)\n"
+        ]
+      ],
+      "concepts": [
+        "проценты",
+        "//",
+        "*"
+      ],
+      "difficulty": 1
+    },
+    {
+      "id": "conditions07",
+      "stage": "conditions",
+      "title": "Пароль совпал?",
+      "kind": "write",
+      "prompt": "Прочитай строку. Если она равна 'python', выведи OK, иначе NO.",
+      "starter": "# Твой код\n",
+      "tests": [
+        {
+          "stdin": "python\n",
+          "expected": "OK"
+        },
+        {
+          "stdin": "Python\n",
+          "expected": "NO"
+        },
+        {
+          "stdin": "cat\n",
+          "expected": "NO"
+        }
+      ],
+      "answer": "",
+      "hint": "Сравни строки через ==. Регистр букв учитывается.",
+      "explanation": "= присваивает, а == проверяет равенство.",
+      "walkthrough": "1. Разбери входные данные.\n2. Выбери действие для каждого случая.\n3. Выведи результат и проверь на примерах.",
+      "methods": [
+        [
+          "Пошаговый вариант",
+          "s = input()\nif s == 'python':\n    print('OK')\nelse:\n    print('NO')\n"
+        ],
+        [
+          "Другой способ",
+          "print('OK' if input() == 'python' else 'NO')\n"
+        ]
+      ],
+      "concepts": [
+        "if",
+        "==",
+        "else"
+      ],
+      "difficulty": 1
+    },
+    {
+      "id": "conditions08",
+      "stage": "conditions",
+      "title": "Год високосный?",
+      "kind": "write",
+      "prompt": "Введи год. Выведи YES, если он високосный, иначе NO.",
+      "starter": "# Твой код\n",
+      "tests": [
+        {
+          "stdin": "2000\n",
+          "expected": "YES"
+        },
+        {
+          "stdin": "1900\n",
+          "expected": "NO"
+        },
+        {
+          "stdin": "2024\n",
+          "expected": "YES"
+        },
+        {
+          "stdin": "2023\n",
+          "expected": "NO"
+        }
+      ],
+      "answer": "",
+      "hint": "Год делится на 4, но вековые годы должны делиться на 400.",
+      "explanation": "Для 1900: делится на 100, но не на 400, поэтому NO. Для 2000 — YES.",
+      "walkthrough": "1. Разбери входные данные.\n2. Выбери действие для каждого случая.\n3. Выведи результат и проверь на примерах.",
+      "methods": [
+        [
+          "Пошаговый вариант",
+          "y = int(input())\nif y % 400 == 0 or (y % 4 == 0 and y % 100 != 0):\n    print('YES')\nelse:\n    print('NO')\n"
+        ],
+        [
+          "Другой способ",
+          "y = int(input())\nleap = (y % 4 == 0 and y % 100 != 0) or y % 400 == 0\nprint('YES' if leap else 'NO')\n"
+        ]
+      ],
+      "concepts": [
+        "and",
+        "or",
+        "%"
+      ],
+      "difficulty": 1
+    },
+    {
+      "id": "conditions09",
+      "stage": "conditions",
+      "title": "В интервале",
+      "kind": "write",
+      "prompt": "Введи целое число. Выведи YES, если оно от 10 до 20 включительно, иначе NO.",
+      "starter": "# Твой код\n",
+      "tests": [
+        {
+          "stdin": "10\n",
+          "expected": "YES"
+        },
+        {
+          "stdin": "20\n",
+          "expected": "YES"
+        },
+        {
+          "stdin": "9\n",
+          "expected": "NO"
+        },
+        {
+          "stdin": "25\n",
+          "expected": "NO"
+        }
+      ],
+      "answer": "",
+      "hint": "Можно написать 10 <= x <= 20.",
+      "explanation": "Сравнение-цепочка в Python читается как обычный интервал из математики.",
+      "walkthrough": "1. Разбери входные данные.\n2. Выбери действие для каждого случая.\n3. Выведи результат и проверь на примерах.",
+      "methods": [
+        [
+          "Пошаговый вариант",
+          "x = int(input())\nif 10 <= x <= 20:\n    print('YES')\nelse:\n    print('NO')\n"
+        ],
+        [
+          "Другой способ",
+          "x = int(input())\nprint('YES' if x >= 10 and x <= 20 else 'NO')\n"
+        ]
+      ],
+      "concepts": [
+        "if",
+        "сравнение",
+        "and"
+      ],
+      "difficulty": 1
+    },
+    {
+      "id": "conditions10",
+      "stage": "conditions",
+      "title": "Самое большое",
+      "kind": "write",
+      "prompt": "Введи три целых числа. Выведи наибольшее.",
+      "starter": "# Твой код\n",
+      "tests": [
+        {
+          "stdin": "1\n4\n2\n",
+          "expected": "4"
+        },
+        {
+          "stdin": "-1\n-8\n-3\n",
+          "expected": "-1"
+        },
+        {
+          "stdin": "7\n7\n2\n",
+          "expected": "7"
+        }
+      ],
+      "answer": "",
+      "hint": "Начни считать первым числом максимумом; сравни со вторым и третьим.",
+      "explanation": "max() делает то же самое, но полезно уметь сравнивать самостоятельно.",
+      "walkthrough": "1. Разбери входные данные.\n2. Выбери действие для каждого случая.\n3. Выведи результат и проверь на примерах.",
+      "methods": [
+        [
+          "Пошаговый вариант",
+          "a, b, c = int(input()), int(input()), int(input())\nresult = a\nif b > result:\n    result = b\nif c > result:\n    result = c\nprint(result)\n"
+        ],
+        [
+          "Другой способ",
+          "values = [int(input()) for _ in range(3)]\nprint(max(values))\n"
+        ]
+      ],
+      "concepts": [
+        "if",
+        "max",
+        ">"
+      ],
+      "difficulty": 1
+    },
+    {
+      "id": "conditions11",
+      "stage": "conditions",
+      "title": "Цена билета",
+      "kind": "write",
+      "prompt": "Введи возраст. До 7 лет билет 0, с 7 до 17 — 100, с 18 — 200. Выведи цену.",
+      "starter": "# Твой код\n",
+      "tests": [
+        {
+          "stdin": "5\n",
+          "expected": "0"
+        },
+        {
+          "stdin": "7\n",
+          "expected": "100"
+        },
+        {
+          "stdin": "17\n",
+          "expected": "100"
+        },
+        {
+          "stdin": "18\n",
+          "expected": "200"
+        }
+      ],
+      "answer": "",
+      "hint": "Проверяй диапазоны по порядку: сначала младших, потом подростков.",
+      "explanation": "elif проверяется лишь когда предыдущий if не подошёл.",
+      "walkthrough": "1. Разбери входные данные.\n2. Выбери действие для каждого случая.\n3. Выведи результат и проверь на примерах.",
+      "methods": [
+        [
+          "Пошаговый вариант",
+          "age = int(input())\nif age < 7:\n    print(0)\nelif age < 18:\n    print(100)\nelse:\n    print(200)\n"
+        ],
+        [
+          "Другой способ",
+          "a = int(input())\nprice = 0 if a < 7 else 100 if a < 18 else 200\nprint(price)\n"
+        ]
+      ],
+      "concepts": [
+        "if",
+        "elif",
+        "else"
+      ],
+      "difficulty": 1
+    },
+    {
+      "id": "conditions12",
+      "stage": "conditions",
+      "title": "Время суток",
+      "kind": "write",
+      "prompt": "Введи час от 0 до 23. Выведи morning для 6–11, day для 12–17, evening для 18–22, иначе night.",
+      "starter": "# Твой код\n",
+      "tests": [
+        {
+          "stdin": "6\n",
+          "expected": "morning"
+        },
+        {
+          "stdin": "17\n",
+          "expected": "day"
+        },
+        {
+          "stdin": "22\n",
+          "expected": "evening"
+        },
+        {
+          "stdin": "23\n",
+          "expected": "night"
+        },
+        {
+          "stdin": "2\n",
+          "expected": "night"
+        }
+      ],
+      "answer": "",
+      "hint": "Используй несколько elif. Последний else ловит всё остальное.",
+      "explanation": "Границы 6, 12, 18 и 23 особенно полезно проверить отдельно.",
+      "walkthrough": "1. Разбери входные данные.\n2. Выбери действие для каждого случая.\n3. Выведи результат и проверь на примерах.",
+      "methods": [
+        [
+          "Пошаговый вариант",
+          "h = int(input())\nif 6 <= h <= 11:\n    print('morning')\nelif 12 <= h <= 17:\n    print('day')\nelif 18 <= h <= 22:\n    print('evening')\nelse:\n    print('night')\n"
+        ],
+        [
+          "Другой способ",
+          "h = int(input())\nperiods = ['night', 'morning', 'day', 'evening']\nindex = 1 if 6 <= h < 12 else 2 if 12 <= h < 18 else 3 if 18 <= h <= 22 else 0\nprint(periods[index])\n"
+        ]
+      ],
+      "concepts": [
+        "elif",
+        "границы диапазона"
+      ],
+      "difficulty": 1
+    },
+    {
+      "id": "loops07",
+      "stage": "loops",
+      "title": "Обратный отсчёт",
+      "kind": "write",
+      "prompt": "Введи n. Выведи n, n-1, ... 1, 0 — каждое с новой строки.",
+      "starter": "# Твой код\n",
+      "tests": [
+        {
+          "stdin": "3\n",
+          "expected": "3\n2\n1\n0"
+        },
+        {
+          "stdin": "0\n",
+          "expected": "0"
+        },
+        {
+          "stdin": "5\n",
+          "expected": "5\n4\n3\n2\n1\n0"
+        }
+      ],
+      "answer": "",
+      "hint": "range(начало, граница, шаг). Для обратного отсчёта шаг -1.",
+      "explanation": "Цикл while тоже подойдёт, если вручную уменьшать число.",
+      "walkthrough": "1. Разбери входные данные.\n2. Выбери действие для каждого случая.\n3. Выведи результат и проверь на примерах.",
+      "methods": [
+        [
+          "Пошаговый вариант",
+          "n = int(input())\nfor x in range(n, -1, -1):\n    print(x)\n"
+        ],
+        [
+          "Другой способ",
+          "n = int(input())\nwhile n >= 0:\n    print(n)\n    n -= 1\n"
+        ]
+      ],
+      "concepts": [
+        "range",
+        "for",
+        "while"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "loops08",
+      "stage": "loops",
+      "title": "Сколько цифр?",
+      "kind": "write",
+      "prompt": "Введи неотрицательное целое число. Выведи количество цифр в нём.",
+      "starter": "# Твой код\n",
+      "tests": [
+        {
+          "stdin": "0\n",
+          "expected": "1"
+        },
+        {
+          "stdin": "12345\n",
+          "expected": "5"
+        },
+        {
+          "stdin": "90\n",
+          "expected": "2"
+        }
+      ],
+      "answer": "",
+      "hint": "Любое число можно прочитать как строку и посчитать её длину.",
+      "explanation": "В числовом решении каждое деление на 10 убирает последнюю цифру.",
+      "walkthrough": "1. Разбери входные данные.\n2. Выбери действие для каждого случая.\n3. Выведи результат и проверь на примерах.",
+      "methods": [
+        [
+          "Пошаговый вариант",
+          "n = input().strip()\nprint(len(n))\n"
+        ],
+        [
+          "Другой способ",
+          "n = int(input())\ncount = 1\nwhile n >= 10:\n    n //= 10\n    count += 1\nprint(count)\n"
+        ]
+      ],
+      "concepts": [
+        "len",
+        "while",
+        "//"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "loops09",
+      "stage": "loops",
+      "title": "Сумма нечётных",
+      "kind": "write",
+      "prompt": "Введи n. Выведи сумму нечётных чисел от 1 до n.",
+      "starter": "# Твой код\n",
+      "tests": [
+        {
+          "stdin": "5\n",
+          "expected": "9"
+        },
+        {
+          "stdin": "6\n",
+          "expected": "9"
+        },
+        {
+          "stdin": "1\n",
+          "expected": "1"
+        },
+        {
+          "stdin": "0\n",
+          "expected": "0"
+        }
+      ],
+      "answer": "",
+      "hint": "range(1, n + 1, 2) пропускает все чётные.",
+      "explanation": "Сумма первых k нечётных чисел равна k * k.",
+      "walkthrough": "1. Разбери входные данные.\n2. Выбери действие для каждого случая.\n3. Выведи результат и проверь на примерах.",
+      "methods": [
+        [
+          "Пошаговый вариант",
+          "n = int(input())\ntotal = 0\nfor i in range(1, n + 1, 2):\n    total += i\nprint(total)\n"
+        ],
+        [
+          "Другой способ",
+          "n = int(input())\nk = (n + 1) // 2\nprint(k * k)\n"
+        ]
+      ],
+      "concepts": [
+        "range",
+        "арифметика",
+        "цикл"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "loops10",
+      "stage": "loops",
+      "title": "Таблица умножения",
+      "kind": "write",
+      "prompt": "Введи n. Выведи десять строк вида 'n x i = result' для i от 1 до 10.",
+      "starter": "# Твой код\n",
+      "tests": [
+        {
+          "stdin": "2\n",
+          "expected": "2 x 1 = 2\n2 x 2 = 4\n2 x 3 = 6\n2 x 4 = 8\n2 x 5 = 10\n2 x 6 = 12\n2 x 7 = 14\n2 x 8 = 16\n2 x 9 = 18\n2 x 10 = 20"
+        },
+        {
+          "stdin": "0\n",
+          "expected": "0 x 1 = 0\n0 x 2 = 0\n0 x 3 = 0\n0 x 4 = 0\n0 x 5 = 0\n0 x 6 = 0\n0 x 7 = 0\n0 x 8 = 0\n0 x 9 = 0\n0 x 10 = 0"
+        }
+      ],
+      "answer": "",
+      "hint": "f-строка вставляет значения прямо в текст: f'{n}'.",
+      "explanation": "Цикл печатает одну строку на каждой итерации.",
+      "walkthrough": "1. Разбери входные данные.\n2. Выбери действие для каждого случая.\n3. Выведи результат и проверь на примерах.",
+      "methods": [
+        [
+          "Пошаговый вариант",
+          "n = int(input())\nfor i in range(1, 11):\n    print(f'{n} x {i} = {n * i}')\n"
+        ],
+        [
+          "Другой способ",
+          "n = int(input())\ni = 1\nwhile i <= 10:\n    print(str(n) + ' x ' + str(i) + ' = ' + str(n * i))\n    i += 1\n"
+        ]
+      ],
+      "concepts": [
+        "for",
+        "f-строка",
+        "while"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "loops11",
+      "stage": "loops",
+      "title": "Степень двойки",
+      "kind": "write",
+      "prompt": "Введи n от 0 до 20. Выведи 2 в степени n. Не используй готовую функцию pow.",
+      "starter": "# Твой код\n",
+      "tests": [
+        {
+          "stdin": "0\n",
+          "expected": "1"
+        },
+        {
+          "stdin": "3\n",
+          "expected": "8"
+        },
+        {
+          "stdin": "10\n",
+          "expected": "1024"
+        }
+      ],
+      "answer": "",
+      "hint": "Начни с 1 и умножай на 2 n раз.",
+      "explanation": "Оператор ** — возведение в степень.",
+      "walkthrough": "1. Разбери входные данные.\n2. Выбери действие для каждого случая.\n3. Выведи результат и проверь на примерах.",
+      "methods": [
+        [
+          "Пошаговый вариант",
+          "n = int(input())\nresult = 1\nfor _ in range(n):\n    result *= 2\nprint(result)\n"
+        ],
+        [
+          "Другой способ",
+          "n = int(input())\nprint(2 ** n)\n"
+        ]
+      ],
+      "concepts": [
+        "for",
+        "*",
+        "**"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "loops12",
+      "stage": "loops",
+      "title": "Найди делители",
+      "kind": "write",
+      "prompt": "Введи положительное число n. Выведи все его положительные делители в одну строку через пробел.",
+      "starter": "# Твой код\n",
+      "tests": [
+        {
+          "stdin": "6\n",
+          "expected": "1 2 3 6"
+        },
+        {
+          "stdin": "7\n",
+          "expected": "1 7"
+        },
+        {
+          "stdin": "1\n",
+          "expected": "1"
+        },
+        {
+          "stdin": "12\n",
+          "expected": "1 2 3 4 6 12"
+        }
+      ],
+      "answer": "",
+      "hint": "Делитель — такое i, для которого n % i == 0.",
+      "explanation": "* перед списком распаковывает элементы для print.",
+      "walkthrough": "1. Разбери входные данные.\n2. Выбери действие для каждого случая.\n3. Выведи результат и проверь на примерах.",
+      "methods": [
+        [
+          "Пошаговый вариант",
+          "n = int(input())\nresult = []\nfor i in range(1, n + 1):\n    if n % i == 0:\n        result.append(i)\nprint(*result)\n"
+        ],
+        [
+          "Другой способ",
+          "n = int(input())\nprint(*(i for i in range(1, n + 1) if n % i == 0))\n"
+        ]
+      ],
+      "concepts": [
+        "%",
+        "список",
+        "for"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "data07",
+      "stage": "data",
+      "title": "Переверни слово",
+      "kind": "write",
+      "prompt": "Введи слово и выведи его задом наперёд.",
+      "starter": "# Твой код\n",
+      "tests": [
+        {
+          "stdin": "python\n",
+          "expected": "nohtyp"
+        },
+        {
+          "stdin": "кот\n",
+          "expected": "ток"
+        },
+        {
+          "stdin": "a\n",
+          "expected": "a"
+        }
+      ],
+      "answer": "",
+      "hint": "У среза [::-1] шаг равен -1.",
+      "explanation": "В цикле можно добавлять новую букву в начало результата.",
+      "walkthrough": "1. Разбери входные данные.\n2. Выбери действие для каждого случая.\n3. Выведи результат и проверь на примерах.",
+      "methods": [
+        [
+          "Пошаговый вариант",
+          "word = input()\nprint(word[::-1])\n"
+        ],
+        [
+          "Другой способ",
+          "word = input()\nresult = ''\nfor letter in word:\n    result = letter + result\nprint(result)\n"
+        ]
+      ],
+      "concepts": [
+        "срез",
+        "строка",
+        "for"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "data08",
+      "stage": "data",
+      "title": "Длина каждого слова",
+      "kind": "write",
+      "prompt": "Введи несколько слов через пробел. Выведи их длины через пробел.",
+      "starter": "# Твой код\n",
+      "tests": [
+        {
+          "stdin": "кот дом\n",
+          "expected": "3 3"
+        },
+        {
+          "stdin": "я учу python\n",
+          "expected": "1 3 6"
+        },
+        {
+          "stdin": "a\n",
+          "expected": "1"
+        }
+      ],
+      "answer": "",
+      "hint": "split разбивает строку на слова, len считает длину.",
+      "explanation": "Генератор позволяет посчитать длины без отдельного списка.",
+      "walkthrough": "1. Разбери входные данные.\n2. Выбери действие для каждого случая.\n3. Выведи результат и проверь на примерах.",
+      "methods": [
+        [
+          "Пошаговый вариант",
+          "words = input().split()\nlengths = []\nfor word in words:\n    lengths.append(len(word))\nprint(*lengths)\n"
+        ],
+        [
+          "Другой способ",
+          "print(*(len(w) for w in input().split()))\n"
+        ]
+      ],
+      "concepts": [
+        "split",
+        "len",
+        "list"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "data09",
+      "stage": "data",
+      "title": "Самый длинный",
+      "kind": "write",
+      "prompt": "Введи слова через пробел. Выведи длину самого длинного слова.",
+      "starter": "# Твой код\n",
+      "tests": [
+        {
+          "stdin": "a abc ab\n",
+          "expected": "3"
+        },
+        {
+          "stdin": "python код\n",
+          "expected": "6"
+        },
+        {
+          "stdin": "кот\n",
+          "expected": "3"
+        }
+      ],
+      "answer": "",
+      "hint": "Пока проходишь список, запоминай наибольшую длину.",
+      "explanation": "map(len, words) превращает слова в последовательность длин.",
+      "walkthrough": "1. Разбери входные данные.\n2. Выбери действие для каждого случая.\n3. Выведи результат и проверь на примерах.",
+      "methods": [
+        [
+          "Пошаговый вариант",
+          "words = input().split()\nlength = 0\nfor word in words:\n    if len(word) > length:\n        length = len(word)\nprint(length)\n"
+        ],
+        [
+          "Другой способ",
+          "print(max(map(len, input().split())))\n"
+        ]
+      ],
+      "concepts": [
+        "max",
+        "map",
+        "for"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "data10",
+      "stage": "data",
+      "title": "Убери повторения",
+      "kind": "write",
+      "prompt": "Введи целые числа через пробел. Выведи уникальные числа по возрастанию через пробел.",
+      "starter": "# Твой код\n",
+      "tests": [
+        {
+          "stdin": "3 1 3 2 1\n",
+          "expected": "1 2 3"
+        },
+        {
+          "stdin": "5 5 5\n",
+          "expected": "5"
+        },
+        {
+          "stdin": "-1 2 -1 0\n",
+          "expected": "-1 0 2"
+        }
+      ],
+      "answer": "",
+      "hint": "set убирает повторы; sorted возвращает отсортированный список.",
+      "explanation": "Множество не сохраняет порядок, поэтому после set нужен sorted.",
+      "walkthrough": "1. Разбери входные данные.\n2. Выбери действие для каждого случая.\n3. Выведи результат и проверь на примерах.",
+      "methods": [
+        [
+          "Пошаговый вариант",
+          "nums = list(map(int, input().split()))\nunique = sorted(set(nums))\nprint(*unique)\n"
+        ],
+        [
+          "Другой способ",
+          "nums = list(map(int, input().split()))\nresult = []\nfor n in sorted(nums):\n    if n not in result:\n        result.append(n)\nprint(*result)\n"
+        ]
+      ],
+      "concepts": [
+        "set",
+        "sorted",
+        "список"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "data11",
+      "stage": "data",
+      "title": "Подсчёт гласных",
+      "kind": "write",
+      "prompt": "Введи строку на русском или английском. Выведи количество русских и английских гласных (без учёта регистра).",
+      "starter": "# Твой код\n",
+      "tests": [
+        {
+          "stdin": "Мама\n",
+          "expected": "2"
+        },
+        {
+          "stdin": "hello\n",
+          "expected": "2"
+        },
+        {
+          "stdin": "PYTHON\n",
+          "expected": "1"
+        },
+        {
+          "stdin": "xyz\n",
+          "expected": "0"
+        }
+      ],
+      "answer": "",
+      "hint": "Приведи текст к нижнему регистру: .lower().",
+      "explanation": "Выражение c in vowels проверяет, входит ли буква в строку гласных.",
+      "walkthrough": "1. Разбери входные данные.\n2. Выбери действие для каждого случая.\n3. Выведи результат и проверь на примерах.",
+      "methods": [
+        [
+          "Пошаговый вариант",
+          "text = input().lower()\nvowels = 'аеёиоуыэюяaeiou'\nprint(sum(1 for c in text if c in vowels))\n"
+        ],
+        [
+          "Другой способ",
+          "text = input().lower()\ncount = 0\nfor c in text:\n    if c in 'аеёиоуыэюяaeiou':\n        count += 1\nprint(count)\n"
+        ]
+      ],
+      "concepts": [
+        "lower",
+        "in",
+        "sum"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "data12",
+      "stage": "data",
+      "title": "Среднее значение",
+      "kind": "write",
+      "prompt": "Введи непустой список целых чисел через пробел. Выведи среднее арифметическое с двумя знаками после точки.",
+      "starter": "# Твой код\n",
+      "tests": [
+        {
+          "stdin": "2 4 6\n",
+          "expected": "4.00"
+        },
+        {
+          "stdin": "1 2\n",
+          "expected": "1.50"
+        },
+        {
+          "stdin": "-2 2\n",
+          "expected": "0.00"
+        }
+      ],
+      "answer": "",
+      "hint": "Сложи числа, раздели на количество, отформатируй :.2f.",
+      "explanation": "При делении / получается число с дробной частью.",
+      "walkthrough": "1. Разбери входные данные.\n2. Выбери действие для каждого случая.\n3. Выведи результат и проверь на примерах.",
+      "methods": [
+        [
+          "Пошаговый вариант",
+          "numbers = list(map(int, input().split()))\nmean = sum(numbers) / len(numbers)\nprint(f'{mean:.2f}')\n"
+        ],
+        [
+          "Другой способ",
+          "a = list(map(int, input().split()))\nprint(format(sum(a) / len(a), '.2f'))\n"
+        ]
+      ],
+      "concepts": [
+        "sum",
+        "len",
+        "f-строка"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "functions01",
+      "stage": "functions",
+      "title": "Сумма цифр",
+      "kind": "write",
+      "prompt": "Введи неотрицательное число. Выведи сумму его цифр.",
+      "starter": "# Твой код\n",
+      "tests": [
+        {
+          "stdin": "123\n",
+          "expected": "6"
+        },
+        {
+          "stdin": "0\n",
+          "expected": "0"
+        },
+        {
+          "stdin": "908\n",
+          "expected": "17"
+        }
+      ],
+      "answer": "",
+      "hint": "Число можно превратить в строку и пройти по её символам.",
+      "explanation": "Функция скрывает детали вычисления за понятным именем.",
+      "walkthrough": "1. Разбери входные данные.\n2. Выбери действие для каждого случая.\n3. Выведи результат и проверь на примерах.",
+      "methods": [
+        [
+          "Пошаговый вариант",
+          "def digit_sum(n):\n    return sum(int(digit) for digit in str(n))\n\nprint(digit_sum(int(input())))\n"
+        ],
+        [
+          "Другой способ",
+          "n = int(input())\nresult = 0\nwhile n:\n    result += n % 10\n    n //= 10\nprint(result)\n"
+        ]
+      ],
+      "concepts": [
+        "def",
+        "return",
+        "str",
+        "sum"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "functions02",
+      "stage": "functions",
+      "title": "Словарь цен",
+      "kind": "write",
+      "prompt": "Введи название товара (apple, bread, milk). Выведи его цену: 30, 50 или 80. Для остальных — 0.",
+      "starter": "# Твой код\n",
+      "tests": [
+        {
+          "stdin": "apple\n",
+          "expected": "30"
+        },
+        {
+          "stdin": "milk\n",
+          "expected": "80"
+        },
+        {
+          "stdin": "other\n",
+          "expected": "0"
+        }
+      ],
+      "answer": "",
+      "hint": "У словаря есть метод get(ключ, значение_по_умолчанию).",
+      "explanation": "Словарь хранит пары ключ → значение; get безопасен для отсутствующего ключа.",
+      "walkthrough": "1. Разбери входные данные.\n2. Выбери действие для каждого случая.\n3. Выведи результат и проверь на примерах.",
+      "methods": [
+        [
+          "Пошаговый вариант",
+          "prices = {'apple': 30, 'bread': 50, 'milk': 80}\nname = input()\nprint(prices.get(name, 0))\n"
+        ],
+        [
+          "Другой способ",
+          "name = input()\nprices = {'apple': 30, 'bread': 50, 'milk': 80}\nif name in prices:\n    print(prices[name])\nelse:\n    print(0)\n"
+        ]
+      ],
+      "concepts": [
+        "dict",
+        "get",
+        "in"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "functions03",
+      "stage": "functions",
+      "title": "Частота слов",
+      "kind": "write",
+      "prompt": "Введи слова через пробел. В следующей строке — слово для поиска. Выведи, сколько раз оно встретилось.",
+      "starter": "# Твой код\n",
+      "tests": [
+        {
+          "stdin": "кот дом кот\nкот\n",
+          "expected": "2"
+        },
+        {
+          "stdin": "a b a c\nz\n",
+          "expected": "0"
+        },
+        {
+          "stdin": "one\none\n",
+          "expected": "1"
+        }
+      ],
+      "answer": "",
+      "hint": "list.count(value) считает совпадения.",
+      "explanation": "Словарём удобно считать частоту сразу всех слов.",
+      "walkthrough": "1. Разбери входные данные.\n2. Выбери действие для каждого случая.\n3. Выведи результат и проверь на примерах.",
+      "methods": [
+        [
+          "Пошаговый вариант",
+          "words = input().split()\nword = input()\nprint(words.count(word))\n"
+        ],
+        [
+          "Другой способ",
+          "words = input().split()\ntarget = input()\ncounts = {}\nfor w in words:\n    counts[w] = counts.get(w, 0) + 1\nprint(counts.get(target, 0))\n"
+        ]
+      ],
+      "concepts": [
+        "count",
+        "dict",
+        "get"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "functions04",
+      "stage": "functions",
+      "title": "Пересечение групп",
+      "kind": "write",
+      "prompt": "Введи две строки целых чисел через пробел. Выведи общие уникальные числа по возрастанию.",
+      "starter": "# Твой код\n",
+      "tests": [
+        {
+          "stdin": "1 2 3\n2 3 4\n",
+          "expected": "2 3"
+        },
+        {
+          "stdin": "1 1 2\n3 4\n",
+          "expected": ""
+        },
+        {
+          "stdin": "-1 4\n4 -1\n",
+          "expected": "-1 4"
+        }
+      ],
+      "answer": "",
+      "hint": "Множества пересекаются через &.",
+      "explanation": "set автоматически убирает повторы, а sorted даёт нужный порядок.",
+      "walkthrough": "1. Разбери входные данные.\n2. Выбери действие для каждого случая.\n3. Выведи результат и проверь на примерах.",
+      "methods": [
+        [
+          "Пошаговый вариант",
+          "a = set(map(int, input().split()))\nb = set(map(int, input().split()))\nprint(*sorted(a & b))\n"
+        ],
+        [
+          "Другой способ",
+          "a = list(map(int, input().split()))\nb = list(map(int, input().split()))\nresult = sorted({x for x in a if x in b})\nprint(*result)\n"
+        ]
+      ],
+      "concepts": [
+        "set",
+        "&",
+        "sorted"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "functions05",
+      "stage": "functions",
+      "title": "Функция температуры",
+      "kind": "write",
+      "prompt": "Введи целое число градусов Цельсия. Выведи температуру в Фаренгейтах с одним знаком после точки.",
+      "starter": "# Твой код\n",
+      "tests": [
+        {
+          "stdin": "0\n",
+          "expected": "32.0"
+        },
+        {
+          "stdin": "100\n",
+          "expected": "212.0"
+        },
+        {
+          "stdin": "-40\n",
+          "expected": "-40.0"
+        }
+      ],
+      "answer": "",
+      "hint": "Формула: F = C * 9 / 5 + 32.",
+      "explanation": "return возвращает результат из функции обратно в место вызова.",
+      "walkthrough": "1. Разбери входные данные.\n2. Выбери действие для каждого случая.\n3. Выведи результат и проверь на примерах.",
+      "methods": [
+        [
+          "Пошаговый вариант",
+          "def to_fahrenheit(c):\n    return c * 9 / 5 + 32\n\nprint(f'{to_fahrenheit(int(input())):.1f}')\n"
+        ],
+        [
+          "Другой способ",
+          "celsius = int(input())\nfahrenheit = 32 + 1.8 * celsius\nprint(format(fahrenheit, '.1f'))\n"
+        ]
+      ],
+      "concepts": [
+        "def",
+        "return",
+        "f-строка"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "functions06",
+      "stage": "functions",
+      "title": "Палиндром",
+      "kind": "write",
+      "prompt": "Введи слово. Выведи YES, если оно одинаково читается в обе стороны, иначе NO. Регистр игнорируй.",
+      "starter": "# Твой код\n",
+      "tests": [
+        {
+          "stdin": "Топот\n",
+          "expected": "YES"
+        },
+        {
+          "stdin": "Python\n",
+          "expected": "NO"
+        },
+        {
+          "stdin": "level\n",
+          "expected": "YES"
+        }
+      ],
+      "answer": "",
+      "hint": "Сравни слово с перевёрнутым: s[::-1].",
+      "explanation": "Два указателя сравнивают буквы с краёв, приближаясь к середине.",
+      "walkthrough": "1. Разбери входные данные.\n2. Выбери действие для каждого случая.\n3. Выведи результат и проверь на примерах.",
+      "methods": [
+        [
+          "Пошаговый вариант",
+          "def palindrome(word):\n    word = word.lower()\n    return word == word[::-1]\n\nprint('YES' if palindrome(input()) else 'NO')\n"
+        ],
+        [
+          "Другой способ",
+          "s = input().lower()\nleft, right = 0, len(s) - 1\nwhile left < right and s[left] == s[right]:\n    left += 1\n    right -= 1\nprint('YES' if left >= right else 'NO')\n"
+        ]
+      ],
+      "concepts": [
+        "функция",
+        "срез",
+        "while"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "functions07",
+      "stage": "functions",
+      "title": "Группировка по первой букве",
+      "kind": "write",
+      "prompt": "Введи слова через пробел. Выведи количество разных первых букв.",
+      "starter": "# Твой код\n",
+      "tests": [
+        {
+          "stdin": "кот кит дом\n",
+          "expected": "2"
+        },
+        {
+          "stdin": "apple banana cat\n",
+          "expected": "3"
+        },
+        {
+          "stdin": "аа аб ав\n",
+          "expected": "1"
+        }
+      ],
+      "answer": "",
+      "hint": "Собери первые буквы в множество.",
+      "explanation": "Множество хранит только уникальные значения, в отличие от списка.",
+      "walkthrough": "1. Разбери входные данные.\n2. Выбери действие для каждого случая.\n3. Выведи результат и проверь на примерах.",
+      "methods": [
+        [
+          "Пошаговый вариант",
+          "words = input().split()\nfirst = {word[0] for word in words}\nprint(len(first))\n"
+        ],
+        [
+          "Другой способ",
+          "groups = {}\nfor word in input().split():\n    groups[word[0]] = groups.get(word[0], 0) + 1\nprint(len(groups))\n"
+        ]
+      ],
+      "concepts": [
+        "set",
+        "словарь",
+        "len"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "functions08",
+      "stage": "functions",
+      "title": "Аргументы функции",
+      "kind": "write",
+      "prompt": "Введи три числа a, b, c. Выведи (a + b) * c. Вычисление оформи функцией calculate(a, b, c).",
+      "starter": "# Твой код\n",
+      "tests": [
+        {
+          "stdin": "2\n3\n4\n",
+          "expected": "20"
+        },
+        {
+          "stdin": "-1\n1\n50\n",
+          "expected": "0"
+        },
+        {
+          "stdin": "1\n2\n-3\n",
+          "expected": "-9"
+        }
+      ],
+      "answer": "",
+      "hint": "Объяви функцию через def, а результат отдай через return.",
+      "explanation": "Аргументы — переменные внутри функции, которым передаются значения при вызове.",
+      "walkthrough": "1. Разбери входные данные.\n2. Выбери действие для каждого случая.\n3. Выведи результат и проверь на примерах.",
+      "methods": [
+        [
+          "Пошаговый вариант",
+          "def calculate(a, b, c):\n    return (a + b) * c\n\na, b, c = (int(input()) for _ in range(3))\nprint(calculate(a, b, c))\n"
+        ],
+        [
+          "Другой способ",
+          "def calculate(a, b, c):\n    total = a + b\n    total *= c\n    return total\n\nvalues = [int(input()) for _ in range(3)]\nprint(calculate(*values))\n"
+        ]
+      ],
+      "concepts": [
+        "def",
+        "return",
+        "аргументы"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "functions09",
+      "stage": "functions",
+      "title": "Слияние словарей",
+      "kind": "write",
+      "prompt": "В каждой из двух строк запись вида 'ключ=число' через пробел. Сложи значения одинаковых ключей. Выведи пары 'ключ:сумма' по алфавиту, каждая с новой строки.",
+      "starter": "# Твой код\n",
+      "tests": [
+        {
+          "stdin": "a=1 b=2\na=3 c=4\n",
+          "expected": "a:4\nb:2\nc:4"
+        },
+        {
+          "stdin": "x=10\nx=-2\n",
+          "expected": "x:8"
+        },
+        {
+          "stdin": "a=0\nb=1\n",
+          "expected": "a:0\nb:1"
+        }
+      ],
+      "answer": "",
+      "hint": "Раздели пару по '='. Для суммы используй get(key, 0).",
+      "explanation": "Один словарь собирает значения из двух строк; sorted сортирует ключи.",
+      "walkthrough": "1. Разбери входные данные.\n2. Выбери действие для каждого случая.\n3. Выведи результат и проверь на примерах.",
+      "methods": [
+        [
+          "Пошаговый вариант",
+          "totals = {}\nfor _ in range(2):\n    for pair in input().split():\n        key, value = pair.split('=')\n        totals[key] = totals.get(key, 0) + int(value)\nfor key in sorted(totals):\n    print(f'{key}:{totals[key]}')\n"
+        ],
+        [
+          "Другой способ",
+          "data = {}\nfor line in (input(), input()):\n    for item in line.split():\n        name, amount = item.split('=')\n        data[name] = data.setdefault(name, 0) + int(amount)\nprint('\\n'.join(f'{k}:{data[k]}' for k in sorted(data)))\n"
+        ]
+      ],
+      "concepts": [
+        "split",
+        "dict",
+        "sorted"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "functions10",
+      "stage": "functions",
+      "title": "Фильтрация значений",
+      "kind": "write",
+      "prompt": "Введи целые числа через пробел. Выведи по возрастанию уникальные положительные числа, каждое в одной строке.",
+      "starter": "# Твой код\n",
+      "tests": [
+        {
+          "stdin": "3 -1 3 2 0\n",
+          "expected": "2\n3"
+        },
+        {
+          "stdin": "0 -2\n",
+          "expected": ""
+        },
+        {
+          "stdin": "9 1 9 5\n",
+          "expected": "1\n5\n9"
+        }
+      ],
+      "answer": "",
+      "hint": "Сначала отфильтруй n > 0, потом убери повторы через set.",
+      "explanation": "Для воспроизводимого результата множество нужно отсортировать.",
+      "walkthrough": "1. Разбери входные данные.\n2. Выбери действие для каждого случая.\n3. Выведи результат и проверь на примерах.",
+      "methods": [
+        [
+          "Пошаговый вариант",
+          "numbers = map(int, input().split())\nresult = sorted({n for n in numbers if n > 0})\nfor n in result:\n    print(n)\n"
+        ],
+        [
+          "Другой способ",
+          "nums = [int(x) for x in input().split()]\npositive = set(filter(lambda x: x > 0, nums))\nprint(*sorted(positive), sep='\\n') if positive else None\n"
+        ]
+      ],
+      "concepts": [
+        "filter",
+        "множество",
+        "sorted"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "functions11",
+      "stage": "functions",
+      "title": "Именованные аргументы",
+      "kind": "write",
+      "prompt": "Введи основание и высоту треугольника. Выведи удвоенную площадь (целое число). Создай функцию double_area(base, height).",
+      "starter": "# Твой код\n",
+      "tests": [
+        {
+          "stdin": "3\n4\n",
+          "expected": "12"
+        },
+        {
+          "stdin": "0\n10\n",
+          "expected": "0"
+        },
+        {
+          "stdin": "7\n2\n",
+          "expected": "14"
+        }
+      ],
+      "answer": "",
+      "hint": "Функции можно передавать аргументы по имени: base=b.",
+      "explanation": "Именованные аргументы помогают не перепутать смысл чисел.",
+      "walkthrough": "1. Разбери входные данные.\n2. Выбери действие для каждого случая.\n3. Выведи результат и проверь на примерах.",
+      "methods": [
+        [
+          "Пошаговый вариант",
+          "def double_area(base, height):\n    return base * height\n\nb, h = int(input()), int(input())\nprint(double_area(base=b, height=h))\n"
+        ],
+        [
+          "Другой способ",
+          "def double_area(base, height):\n    answer = base * height\n    return answer\n\nprint(double_area(int(input()), int(input())))\n"
+        ]
+      ],
+      "concepts": [
+        "def",
+        "аргументы",
+        "return"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "functions12",
+      "stage": "functions",
+      "title": "Короткий отчёт",
+      "kind": "write",
+      "prompt": "Введи имена через пробел. Выведи в одной строке три числа: сколько всего имён, уникальных имён и имён длиной от 4 символов.",
+      "starter": "# Твой код\n",
+      "tests": [
+        {
+          "stdin": "anna bob anna kate\n",
+          "expected": "4 3 3"
+        },
+        {
+          "stdin": "a bb ccc\n",
+          "expected": "3 3 0"
+        },
+        {
+          "stdin": "masha\n",
+          "expected": "1 1 1"
+        }
+      ],
+      "answer": "",
+      "hint": "Можно складывать True/False: True считается как 1.",
+      "explanation": "Отчёт объединяет три независимых подсчёта без лишних проходов по данным.",
+      "walkthrough": "1. Разбери входные данные.\n2. Выбери действие для каждого случая.\n3. Выведи результат и проверь на примерах.",
+      "methods": [
+        [
+          "Пошаговый вариант",
+          "names = input().split()\nprint(len(names), len(set(names)), sum(len(x) >= 4 for x in names))\n"
+        ],
+        [
+          "Другой способ",
+          "names = input().split()\nunique = set()\nlong_names = 0\nfor name in names:\n    unique.add(name)\n    if len(name) >= 4:\n        long_names += 1\nprint(len(names), len(unique), long_names)\n"
+        ]
+      ],
+      "concepts": [
+        "set",
+        "len",
+        "sum"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "files01",
+      "stage": "files",
+      "title": "Безопасное число",
+      "kind": "write",
+      "prompt": "Введи строку. Если это целое число, выведи его квадрат. Иначе выведи ERROR.",
+      "starter": "# Твой код\n",
+      "tests": [
+        {
+          "stdin": "12\n",
+          "expected": "144"
+        },
+        {
+          "stdin": "-3\n",
+          "expected": "9"
+        },
+        {
+          "stdin": "кошка\n",
+          "expected": "ERROR"
+        }
+      ],
+      "answer": "",
+      "hint": "int('кошка') выбрасывает ValueError. Перехвати его через except.",
+      "explanation": "try/except позволяет обработать неправильный ввод без аварийного завершения.",
+      "walkthrough": "1. Разбери входные данные.\n2. Выбери действие для каждого случая.\n3. Выведи результат и проверь на примерах.",
+      "methods": [
+        [
+          "Пошаговый вариант",
+          "try:\n    number = int(input())\n    print(number * number)\nexcept ValueError:\n    print('ERROR')\n"
+        ],
+        [
+          "Другой способ",
+          "value = input()\ntry:\n    print(int(value) ** 2)\nexcept ValueError:\n    print('ERROR')\n"
+        ]
+      ],
+      "concepts": [
+        "try",
+        "except",
+        "ValueError"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "files02",
+      "stage": "files",
+      "title": "JSON с пользователем",
+      "kind": "write",
+      "prompt": "Введи JSON-объект. В нём есть поле name. Выведи имя.",
+      "starter": "# Твой код\n",
+      "tests": [
+        {
+          "stdin": "{\"name\":\"Аня\",\"age\":20}\n",
+          "expected": "Аня"
+        },
+        {
+          "stdin": "{\"name\":\"Alex\"}\n",
+          "expected": "Alex"
+        }
+      ],
+      "answer": "",
+      "hint": "json.loads превращает JSON-строку в словарь Python.",
+      "explanation": "С помощью словаря можно читать данные из конфигураций и API.",
+      "walkthrough": "1. Разбери входные данные.\n2. Выбери действие для каждого случая.\n3. Выведи результат и проверь на примерах.",
+      "methods": [
+        [
+          "Пошаговый вариант",
+          "import json\nuser = json.loads(input())\nprint(user['name'])\n"
+        ],
+        [
+          "Другой способ",
+          "from json import loads\nuser = loads(input())\nname = user.get('name')\nprint(name)\n"
+        ]
+      ],
+      "concepts": [
+        "import",
+        "json",
+        "dict"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "files03",
+      "stage": "files",
+      "title": "Обратно в JSON",
+      "kind": "write",
+      "prompt": "Введи имя и возраст с разных строк. Выведи JSON-объект с ключами name и age, без пробелов, сохраняя русский текст.",
+      "starter": "# Твой код\n",
+      "tests": [
+        {
+          "stdin": "Маша\n18\n",
+          "expected": "{\"name\":\"Маша\",\"age\":18}"
+        },
+        {
+          "stdin": "Alex\n30\n",
+          "expected": "{\"name\":\"Alex\",\"age\":30}"
+        }
+      ],
+      "answer": "",
+      "hint": "json.dumps превращает словарь в строку JSON.",
+      "explanation": "ensure_ascii=False сохраняет русские буквы, separators убирает лишние пробелы.",
+      "walkthrough": "1. Разбери входные данные.\n2. Выбери действие для каждого случая.\n3. Выведи результат и проверь на примерах.",
+      "methods": [
+        [
+          "Пошаговый вариант",
+          "import json\nname = input()\nage = int(input())\nprint(json.dumps({'name': name, 'age': age}, ensure_ascii=False, separators=(',', ':')))\n"
+        ],
+        [
+          "Другой способ",
+          "import json\ndata = dict(name=input(), age=int(input()))\nprint(json.dumps(data, ensure_ascii=False, separators=(',', ':')))\n"
+        ]
+      ],
+      "concepts": [
+        "json.dumps",
+        "dict",
+        "import"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "files04",
+      "stage": "files",
+      "title": "Некорректный JSON",
+      "kind": "write",
+      "prompt": "Введи строку. Если это корректный JSON — выведи VALID, иначе INVALID.",
+      "starter": "# Твой код\n",
+      "tests": [
+        {
+          "stdin": "{\"x\":1}\n",
+          "expected": "VALID"
+        },
+        {
+          "stdin": "{x:1}\n",
+          "expected": "INVALID"
+        },
+        {
+          "stdin": "[1,2,3]\n",
+          "expected": "VALID"
+        }
+      ],
+      "answer": "",
+      "hint": "Используй json.loads внутри try, перехвати JSONDecodeError.",
+      "explanation": "except срабатывает только при нужном типе исключения, else — когда ошибки нет.",
+      "walkthrough": "1. Разбери входные данные.\n2. Выбери действие для каждого случая.\n3. Выведи результат и проверь на примерах.",
+      "methods": [
+        [
+          "Пошаговый вариант",
+          "import json\ntry:\n    json.loads(input())\n    print('VALID')\nexcept json.JSONDecodeError:\n    print('INVALID')\n"
+        ],
+        [
+          "Другой способ",
+          "from json import loads, JSONDecodeError\nraw = input()\ntry:\n    _ = loads(raw)\nexcept JSONDecodeError:\n    print('INVALID')\nelse:\n    print('VALID')\n"
+        ]
+      ],
+      "concepts": [
+        "json",
+        "except",
+        "else"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "files05",
+      "stage": "files",
+      "title": "Проверка ключа",
+      "kind": "write",
+      "prompt": "Введи JSON-объект и ключ с новой строки. Выведи значение ключа; если ключ отсутствует, выведи NOT FOUND. Значения — строки.",
+      "starter": "# Твой код\n",
+      "tests": [
+        {
+          "stdin": "{\"city\":\"Kazan\"}\ncity\n",
+          "expected": "Kazan"
+        },
+        {
+          "stdin": "{\"city\":\"Kazan\"}\nname\n",
+          "expected": "NOT FOUND"
+        }
+      ],
+      "answer": "",
+      "hint": "Вспомни dict.get(key, default).",
+      "explanation": "Пропущенный ключ — нормальный случай, который важно обработать.",
+      "walkthrough": "1. Разбери входные данные.\n2. Выбери действие для каждого случая.\n3. Выведи результат и проверь на примерах.",
+      "methods": [
+        [
+          "Пошаговый вариант",
+          "import json\ndata = json.loads(input())\nkey = input()\nprint(data.get(key, 'NOT FOUND'))\n"
+        ],
+        [
+          "Другой способ",
+          "import json\ndata = json.loads(input())\nkey = input()\nif key in data:\n    print(data[key])\nelse:\n    print('NOT FOUND')\n"
+        ]
+      ],
+      "concepts": [
+        "dict",
+        "get",
+        "json"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "files06",
+      "stage": "files",
+      "title": "Счётчик в конфиге",
+      "kind": "write",
+      "prompt": "Введи JSON-объект, содержащий hits (число). Увеличь hits на 1. Выведи компактный JSON без пробелов.",
+      "starter": "# Твой код\n",
+      "tests": [
+        {
+          "stdin": "{\"hits\":5}\n",
+          "expected": "{\"hits\":6}"
+        },
+        {
+          "stdin": "{\"hits\":0,\"active\":true}\n",
+          "expected": "{\"hits\":1,\"active\":true}"
+        }
+      ],
+      "answer": "",
+      "hint": "После json.loads словарь можно менять как обычный dict.",
+      "explanation": "JSON полезен для настроек и сохранения прогресса; здесь не меняются другие ключи.",
+      "walkthrough": "1. Разбери входные данные.\n2. Выбери действие для каждого случая.\n3. Выведи результат и проверь на примерах.",
+      "methods": [
+        [
+          "Пошаговый вариант",
+          "import json\ndata = json.loads(input())\ndata['hits'] += 1\nprint(json.dumps(data, separators=(',', ':')))\n"
+        ],
+        [
+          "Другой способ",
+          "from json import loads, dumps\nd = loads(input())\nd.update(hits=d['hits'] + 1)\nprint(dumps(d, separators=(',', ':')))\n"
+        ]
+      ],
+      "concepts": [
+        "json",
+        "словарь",
+        "update"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "files07",
+      "stage": "files",
+      "title": "CSV-строка",
+      "kind": "write",
+      "prompt": "Введи CSV-строку: имя,возраст,город. Выведи 'имя (возраст), город'. В значениях нет запятых и кавычек.",
+      "starter": "# Твой код\n",
+      "tests": [
+        {
+          "stdin": "Ира,19,Пермь\n",
+          "expected": "Ира (19), Пермь"
+        },
+        {
+          "stdin": "Bob,25,London\n",
+          "expected": "Bob (25), London"
+        }
+      ],
+      "answer": "",
+      "hint": "split(',') делит простую строку по запятым.",
+      "explanation": "Для настоящих CSV с кавычками надёжнее стандартный модуль csv.",
+      "walkthrough": "1. Разбери входные данные.\n2. Выбери действие для каждого случая.\n3. Выведи результат и проверь на примерах.",
+      "methods": [
+        [
+          "Пошаговый вариант",
+          "name, age, city = input().split(',')\nprint(f'{name} ({age}), {city}')\n"
+        ],
+        [
+          "Другой способ",
+          "import csv\nrow = next(csv.reader([input()]))\nprint('{} ({}), {}'.format(*row))\n"
+        ]
+      ],
+      "concepts": [
+        "split",
+        "csv",
+        "f-строка"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "files08",
+      "stage": "files",
+      "title": "Построчный журнал",
+      "kind": "write",
+      "prompt": "Введи n, затем n строк с 'INFO:...' или 'ERROR:...'. Выведи количество строк с ERROR.",
+      "starter": "# Твой код\n",
+      "tests": [
+        {
+          "stdin": "3\nINFO:start\nERROR:disk\nERROR:net\n",
+          "expected": "2"
+        },
+        {
+          "stdin": "2\nINFO:ok\nINFO:done\n",
+          "expected": "0"
+        }
+      ],
+      "answer": "",
+      "hint": "Проверь начало строки через startswith('ERROR:').",
+      "explanation": "Журналы программ часто состоят из строк с уровнями INFO/WARNING/ERROR.",
+      "walkthrough": "1. Разбери входные данные.\n2. Выбери действие для каждого случая.\n3. Выведи результат и проверь на примерах.",
+      "methods": [
+        [
+          "Пошаговый вариант",
+          "n = int(input())\ncount = 0\nfor _ in range(n):\n    if input().startswith('ERROR:'):\n        count += 1\nprint(count)\n"
+        ],
+        [
+          "Другой способ",
+          "n = int(input())\nlines = [input() for _ in range(n)]\nprint(sum(line.startswith('ERROR:') for line in lines))\n"
+        ]
+      ],
+      "concepts": [
+        "startswith",
+        "for",
+        "sum"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "files09",
+      "stage": "files",
+      "title": "Деление с ошибкой",
+      "kind": "write",
+      "prompt": "Введи два значения, каждое с новой строки. Выведи частное с одним знаком после точки или ERROR, если делить нельзя.",
+      "starter": "# Твой код\n",
+      "tests": [
+        {
+          "stdin": "10\n2\n",
+          "expected": "5.0"
+        },
+        {
+          "stdin": "1\n0\n",
+          "expected": "ERROR"
+        },
+        {
+          "stdin": "3\n2\n",
+          "expected": "1.5"
+        },
+        {
+          "stdin": "cat\n5\n",
+          "expected": "ERROR"
+        }
+      ],
+      "answer": "",
+      "hint": "При делении на ноль ловят ZeroDivisionError.",
+      "explanation": "Можно обрабатывать несколько исключений одним except (A, B).",
+      "walkthrough": "1. Разбери входные данные.\n2. Выбери действие для каждого случая.\n3. Выведи результат и проверь на примерах.",
+      "methods": [
+        [
+          "Пошаговый вариант",
+          "try:\n    a = float(input())\n    b = float(input())\n    print(f'{a / b:.1f}')\nexcept (ValueError, ZeroDivisionError):\n    print('ERROR')\n"
+        ],
+        [
+          "Другой способ",
+          "try:\n    x, y = (float(input()) for _ in range(2))\n    answer = round(x / y, 1)\nexcept (ValueError, ZeroDivisionError):\n    print('ERROR')\nelse:\n    print(f'{answer:.1f}')\n"
+        ]
+      ],
+      "concepts": [
+        "try",
+        "ZeroDivisionError",
+        "ValueError"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "files10",
+      "stage": "files",
+      "title": "Запись настроек",
+      "kind": "write",
+      "prompt": "Введи два значения: громкость (число) и тему (строка). Выведи компактный JSON с ключами volume и theme в таком порядке.",
+      "starter": "# Твой код\n",
+      "tests": [
+        {
+          "stdin": "50\ndark\n",
+          "expected": "{\"volume\":50,\"theme\":\"dark\"}"
+        },
+        {
+          "stdin": "0\nlight\n",
+          "expected": "{\"volume\":0,\"theme\":\"light\"}"
+        }
+      ],
+      "answer": "",
+      "hint": "Используй json.dumps и словарь.",
+      "explanation": "В приложениях настройки обычно хранят в файле JSON; здесь мы готовим его содержимое.",
+      "walkthrough": "1. Разбери входные данные.\n2. Выбери действие для каждого случая.\n3. Выведи результат и проверь на примерах.",
+      "methods": [
+        [
+          "Пошаговый вариант",
+          "import json\nvolume = int(input())\ntheme = input()\nprint(json.dumps({'volume': volume, 'theme': theme}, separators=(',', ':')))\n"
+        ],
+        [
+          "Другой способ",
+          "import json\nconfig = {}\nconfig['volume'] = int(input())\nconfig['theme'] = input()\nprint(json.dumps(config, separators=(',', ':')))\n"
+        ]
+      ],
+      "concepts": [
+        "json",
+        "настройки",
+        "словарь"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "files11",
+      "stage": "files",
+      "title": "Таблица из CSV",
+      "kind": "write",
+      "prompt": "Введи n, затем n строк вида 'имя;балл'. Выведи имя человека с наибольшим баллом. При равенстве — первого.",
+      "starter": "# Твой код\n",
+      "tests": [
+        {
+          "stdin": "3\nAnn;7\nBob;9\nMax;8\n",
+          "expected": "Bob"
+        },
+        {
+          "stdin": "2\nКатя;10\nОля;10\n",
+          "expected": "Катя"
+        }
+      ],
+      "answer": "",
+      "hint": "Запоминай лучшего. Используй строго >, чтобы сохранить первого при равенстве.",
+      "explanation": "Для данных из CSV нужно превратить оценку из строки в число.",
+      "walkthrough": "1. Разбери входные данные.\n2. Выбери действие для каждого случая.\n3. Выведи результат и проверь на примерах.",
+      "methods": [
+        [
+          "Пошаговый вариант",
+          "n = int(input())\nbest_name = ''\nbest_score = -10**9\nfor _ in range(n):\n    name, score = input().split(';')\n    if int(score) > best_score:\n        best_name, best_score = name, int(score)\nprint(best_name)\n"
+        ],
+        [
+          "Другой способ",
+          "n = int(input())\nitems = [input().split(';') for _ in range(n)]\nprint(max(enumerate(items), key=lambda p: (int(p[1][1]), -p[0]))[1][0])\n"
+        ]
+      ],
+      "concepts": [
+        "split",
+        "int",
+        "max"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "files12",
+      "stage": "files",
+      "title": "Ошибки ввода",
+      "kind": "write",
+      "prompt": "Введи список токенов через пробел. Выведи сумму всех токенов, которые можно превратить в целое число. Остальные пропусти.",
+      "starter": "# Твой код\n",
+      "tests": [
+        {
+          "stdin": "1 two 3\n",
+          "expected": "4"
+        },
+        {
+          "stdin": "-5 x 10\n",
+          "expected": "5"
+        },
+        {
+          "stdin": "foo bar\n",
+          "expected": "0"
+        },
+        {
+          "stdin": "0 -1 2\n",
+          "expected": "1"
+        }
+      ],
+      "answer": "",
+      "hint": "Попробуй int(text) внутри try. Если ValueError, переходи к следующему слову.",
+      "explanation": "Обработать ошибочный элемент и продолжить — типичная задача парсинга данных.",
+      "walkthrough": "1. Разбери входные данные.\n2. Выбери действие для каждого случая.\n3. Выведи результат и проверь на примерах.",
+      "methods": [
+        [
+          "Пошаговый вариант",
+          "total = 0\nfor text in input().split():\n    try:\n        total += int(text)\n    except ValueError:\n        continue\nprint(total)\n"
+        ],
+        [
+          "Другой способ",
+          "values = []\nfor word in input().split():\n    try:\n        values.append(int(word))\n    except ValueError:\n        pass\nprint(sum(values))\n"
+        ]
+      ],
+      "concepts": [
+        "try",
+        "except",
+        "continue"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "objects01",
+      "stage": "objects",
+      "title": "Первый класс",
+      "kind": "write",
+      "prompt": "Введи имя. Создай объект Person с полем name и методом greet(). Выведи 'Привет, имя!'.",
+      "starter": "# Твой код\n",
+      "tests": [
+        {
+          "stdin": "Аня\n",
+          "expected": "Привет, Аня!"
+        },
+        {
+          "stdin": "Alex\n",
+          "expected": "Привет, Alex!"
+        }
+      ],
+      "answer": "",
+      "hint": "__init__ запускается при создании объекта. self — сам объект.",
+      "explanation": "В одном классе мы храним данные и действия с этими данными.",
+      "walkthrough": "1. Разбери входные данные.\n2. Выбери действие для каждого случая.\n3. Выведи результат и проверь на примерах.",
+      "methods": [
+        [
+          "Пошаговый вариант",
+          "class Person:\n    def __init__(self, name):\n        self.name = name\n\n    def greet(self):\n        return f'Привет, {self.name}!'\n\nprint(Person(input()).greet())\n"
+        ],
+        [
+          "Другой способ",
+          "class Person:\n    def __init__(self, name):\n        self.name = name\n\n    def greet(self):\n        return 'Привет, ' + self.name + '!'\n\nperson = Person(input())\nprint(person.greet())\n"
+        ]
+      ],
+      "concepts": [
+        "class",
+        "self",
+        "__init__"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "objects02",
+      "stage": "objects",
+      "title": "Счётчик",
+      "kind": "write",
+      "prompt": "Введи n. Создай Counter с полем value = 0 и методом inc(), затем вызови inc() n раз и выведи value.",
+      "starter": "# Твой код\n",
+      "tests": [
+        {
+          "stdin": "3\n",
+          "expected": "3"
+        },
+        {
+          "stdin": "0\n",
+          "expected": "0"
+        },
+        {
+          "stdin": "10\n",
+          "expected": "10"
+        }
+      ],
+      "answer": "",
+      "hint": "Метод — это функция внутри класса, которая получает self.",
+      "explanation": "Счётчик хранит состояние между вызовами inc().",
+      "walkthrough": "1. Разбери входные данные.\n2. Выбери действие для каждого случая.\n3. Выведи результат и проверь на примерах.",
+      "methods": [
+        [
+          "Пошаговый вариант",
+          "class Counter:\n    def __init__(self):\n        self.value = 0\n\n    def inc(self):\n        self.value += 1\n\ncounter = Counter()\nfor _ in range(int(input())):\n    counter.inc()\nprint(counter.value)\n"
+        ],
+        [
+          "Другой способ",
+          "class Counter:\n    value = 0\n\n    def inc(self):\n        self.value = self.value + 1\n\nc = Counter()\nn = int(input())\nwhile n > 0:\n    c.inc()\n    n -= 1\nprint(c.value)\n"
+        ]
+      ],
+      "concepts": [
+        "class",
+        "method",
+        "self"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "objects03",
+      "stage": "objects",
+      "title": "Банковский баланс",
+      "kind": "write",
+      "prompt": "Введи начальный баланс и сумму пополнения. Используй класс Account с методом deposit(). Выведи новый баланс.",
+      "starter": "# Твой код\n",
+      "tests": [
+        {
+          "stdin": "100\n25\n",
+          "expected": "125"
+        },
+        {
+          "stdin": "0\n10\n",
+          "expected": "10"
+        },
+        {
+          "stdin": "20\n0\n",
+          "expected": "20"
+        }
+      ],
+      "answer": "",
+      "hint": "Значение balance хранится внутри экземпляра Account.",
+      "explanation": "Метод deposit меняет только состояние своего объекта.",
+      "walkthrough": "1. Разбери входные данные.\n2. Выбери действие для каждого случая.\n3. Выведи результат и проверь на примерах.",
+      "methods": [
+        [
+          "Пошаговый вариант",
+          "class Account:\n    def __init__(self, balance):\n        self.balance = balance\n\n    def deposit(self, amount):\n        self.balance += amount\n\na = Account(int(input()))\na.deposit(int(input()))\nprint(a.balance)\n"
+        ],
+        [
+          "Другой способ",
+          "class Account:\n    def __init__(self, initial=0):\n        self.balance = initial\n\n    def deposit(self, amount):\n        self.balance = self.balance + amount\n\na = Account(initial=int(input()))\na.deposit(int(input()))\nprint(a.balance)\n"
+        ]
+      ],
+      "concepts": [
+        "self",
+        "метод",
+        "состояние"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "objects04",
+      "stage": "objects",
+      "title": "Два объекта отдельно",
+      "kind": "write",
+      "prompt": "Введи два имени. Создай два объекта User. Каждый содержит name. Выведи имена через пробел.",
+      "starter": "# Твой код\n",
+      "tests": [
+        {
+          "stdin": "Ann\nBob\n",
+          "expected": "Ann Bob"
+        },
+        {
+          "stdin": "кот\nпёс\n",
+          "expected": "кот пёс"
+        }
+      ],
+      "answer": "",
+      "hint": "Имя передай в __init__; каждому объекту присвоится своё поле.",
+      "explanation": "Два экземпляра одного класса могут иметь разные значения одинаковых полей.",
+      "walkthrough": "1. Разбери входные данные.\n2. Выбери действие для каждого случая.\n3. Выведи результат и проверь на примерах.",
+      "methods": [
+        [
+          "Пошаговый вариант",
+          "class User:\n    def __init__(self, name):\n        self.name = name\n\na = User(input())\nb = User(input())\nprint(a.name, b.name)\n"
+        ],
+        [
+          "Другой способ",
+          "class User:\n    def __init__(self, name):\n        self.name = name\n\nusers = [User(input()) for _ in range(2)]\nprint(*(user.name for user in users))\n"
+        ]
+      ],
+      "concepts": [
+        "__init__",
+        "экземпляр",
+        "атрибут"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "objects05",
+      "stage": "objects",
+      "title": "Объект товара",
+      "kind": "write",
+      "prompt": "Введи цену и количество. Через класс Product с методом total() выведи общую стоимость.",
+      "starter": "# Твой код\n",
+      "tests": [
+        {
+          "stdin": "5\n7\n",
+          "expected": "35"
+        },
+        {
+          "stdin": "100\n0\n",
+          "expected": "0"
+        },
+        {
+          "stdin": "9\n3\n",
+          "expected": "27"
+        }
+      ],
+      "answer": "",
+      "hint": "total() использует поля self.price и self.qty.",
+      "explanation": "Объект можно попросить посчитать стоимость, не разбираясь снаружи в его полях.",
+      "walkthrough": "1. Разбери входные данные.\n2. Выбери действие для каждого случая.\n3. Выведи результат и проверь на примерах.",
+      "methods": [
+        [
+          "Пошаговый вариант",
+          "class Product:\n    def __init__(self, price, qty):\n        self.price = price\n        self.qty = qty\n\n    def total(self):\n        return self.price * self.qty\n\np = Product(int(input()), int(input()))\nprint(p.total())\n"
+        ],
+        [
+          "Другой способ",
+          "class Product:\n    def __init__(self, price, qty):\n        self.price, self.qty = price, qty\n\n    def total(self):\n        result = self.price * self.qty\n        return result\n\nprint(Product(int(input()), int(input())).total())\n"
+        ]
+      ],
+      "concepts": [
+        "class",
+        "self",
+        "return"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "objects06",
+      "stage": "objects",
+      "title": "Наследование",
+      "kind": "write",
+      "prompt": "Введи имя. Создай Animal c методом sound() = '...', и Dog(Animal), у которого sound() = 'Гав'. Выведи 'имя: Гав'.",
+      "starter": "# Твой код\n",
+      "tests": [
+        {
+          "stdin": "Бим\n",
+          "expected": "Бим: Гав"
+        },
+        {
+          "stdin": "Рекс\n",
+          "expected": "Рекс: Гав"
+        }
+      ],
+      "answer": "",
+      "hint": "Dog(Animal) наследует инициализацию; sound переопределяется.",
+      "explanation": "Наследование полезно для общих свойств, но не нужно там, где достаточно обычной функции.",
+      "walkthrough": "1. Разбери входные данные.\n2. Выбери действие для каждого случая.\n3. Выведи результат и проверь на примерах.",
+      "methods": [
+        [
+          "Пошаговый вариант",
+          "class Animal:\n    def __init__(self, name):\n        self.name = name\n\n    def sound(self):\n        return '...'\n\nclass Dog(Animal):\n    def sound(self):\n        return 'Гав'\n\ndog = Dog(input())\nprint(f'{dog.name}: {dog.sound()}')\n"
+        ],
+        [
+          "Другой способ",
+          "class Animal:\n    def __init__(self, name):\n        self.name = name\n\n    def sound(self):\n        return '...'\n\nclass Dog(Animal):\n    def sound(self):\n        return 'Гав'\n\npet = Dog(input())\nprint(pet.name + ': ' + pet.sound())\n"
+        ]
+      ],
+      "concepts": [
+        "наследование",
+        "override",
+        "class"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "objects07",
+      "stage": "objects",
+      "title": "Свойство с проверкой",
+      "kind": "write",
+      "prompt": "Введи целое число. Сделай класс Temperature, который хранит значение не ниже -273. На вход ниже минимума выводи -273.",
+      "starter": "# Твой код\n",
+      "tests": [
+        {
+          "stdin": "25\n",
+          "expected": "25"
+        },
+        {
+          "stdin": "-300\n",
+          "expected": "-273"
+        },
+        {
+          "stdin": "-273\n",
+          "expected": "-273"
+        }
+      ],
+      "answer": "",
+      "hint": "Ограничь вход через max(-273, value).",
+      "explanation": "Класс отвечает за то, чтобы его поля всегда оставались корректными.",
+      "walkthrough": "1. Разбери входные данные.\n2. Выбери действие для каждого случая.\n3. Выведи результат и проверь на примерах.",
+      "methods": [
+        [
+          "Пошаговый вариант",
+          "class Temperature:\n    def __init__(self, value):\n        self.value = max(-273, value)\n\nt = Temperature(int(input()))\nprint(t.value)\n"
+        ],
+        [
+          "Другой способ",
+          "class Temperature:\n    def __init__(self, value):\n        self._value = -273 if value < -273 else value\n\n    @property\n    def value(self):\n        return self._value\n\nprint(Temperature(int(input())).value)\n"
+        ]
+      ],
+      "concepts": [
+        "__init__",
+        "property",
+        "max"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "objects08",
+      "stage": "objects",
+      "title": "Статический метод",
+      "kind": "write",
+      "prompt": "Введи целое число. Через класс MathHelper со статическим методом double(x) выведи удвоенное значение.",
+      "starter": "# Твой код\n",
+      "tests": [
+        {
+          "stdin": "8\n",
+          "expected": "16"
+        },
+        {
+          "stdin": "-2\n",
+          "expected": "-4"
+        },
+        {
+          "stdin": "0\n",
+          "expected": "0"
+        }
+      ],
+      "answer": "",
+      "hint": "@staticmethod — метод без self.",
+      "explanation": "Статический метод полезен для операций, которым не нужно состояние конкретного объекта.",
+      "walkthrough": "1. Разбери входные данные.\n2. Выбери действие для каждого случая.\n3. Выведи результат и проверь на примерах.",
+      "methods": [
+        [
+          "Пошаговый вариант",
+          "class MathHelper:\n    @staticmethod\n    def double(x):\n        return x * 2\n\nprint(MathHelper.double(int(input())))\n"
+        ],
+        [
+          "Другой способ",
+          "class MathHelper:\n    @staticmethod\n    def double(x):\n        return x + x\n\nhelper = MathHelper()\nprint(helper.double(int(input())))\n"
+        ]
+      ],
+      "concepts": [
+        "staticmethod",
+        "class",
+        "def"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "objects09",
+      "stage": "objects",
+      "title": "Объекты в списке",
+      "kind": "write",
+      "prompt": "Введи n, затем n цен. Создай объекты Product(price) и выведи сумму их цен.",
+      "starter": "# Твой код\n",
+      "tests": [
+        {
+          "stdin": "3\n10\n20\n30\n",
+          "expected": "60"
+        },
+        {
+          "stdin": "1\n5\n",
+          "expected": "5"
+        },
+        {
+          "stdin": "0\n",
+          "expected": "0"
+        }
+      ],
+      "answer": "",
+      "hint": "Объекты можно хранить в обычном списке.",
+      "explanation": "Коллекции объектов удобны, когда каждой записи нужны собственные данные и методы.",
+      "walkthrough": "1. Разбери входные данные.\n2. Выбери действие для каждого случая.\n3. Выведи результат и проверь на примерах.",
+      "methods": [
+        [
+          "Пошаговый вариант",
+          "class Product:\n    def __init__(self, price):\n        self.price = price\n\nitems = [Product(int(input())) for _ in range(int(input()))]\nprint(sum(item.price for item in items))\n"
+        ],
+        [
+          "Другой способ",
+          "class Product:\n    def __init__(self, price):\n        self.price = price\n\ntotal = 0\nfor _ in range(int(input())):\n    item = Product(int(input()))\n    total += item.price\nprint(total)\n"
+        ]
+      ],
+      "concepts": [
+        "class",
+        "list",
+        "sum"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "objects10",
+      "stage": "objects",
+      "title": "Строковое представление",
+      "kind": "write",
+      "prompt": "Введи название товара и цену. Создай Product со своим __str__, затем print(product) должен выводить 'название — цена'.",
+      "starter": "# Твой код\n",
+      "tests": [
+        {
+          "stdin": "Чай\n30\n",
+          "expected": "Чай — 30"
+        },
+        {
+          "stdin": "Book\n150\n",
+          "expected": "Book — 150"
+        }
+      ],
+      "answer": "",
+      "hint": "Когда print получает объект, Python вызывает __str__.",
+      "explanation": "Специальные методы определяют поведение объекта в обычных операциях.",
+      "walkthrough": "1. Разбери входные данные.\n2. Выбери действие для каждого случая.\n3. Выведи результат и проверь на примерах.",
+      "methods": [
+        [
+          "Пошаговый вариант",
+          "class Product:\n    def __init__(self, name, price):\n        self.name, self.price = name, price\n\n    def __str__(self):\n        return f'{self.name} — {self.price}'\n\nprint(Product(input(), int(input())))\n"
+        ],
+        [
+          "Другой способ",
+          "class Product:\n    def __init__(self, name, price):\n        self.name = name\n        self.price = price\n\n    def __str__(self):\n        return self.name + ' — ' + str(self.price)\n\np = Product(input(), int(input()))\nprint(p)\n"
+        ]
+      ],
+      "concepts": [
+        "__str__",
+        "class",
+        "print"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "objects11",
+      "stage": "objects",
+      "title": "Композиция",
+      "kind": "write",
+      "prompt": "Введи имя и название города. Создай Address(city), затем Person(name, address). Выведи 'имя живёт в город'.",
+      "starter": "# Твой код\n",
+      "tests": [
+        {
+          "stdin": "Ира\nОмск\n",
+          "expected": "Ира живёт в Омск"
+        },
+        {
+          "stdin": "Max\nBerlin\n",
+          "expected": "Max живёт в Berlin"
+        }
+      ],
+      "answer": "",
+      "hint": "Person хранит объект Address, а не наследует его.",
+      "explanation": "Композиция означает отношение «содержит», а наследование — отношение «является».",
+      "walkthrough": "1. Разбери входные данные.\n2. Выбери действие для каждого случая.\n3. Выведи результат и проверь на примерах.",
+      "methods": [
+        [
+          "Пошаговый вариант",
+          "class Address:\n    def __init__(self, city):\n        self.city = city\n\nclass Person:\n    def __init__(self, name, address):\n        self.name, self.address = name, address\n\np = Person(input(), Address(input()))\nprint(f'{p.name} живёт в {p.address.city}')\n"
+        ],
+        [
+          "Другой способ",
+          "class Address:\n    def __init__(self, city):\n        self.city = city\n\nclass Person:\n    def __init__(self, name, address):\n        self.name = name\n        self.address = address\n\nname, city = input(), input()\np = Person(name, Address(city))\nprint(p.name + ' живёт в ' + p.address.city)\n"
+        ]
+      ],
+      "concepts": [
+        "композиция",
+        "объект",
+        "атрибут"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "objects12",
+      "stage": "objects",
+      "title": "Очередь заказов",
+      "kind": "write",
+      "prompt": "Введи n, затем n названий заказов. Создай OrderQueue с add и serve; обслужи один заказ. Выведи оставшиеся через пробел.",
+      "starter": "# Твой код\n",
+      "tests": [
+        {
+          "stdin": "3\nчай\nкофе\nсок\n",
+          "expected": "кофе сок"
+        },
+        {
+          "stdin": "1\nпицца\n",
+          "expected": ""
+        },
+        {
+          "stdin": "0\n",
+          "expected": ""
+        }
+      ],
+      "answer": "",
+      "hint": "Очередь устроена по принципу FIFO: первый пришёл — первый ушёл.",
+      "explanation": "deque эффективнее списка, если часто удалять первый элемент.",
+      "walkthrough": "1. Разбери входные данные.\n2. Выбери действие для каждого случая.\n3. Выведи результат и проверь на примерах.",
+      "methods": [
+        [
+          "Пошаговый вариант",
+          "class OrderQueue:\n    def __init__(self):\n        self.items = []\n\n    def add(self, item):\n        self.items.append(item)\n\n    def serve(self):\n        if self.items:\n            self.items.pop(0)\n\nq = OrderQueue()\nfor _ in range(int(input())):\n    q.add(input())\nq.serve()\nprint(*q.items)\n"
+        ],
+        [
+          "Другой способ",
+          "from collections import deque\nclass OrderQueue:\n    def __init__(self):\n        self.items = deque()\n    def add(self, value):\n        self.items.append(value)\n    def serve(self):\n        if self.items:\n            self.items.popleft()\n\nq = OrderQueue()\nfor _ in range(int(input())):\n    q.add(input())\nq.serve()\nprint(*q.items)\n"
+        ]
+      ],
+      "concepts": [
+        "class",
+        "queue",
+        "deque"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "algorithms01",
+      "stage": "algorithms",
+      "title": "Бинарный поиск",
+      "kind": "write",
+      "prompt": "Введи возрастающий список чисел через пробел и искомое число с новой строки. Выведи индекс первого совпадения или -1.",
+      "starter": "# Твой код\n",
+      "tests": [
+        {
+          "stdin": "1 2 2 4\n2\n",
+          "expected": "1"
+        },
+        {
+          "stdin": "3 5 7\n6\n",
+          "expected": "-1"
+        },
+        {
+          "stdin": "-2 0 5\n-2\n",
+          "expected": "0"
+        }
+      ],
+      "answer": "",
+      "hint": "Всегда сужай половину отсортированного массива.",
+      "explanation": "Бинарный поиск работает за O(log n); для первого совпадения ищи левую границу.",
+      "walkthrough": "1. Разбери входные данные.\n2. Выбери действие для каждого случая.\n3. Выведи результат и проверь на примерах.",
+      "methods": [
+        [
+          "Пошаговый вариант",
+          "from bisect import bisect_left\na = list(map(int, input().split()))\nx = int(input())\npos = bisect_left(a, x)\nprint(pos if pos < len(a) and a[pos] == x else -1)\n"
+        ],
+        [
+          "Другой способ",
+          "a = list(map(int, input().split()))\nx = int(input())\nlo, hi = 0, len(a)\nwhile lo < hi:\n    mid = (lo + hi) // 2\n    if a[mid] < x:\n        lo = mid + 1\n    else:\n        hi = mid\nprint(lo if lo < len(a) and a[lo] == x else -1)\n"
+        ]
+      ],
+      "concepts": [
+        "bisect",
+        "while",
+        "O(log n)"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "algorithms02",
+      "stage": "algorithms",
+      "title": "Сортировка по модулю",
+      "kind": "write",
+      "prompt": "Введи числа через пробел. Отсортируй по модулю по возрастанию, при равном модуле — по самому числу.",
+      "starter": "# Твой код\n",
+      "tests": [
+        {
+          "stdin": "-3 2 -2 1\n",
+          "expected": "1 -2 2 -3"
+        },
+        {
+          "stdin": "5 -5 0\n",
+          "expected": "0 -5 5"
+        },
+        {
+          "stdin": "-1\n",
+          "expected": "-1"
+        }
+      ],
+      "answer": "",
+      "hint": "key=lambda x: (abs(x), x) задаёт сразу два правила.",
+      "explanation": "Кортеж сравнивается по элементам слева направо.",
+      "walkthrough": "1. Разбери входные данные.\n2. Выбери действие для каждого случая.\n3. Выведи результат и проверь на примерах.",
+      "methods": [
+        [
+          "Пошаговый вариант",
+          "a = list(map(int, input().split()))\nprint(*sorted(a, key=lambda x: (abs(x), x)))\n"
+        ],
+        [
+          "Другой способ",
+          "values = list(map(int, input().split()))\nvalues.sort(key=lambda n: (abs(n), n))\nprint(*values)\n"
+        ]
+      ],
+      "concepts": [
+        "sorted",
+        "lambda",
+        "tuple"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "algorithms03",
+      "stage": "algorithms",
+      "title": "Два числа дают сумму",
+      "kind": "write",
+      "prompt": "Введи список целых чисел и цель. Выведи YES, если два РАЗНЫХ элемента дают сумму target, иначе NO.",
+      "starter": "# Твой код\n",
+      "tests": [
+        {
+          "stdin": "1 2 3 4\n7\n",
+          "expected": "YES"
+        },
+        {
+          "stdin": "5\n10\n",
+          "expected": "NO"
+        },
+        {
+          "stdin": "5 5\n10\n",
+          "expected": "YES"
+        },
+        {
+          "stdin": "-2 3 9\n1\n",
+          "expected": "YES"
+        }
+      ],
+      "answer": "",
+      "hint": "Множество позволяет быстро проверить, видел ли ты target - x.",
+      "explanation": "Первый способ работает примерно за O(n), перебор пар — за O(n²).",
+      "walkthrough": "1. Разбери входные данные.\n2. Выбери действие для каждого случая.\n3. Выведи результат и проверь на примерах.",
+      "methods": [
+        [
+          "Пошаговый вариант",
+          "nums = list(map(int, input().split()))\ntarget = int(input())\nseen = set()\nfound = False\nfor x in nums:\n    if target - x in seen:\n        found = True\n        break\n    seen.add(x)\nprint('YES' if found else 'NO')\n"
+        ],
+        [
+          "Другой способ",
+          "nums = list(map(int, input().split()))\ntarget = int(input())\nfound = any(nums[i] + nums[j] == target for i in range(len(nums)) for j in range(i + 1, len(nums)))\nprint('YES' if found else 'NO')\n"
+        ]
+      ],
+      "concepts": [
+        "set",
+        "O(n)",
+        "алгоритм"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "algorithms04",
+      "stage": "algorithms",
+      "title": "Скобки правильно?",
+      "kind": "write",
+      "prompt": "Введи строку из символов (), [], {}. Выведи YES, если все скобки правильно вложены, иначе NO.",
+      "starter": "# Твой код\n",
+      "tests": [
+        {
+          "stdin": "([]){}\n",
+          "expected": "YES"
+        },
+        {
+          "stdin": "([)]\n",
+          "expected": "NO"
+        },
+        {
+          "stdin": "((\n",
+          "expected": "NO"
+        },
+        {
+          "stdin": "\n",
+          "expected": "YES"
+        }
+      ],
+      "answer": "",
+      "hint": "Стек хранит открытые скобки. Закрывающая должна совпадать с последней.",
+      "explanation": "Стек — структура LIFO: последний положенный элемент удаляется первым.",
+      "walkthrough": "1. Разбери входные данные.\n2. Выбери действие для каждого случая.\n3. Выведи результат и проверь на примерах.",
+      "methods": [
+        [
+          "Пошаговый вариант",
+          "s = input()\npairs = {')': '(', ']': '[', '}': '{'}\nstack = []\nvalid = True\nfor ch in s:\n    if ch in '([{':\n        stack.append(ch)\n    elif not stack or stack.pop() != pairs[ch]:\n        valid = False\n        break\nprint('YES' if valid and not stack else 'NO')\n"
+        ],
+        [
+          "Другой способ",
+          "s = input()\nstack = []\nmatch = {')':'(', ']':'[', '}':'{'}\nfor char in s:\n    if char in '([{':\n        stack += [char]\n    elif not stack or stack[-1] != match[char]:\n        print('NO')\n        break\n    else:\n        stack.pop()\nelse:\n    print('NO' if stack else 'YES')\n"
+        ]
+      ],
+      "concepts": [
+        "stack",
+        "list",
+        "dict"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "algorithms05",
+      "stage": "algorithms",
+      "title": "НОД двух чисел",
+      "kind": "write",
+      "prompt": "Введи два неотрицательных целых числа, не равных нулю одновременно. Выведи их наибольший общий делитель.",
+      "starter": "# Твой код\n",
+      "tests": [
+        {
+          "stdin": "12\n18\n",
+          "expected": "6"
+        },
+        {
+          "stdin": "7\n9\n",
+          "expected": "1"
+        },
+        {
+          "stdin": "0\n8\n",
+          "expected": "8"
+        }
+      ],
+      "answer": "",
+      "hint": "Алгоритм Евклида повторяет (a, b) = (b, a % b).",
+      "explanation": "Алгоритм быстро уменьшает числа; стандартный math.gcd уже реализует НОД.",
+      "walkthrough": "1. Разбери входные данные.\n2. Выбери действие для каждого случая.\n3. Выведи результат и проверь на примерах.",
+      "methods": [
+        [
+          "Пошаговый вариант",
+          "from math import gcd\na, b = int(input()), int(input())\nprint(gcd(a, b))\n"
+        ],
+        [
+          "Другой способ",
+          "a, b = int(input()), int(input())\nwhile b != 0:\n    a, b = b, a % b\nprint(a)\n"
+        ]
+      ],
+      "concepts": [
+        "gcd",
+        "while",
+        "%"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "algorithms06",
+      "stage": "algorithms",
+      "title": "Решето простых чисел",
+      "kind": "write",
+      "prompt": "Введи n от 0 до 10000. Выведи все простые числа не больше n через пробел.",
+      "starter": "# Твой код\n",
+      "tests": [
+        {
+          "stdin": "10\n",
+          "expected": "2 3 5 7"
+        },
+        {
+          "stdin": "2\n",
+          "expected": "2"
+        },
+        {
+          "stdin": "1\n",
+          "expected": ""
+        },
+        {
+          "stdin": "20\n",
+          "expected": "2 3 5 7 11 13 17 19"
+        }
+      ],
+      "answer": "",
+      "hint": "Каждое простое p вычёркивает кратные, начиная с p*p.",
+      "explanation": "Решето эффективнее проверки каждого числа делением на все меньшие числа.",
+      "walkthrough": "1. Разбери входные данные.\n2. Выбери действие для каждого случая.\n3. Выведи результат и проверь на примерах.",
+      "methods": [
+        [
+          "Пошаговый вариант",
+          "n = int(input())\nprime = [True] * (n + 1)\nfor i in range(min(n + 1, 2)):\n    prime[i] = False\nfor p in range(2, int(n ** 0.5) + 1):\n    if prime[p]:\n        for k in range(p * p, n + 1, p):\n            prime[k] = False\nprint(*(i for i in range(n + 1) if prime[i]))\n"
+        ],
+        [
+          "Другой способ",
+          "n = int(input())\nresult = []\nfor x in range(2, n + 1):\n    if all(x % d != 0 for d in range(2, int(x ** 0.5) + 1)):\n        result.append(x)\nprint(*result)\n"
+        ]
+      ],
+      "concepts": [
+        "prime",
+        "range",
+        "алгоритм"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "algorithms07",
+      "stage": "algorithms",
+      "title": "Простая рекурсия",
+      "kind": "write",
+      "prompt": "Введи n от 0 до 20. Напиши рекурсивную функцию factorial(n) и выведи факториал.",
+      "starter": "# Твой код\n",
+      "tests": [
+        {
+          "stdin": "0\n",
+          "expected": "1"
+        },
+        {
+          "stdin": "5\n",
+          "expected": "120"
+        },
+        {
+          "stdin": "8\n",
+          "expected": "40320"
+        }
+      ],
+      "answer": "",
+      "hint": "В рекурсии обязательно нужен базовый случай, например n <= 1.",
+      "explanation": "Рекурсивный вызов решает уменьшенную копию задачи. Цикл иногда проще и безопаснее.",
+      "walkthrough": "1. Разбери входные данные.\n2. Выбери действие для каждого случая.\n3. Выведи результат и проверь на примерах.",
+      "methods": [
+        [
+          "Пошаговый вариант",
+          "def factorial(n):\n    if n <= 1:\n        return 1\n    return n * factorial(n - 1)\n\nprint(factorial(int(input())))\n"
+        ],
+        [
+          "Другой способ",
+          "def factorial(n):\n    result = 1\n    for x in range(2, n + 1):\n        result *= x\n    return result\n\nprint(factorial(int(input())))\n"
+        ]
+      ],
+      "concepts": [
+        "рекурсия",
+        "return",
+        "base case"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "algorithms08",
+      "stage": "algorithms",
+      "title": "Фибоначчи без повторов",
+      "kind": "write",
+      "prompt": "Введи n от 0 до 35. Выведи n-е число Фибоначчи: F0=0, F1=1.",
+      "starter": "# Твой код\n",
+      "tests": [
+        {
+          "stdin": "0\n",
+          "expected": "0"
+        },
+        {
+          "stdin": "1\n",
+          "expected": "1"
+        },
+        {
+          "stdin": "7\n",
+          "expected": "13"
+        },
+        {
+          "stdin": "10\n",
+          "expected": "55"
+        }
+      ],
+      "answer": "",
+      "hint": "Храни два последних числа; на каждом шаге сдвигай пару.",
+      "explanation": "Мемоизация сохраняет результаты рекурсивных вызовов и убирает лишние вычисления.",
+      "walkthrough": "1. Разбери входные данные.\n2. Выбери действие для каждого случая.\n3. Выведи результат и проверь на примерах.",
+      "methods": [
+        [
+          "Пошаговый вариант",
+          "n = int(input())\na, b = 0, 1\nfor _ in range(n):\n    a, b = b, a + b\nprint(a)\n"
+        ],
+        [
+          "Другой способ",
+          "from functools import lru_cache\n@lru_cache(None)\ndef fib(n):\n    if n < 2:\n        return n\n    return fib(n - 1) + fib(n - 2)\nprint(fib(int(input())))\n"
+        ]
+      ],
+      "concepts": [
+        "Fibonacci",
+        "memoization",
+        "for"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "algorithms09",
+      "stage": "algorithms",
+      "title": "Максимум подряд",
+      "kind": "write",
+      "prompt": "Введи числа через пробел и число k с новой строки. Выведи максимальную сумму k соседних элементов.",
+      "starter": "# Твой код\n",
+      "tests": [
+        {
+          "stdin": "1 2 3 4 5\n3\n",
+          "expected": "12"
+        },
+        {
+          "stdin": "-5 -1 -2\n2\n",
+          "expected": "-3"
+        },
+        {
+          "stdin": "7 1 3\n1\n",
+          "expected": "7"
+        }
+      ],
+      "answer": "",
+      "hint": "При сдвиге окна вычти старый элемент и добавь новый.",
+      "explanation": "Скользящее окно делает вычисления за O(n), вместо повторного сложения по k элементов.",
+      "walkthrough": "1. Разбери входные данные.\n2. Выбери действие для каждого случая.\n3. Выведи результат и проверь на примерах.",
+      "methods": [
+        [
+          "Пошаговый вариант",
+          "a = list(map(int, input().split()))\nk = int(input())\nwindow = sum(a[:k])\nbest = window\nfor i in range(k, len(a)):\n    window += a[i] - a[i - k]\n    best = max(best, window)\nprint(best)\n"
+        ],
+        [
+          "Другой способ",
+          "a = list(map(int, input().split()))\nk = int(input())\nprint(max(sum(a[i:i+k]) for i in range(len(a) - k + 1)))\n"
+        ]
+      ],
+      "concepts": [
+        "скользящее окно",
+        "sum",
+        "O(n)"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "algorithms10",
+      "stage": "algorithms",
+      "title": "Кратчайший путь в графе",
+      "kind": "write",
+      "prompt": "Введи n m, затем m неориентированных рёбер u v (вершины 0..n-1), затем start finish. Выведи длину кратчайшего пути или -1.",
+      "starter": "# Твой код\n",
+      "tests": [
+        {
+          "stdin": "4 3\n0 1\n1 2\n2 3\n0 3\n",
+          "expected": "3"
+        },
+        {
+          "stdin": "3 1\n0 1\n0 2\n",
+          "expected": "-1"
+        },
+        {
+          "stdin": "1 0\n0 0\n",
+          "expected": "0"
+        }
+      ],
+      "answer": "",
+      "hint": "BFS обходит вершины слоями: сначала 1 шаг, затем 2 и так далее.",
+      "explanation": "Очередь и множество посещённых гарантируют, что каждая вершина обрабатывается один раз.",
+      "walkthrough": "1. Разбери входные данные.\n2. Выбери действие для каждого случая.\n3. Выведи результат и проверь на примерах.",
+      "methods": [
+        [
+          "Пошаговый вариант",
+          "from collections import deque\nn, m = map(int, input().split())\ng = [[] for _ in range(n)]\nfor _ in range(m):\n    u, v = map(int, input().split())\n    g[u].append(v)\n    g[v].append(u)\na, b = map(int, input().split())\ndist = [-1] * n\ndist[a] = 0\nq = deque([a])\nwhile q:\n    u = q.popleft()\n    for v in g[u]:\n        if dist[v] == -1:\n            dist[v] = dist[u] + 1\n            q.append(v)\nprint(dist[b])\n"
+        ],
+        [
+          "Другой способ",
+          "n, m = map(int, input().split())\ng = {i: [] for i in range(n)}\nfor _ in range(m):\n    u, v = map(int, input().split())\n    g[u].append(v)\n    g[v].append(u)\na, b = map(int, input().split())\nfront = {a}\nseen = {a}\nd = 0\nwhile front and b not in front:\n    new = {v for u in front for v in g[u] if v not in seen}\n    seen |= new\n    front = new\n    d += 1\nprint(d if b in front else -1)\n"
+        ]
+      ],
+      "concepts": [
+        "BFS",
+        "graph",
+        "deque"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "algorithms11",
+      "stage": "algorithms",
+      "title": "Подсчёт сравнений",
+      "kind": "write",
+      "prompt": "Введи n. Выведи, сколько пар (i,j), где 0 <= i < j < n. Это число сравнений в полном переборе пар.",
+      "starter": "# Твой код\n",
+      "tests": [
+        {
+          "stdin": "0\n",
+          "expected": "0"
+        },
+        {
+          "stdin": "1\n",
+          "expected": "0"
+        },
+        {
+          "stdin": "4\n",
+          "expected": "6"
+        },
+        {
+          "stdin": "10\n",
+          "expected": "45"
+        }
+      ],
+      "answer": "",
+      "hint": "Число пар без повторов равно n*(n-1)//2.",
+      "explanation": "Двойной цикл перебирает O(n²) пар; формула находит количество за O(1).",
+      "walkthrough": "1. Разбери входные данные.\n2. Выбери действие для каждого случая.\n3. Выведи результат и проверь на примерах.",
+      "methods": [
+        [
+          "Пошаговый вариант",
+          "n = int(input())\nprint(n * (n - 1) // 2)\n"
+        ],
+        [
+          "Другой способ",
+          "n = int(input())\ncount = 0\nfor i in range(n):\n    for j in range(i + 1, n):\n        count += 1\nprint(count)\n"
+        ]
+      ],
+      "concepts": [
+        "O(n²)",
+        "цикл",
+        "формула"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "algorithms12",
+      "stage": "algorithms",
+      "title": "Тестируем крайние случаи",
+      "kind": "write",
+      "prompt": "Введи целые числа через пробел. Выведи второе по величине РАЗЛИЧНОЕ число. Если его нет, выведи NONE.",
+      "starter": "# Твой код\n",
+      "tests": [
+        {
+          "stdin": "1 2 3 4\n",
+          "expected": "3"
+        },
+        {
+          "stdin": "5 5 5\n",
+          "expected": "NONE"
+        },
+        {
+          "stdin": "-1 -3 -2\n",
+          "expected": "-2"
+        },
+        {
+          "stdin": "7 7 2\n",
+          "expected": "2"
+        }
+      ],
+      "answer": "",
+      "hint": "Сначала убери дубликаты. Если уникальных чисел меньше двух, ответа нет.",
+      "explanation": "Граничные случаи (все одинаковы, отрицательные, один элемент) — часть хорошего алгоритма.",
+      "walkthrough": "1. Разбери входные данные.\n2. Выбери действие для каждого случая.\n3. Выведи результат и проверь на примерах.",
+      "methods": [
+        [
+          "Пошаговый вариант",
+          "numbers = sorted(set(map(int, input().split())))\nprint(numbers[-2] if len(numbers) >= 2 else 'NONE')\n"
+        ],
+        [
+          "Другой способ",
+          "values = set(map(int, input().split()))\nif len(values) < 2:\n    print('NONE')\nelse:\n    largest = max(values)\n    values.remove(largest)\n    print(max(values))\n"
+        ]
+      ],
+      "concepts": [
+        "set",
+        "sorted",
+        "edge case"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "projects01",
+      "stage": "projects",
+      "title": "Список дел",
+      "kind": "write",
+      "prompt": "Введи n команд: ADD текст, DONE текст, COUNT. ADD добавляет задачу, DONE удаляет первое совпадение (если есть), COUNT печатает число оставшихся задач. После команд выведи 'LEFT число'.",
+      "starter": "# Твой код\n",
+      "tests": [
+        {
+          "stdin": "5\nADD учить\nADD читать\nCOUNT\nDONE учить\nCOUNT\n",
+          "expected": "2\n1\nLEFT 1"
+        },
+        {
+          "stdin": "3\nDONE нет\nADD а\nCOUNT\n",
+          "expected": "1\nLEFT 1"
+        }
+      ],
+      "answer": "",
+      "hint": "Храни список задач, отдельно обрабатывай каждую команду.",
+      "explanation": "Это маленькая система с состоянием: каждая команда меняет данные или читает их.",
+      "walkthrough": "1. Разбери входные данные.\n2. Выбери действие для каждого случая.\n3. Выведи результат и проверь на примерах.",
+      "methods": [
+        [
+          "Пошаговый вариант",
+          "tasks = []\nfor _ in range(int(input())):\n    command = input()\n    if command.startswith('ADD '):\n        tasks.append(command[4:])\n    elif command.startswith('DONE '):\n        name = command[5:]\n        if name in tasks:\n            tasks.remove(name)\n    elif command == 'COUNT':\n        print(len(tasks))\nprint('LEFT', len(tasks))\n"
+        ],
+        [
+          "Другой способ",
+          "from collections import Counter\ntasks = Counter()\nfor _ in range(int(input())):\n    command = input()\n    if command.startswith('ADD '):\n        tasks[command[4:]] += 1\n    elif command.startswith('DONE '):\n        name = command[5:]\n        if tasks[name] > 0:\n            tasks[name] -= 1\n    elif command == 'COUNT':\n        print(sum(tasks.values()))\nprint('LEFT', sum(tasks.values()))\n"
+        ]
+      ],
+      "concepts": [
+        "CLI",
+        "list",
+        "команда"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "projects02",
+      "stage": "projects",
+      "title": "Калькулятор",
+      "kind": "write",
+      "prompt": "Введи n, затем n строк 'a знак b', где знак один из + - * /. Печатай результат; для / делай обычное деление, результат всегда с двумя знаками после точки. При делении на ноль — ERROR.",
+      "starter": "# Твой код\n",
+      "tests": [
+        {
+          "stdin": "4\n2 + 3\n7 - 5\n3 * 4\n5 / 2\n",
+          "expected": "5.00\n2.00\n12.00\n2.50"
+        },
+        {
+          "stdin": "2\n1 / 0\n-2 * 3\n",
+          "expected": "ERROR\n-6.00"
+        }
+      ],
+      "answer": "",
+      "hint": "Разбери оператор, вычисли выражение, отдельно обработай деление на ноль.",
+      "explanation": "Словарь функций заменяет длинную цепочку if, если каждая команда простая.",
+      "walkthrough": "1. Разбери входные данные.\n2. Выбери действие для каждого случая.\n3. Выведи результат и проверь на примерах.",
+      "methods": [
+        [
+          "Пошаговый вариант",
+          "for _ in range(int(input())):\n    left, op, right = input().split()\n    a, b = float(left), float(right)\n    if op == '+':\n        answer = a + b\n    elif op == '-':\n        answer = a - b\n    elif op == '*':\n        answer = a * b\n    elif b != 0:\n        answer = a / b\n    else:\n        print('ERROR')\n        continue\n    print(f'{answer:.2f}')\n"
+        ],
+        [
+          "Другой способ",
+          "import operator\noperations = {'+': operator.add, '-': operator.sub, '*': operator.mul, '/': operator.truediv}\nfor _ in range(int(input())):\n    a, sign, b = input().split()\n    a, b = float(a), float(b)\n    try:\n        print(f'{operations[sign](a, b):.2f}')\n    except ZeroDivisionError:\n        print('ERROR')\n"
+        ]
+      ],
+      "concepts": [
+        "CLI",
+        "if",
+        "operator"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "projects03",
+      "stage": "projects",
+      "title": "Склад",
+      "kind": "write",
+      "prompt": "Введи n, затем команды 'IN имя количество', 'OUT имя количество', 'GET имя'. Количество на складе не опускается ниже 0. GET выводит количество.",
+      "starter": "# Твой код\n",
+      "tests": [
+        {
+          "stdin": "5\nIN apple 5\nOUT apple 2\nGET apple\nOUT apple 10\nGET apple\n",
+          "expected": "3\n0"
+        },
+        {
+          "stdin": "3\nGET tea\nIN tea 2\nGET tea\n",
+          "expected": "0\n2"
+        }
+      ],
+      "answer": "",
+      "hint": "Словарь хранит остатки по названиям. max(0, ...) защищает от отрицательного числа.",
+      "explanation": "Склад — типичный пример изменения состояния по входным командам.",
+      "walkthrough": "1. Разбери входные данные.\n2. Выбери действие для каждого случая.\n3. Выведи результат и проверь на примерах.",
+      "methods": [
+        [
+          "Пошаговый вариант",
+          "stock = {}\nfor _ in range(int(input())):\n    command = input().split()\n    action, name = command[:2]\n    if action == 'IN':\n        stock[name] = stock.get(name, 0) + int(command[2])\n    elif action == 'OUT':\n        stock[name] = max(0, stock.get(name, 0) - int(command[2]))\n    else:\n        print(stock.get(name, 0))\n"
+        ],
+        [
+          "Другой способ",
+          "from collections import defaultdict\nstock = defaultdict(int)\nfor _ in range(int(input())):\n    parts = input().split()\n    action, item = parts[0], parts[1]\n    if action == 'GET':\n        print(stock[item])\n    elif action == 'IN':\n        stock[item] += int(parts[2])\n    else:\n        stock[item] = max(0, stock[item] - int(parts[2]))\n"
+        ]
+      ],
+      "concepts": [
+        "dict",
+        "get",
+        "max"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "projects04",
+      "stage": "projects",
+      "title": "Личный бюджет",
+      "kind": "write",
+      "prompt": "Введи n, затем записи 'IN сумма' или 'OUT сумма'. Начальный баланс 0. Выведи итоговый баланс и количество расходов через пробел.",
+      "starter": "# Твой код\n",
+      "tests": [
+        {
+          "stdin": "4\nIN 100\nOUT 20\nOUT 5\nIN 10\n",
+          "expected": "85 2"
+        },
+        {
+          "stdin": "2\nOUT 10\nOUT 1\n",
+          "expected": "-11 2"
+        }
+      ],
+      "answer": "",
+      "hint": "Держи два счётчика: деньги и количество расходов.",
+      "explanation": "Программы бюджета сводят последовательность операций к нескольким показателям.",
+      "walkthrough": "1. Разбери входные данные.\n2. Выбери действие для каждого случая.\n3. Выведи результат и проверь на примерах.",
+      "methods": [
+        [
+          "Пошаговый вариант",
+          "balance = 0\nexpenses = 0\nfor _ in range(int(input())):\n    kind, amount = input().split()\n    amount = int(amount)\n    if kind == 'IN':\n        balance += amount\n    else:\n        balance -= amount\n        expenses += 1\nprint(balance, expenses)\n"
+        ],
+        [
+          "Другой способ",
+          "transactions = [input().split() for _ in range(int(input()))]\nvalue = sum(int(s) * (1 if action == 'IN' else -1) for action, s in transactions)\nspent = sum(action == 'OUT' for action, _ in transactions)\nprint(value, spent)\n"
+        ]
+      ],
+      "concepts": [
+        "сумма",
+        "цикл",
+        "if"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "projects05",
+      "stage": "projects",
+      "title": "Ведомость оценок",
+      "kind": "write",
+      "prompt": "Введи n, затем строки 'имя балл'. Выведи имена с баллом от 60 по алфавиту, каждое с новой строки. Если никто не прошёл, выведи NONE.",
+      "starter": "# Твой код\n",
+      "tests": [
+        {
+          "stdin": "4\nAnn 70\nBob 50\nMax 90\nKate 30\n",
+          "expected": "Ann\nMax"
+        },
+        {
+          "stdin": "2\na 0\nb 40\n",
+          "expected": "NONE"
+        },
+        {
+          "stdin": "2\nZ 60\nA 60\n",
+          "expected": "A\nZ"
+        }
+      ],
+      "answer": "",
+      "hint": "Сначала отфильтруй по баллу, затем отсортируй имена.",
+      "explanation": "Отчёт складывается из чтения, фильтрации, сортировки и печати.",
+      "walkthrough": "1. Разбери входные данные.\n2. Выбери действие для каждого случая.\n3. Выведи результат и проверь на примерах.",
+      "methods": [
+        [
+          "Пошаговый вариант",
+          "passed = []\nfor _ in range(int(input())):\n    name, score = input().split()\n    if int(score) >= 60:\n        passed.append(name)\nprint('\\n'.join(sorted(passed)) if passed else 'NONE')\n"
+        ],
+        [
+          "Другой способ",
+          "people = [input().split() for _ in range(int(input()))]\nresult = sorted(name for name, grade in people if int(grade) >= 60)\nif result:\n    print(*result, sep='\\n')\nelse:\n    print('NONE')\n"
+        ]
+      ],
+      "concepts": [
+        "sort",
+        "filter",
+        "list"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "projects06",
+      "stage": "projects",
+      "title": "Контакты",
+      "kind": "write",
+      "prompt": "Введи n, затем команды 'SET имя номер', 'GET имя', 'DEL имя'. GET выводит номер или NONE, если контакта нет. SET заменяет старое значение.",
+      "starter": "# Твой код\n",
+      "tests": [
+        {
+          "stdin": "5\nSET Ann 111\nGET Ann\nSET Ann 222\nGET Ann\nDEL Ann\n",
+          "expected": "111\n222"
+        },
+        {
+          "stdin": "2\nGET Bob\nDEL Bob\n",
+          "expected": "NONE"
+        }
+      ],
+      "answer": "",
+      "hint": "SET добавляет или меняет пару ключ: значение в словаре.",
+      "explanation": "Контактная книга — простой пример CRUD: создать, прочитать, изменить, удалить.",
+      "walkthrough": "1. Разбери входные данные.\n2. Выбери действие для каждого случая.\n3. Выведи результат и проверь на примерах.",
+      "methods": [
+        [
+          "Пошаговый вариант",
+          "contacts = {}\nfor _ in range(int(input())):\n    parts = input().split()\n    action, name = parts[:2]\n    if action == 'SET':\n        contacts[name] = parts[2]\n    elif action == 'GET':\n        print(contacts.get(name, 'NONE'))\n    else:\n        contacts.pop(name, None)\n"
+        ],
+        [
+          "Другой способ",
+          "contacts = dict()\nfor _ in range(int(input())):\n    command = input().split()\n    if command[0] == 'SET':\n        contacts.update({command[1]: command[2]})\n    elif command[0] == 'DEL':\n        if command[1] in contacts:\n            del contacts[command[1]]\n    else:\n        print(contacts[command[1]] if command[1] in contacts else 'NONE')\n"
+        ]
+      ],
+      "concepts": [
+        "CRUD",
+        "dict",
+        "pop"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "projects07",
+      "stage": "projects",
+      "title": "Настройки приложения",
+      "kind": "write",
+      "prompt": "Введи JSON-объект, затем n команд 'SET ключ значение'. Все значения — строки. Выведи итоговый компактный JSON с ключами по алфавиту и русскими буквами без экранирования.",
+      "starter": "# Твой код\n",
+      "tests": [
+        {
+          "stdin": "{\"theme\":\"light\"}\n2\nSET theme dark\nSET lang ru\n",
+          "expected": "{\"lang\":\"ru\",\"theme\":\"dark\"}"
+        },
+        {
+          "stdin": "{}\n1\nSET user Ира\n",
+          "expected": "{\"user\":\"Ира\"}"
+        }
+      ],
+      "answer": "",
+      "hint": "После загрузки JSON можно менять словарь, затем сериализовать обратно.",
+      "explanation": "Это модель настоящего редактора конфигурации, только без записи файла на диск.",
+      "walkthrough": "1. Разбери входные данные.\n2. Выбери действие для каждого случая.\n3. Выведи результат и проверь на примерах.",
+      "methods": [
+        [
+          "Пошаговый вариант",
+          "import json\nsettings = json.loads(input())\nfor _ in range(int(input())):\n    action, key, value = input().split()\n    settings[key] = value\nprint(json.dumps(settings, ensure_ascii=False, sort_keys=True, separators=(',', ':')))\n"
+        ],
+        [
+          "Другой способ",
+          "from json import loads, dumps\nconfig = loads(input())\nn = int(input())\nupdates = [input().split() for _ in range(n)]\nconfig.update({key: value for _, key, value in updates})\nprint(dumps(config, ensure_ascii=False, sort_keys=True, separators=(',', ':')))\n"
+        ]
+      ],
+      "concepts": [
+        "json",
+        "settings",
+        "dict"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "projects08",
+      "stage": "projects",
+      "title": "Поиск по записям",
+      "kind": "write",
+      "prompt": "Введи n строк, затем слово-запрос. Выведи номера подходящих строк (с 1) через пробел. Поиск без учёта регистра, как подстрока.",
+      "starter": "# Твой код\n",
+      "tests": [
+        {
+          "stdin": "3\nPython хорош\nJava тоже\nучу python\npython\n",
+          "expected": "1 3"
+        },
+        {
+          "stdin": "2\naaa\nbbb\nxyz\n",
+          "expected": ""
+        }
+      ],
+      "answer": "",
+      "hint": "Сравни query.lower() и row.lower().",
+      "explanation": "Поиск по подстроке не требует ни базы данных, ни регулярных выражений.",
+      "walkthrough": "1. Разбери входные данные.\n2. Выбери действие для каждого случая.\n3. Выведи результат и проверь на примерах.",
+      "methods": [
+        [
+          "Пошаговый вариант",
+          "n = int(input())\nrows = [input() for _ in range(n)]\nquery = input().lower()\nresult = [i for i, row in enumerate(rows, 1) if query in row.lower()]\nprint(*result)\n"
+        ],
+        [
+          "Другой способ",
+          "n = int(input())\nlines = []\nfor _ in range(n):\n    lines.append(input().lower())\nq = input().lower()\nfor index, line in enumerate(lines, 1):\n    if q in line:\n        print(index, end=' ')\nprint()\n"
+        ]
+      ],
+      "concepts": [
+        "enumerate",
+        "lower",
+        "in"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "projects09",
+      "stage": "projects",
+      "title": "Проверка пароля",
+      "kind": "write",
+      "prompt": "Введи пароль. Выведи STRONG, если длина не меньше 8, есть буква и цифра; иначе WEAK.",
+      "starter": "# Твой код\n",
+      "tests": [
+        {
+          "stdin": "abc12345\n",
+          "expected": "STRONG"
+        },
+        {
+          "stdin": "12345678\n",
+          "expected": "WEAK"
+        },
+        {
+          "stdin": "abcdefgh\n",
+          "expected": "WEAK"
+        },
+        {
+          "stdin": "Ab1!abcd\n",
+          "expected": "STRONG"
+        }
+      ],
+      "answer": "",
+      "hint": "any() проверяет, есть ли хотя бы один подходящий символ.",
+      "explanation": "Это учебное правило, а не полноценная оценка безопасности пароля.",
+      "walkthrough": "1. Разбери входные данные.\n2. Выбери действие для каждого случая.\n3. Выведи результат и проверь на примерах.",
+      "methods": [
+        [
+          "Пошаговый вариант",
+          "password = input()\nstrong = len(password) >= 8 and any(c.isalpha() for c in password) and any(c.isdigit() for c in password)\nprint('STRONG' if strong else 'WEAK')\n"
+        ],
+        [
+          "Другой способ",
+          "p = input()\nletters = 0\nnumbers = 0\nfor ch in p:\n    letters += ch.isalpha()\n    numbers += ch.isdigit()\nprint('STRONG' if len(p) >= 8 and letters and numbers else 'WEAK')\n"
+        ]
+      ],
+      "concepts": [
+        "any",
+        "isdigit",
+        "isalpha"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "projects10",
+      "stage": "projects",
+      "title": "Мини-касса",
+      "kind": "write",
+      "prompt": "Введи n товаров 'название цена количество'. Выведи общую стоимость и название самого дорогого товара по стоимости всей позиции. При равенстве — первого. n >= 1.",
+      "starter": "# Твой код\n",
+      "tests": [
+        {
+          "stdin": "3\nTea 10 2\nCake 15 3\nMilk 5 1\n",
+          "expected": "70 Cake"
+        },
+        {
+          "stdin": "2\nA 10 1\nB 5 2\n",
+          "expected": "20 A"
+        }
+      ],
+      "answer": "",
+      "hint": "Стоимость позиции = цена * количество. Для максимума обновляй только при строго >.",
+      "explanation": "Касса совмещает расчёт итога и выбор записи с максимальной стоимостью.",
+      "walkthrough": "1. Разбери входные данные.\n2. Выбери действие для каждого случая.\n3. Выведи результат и проверь на примерах.",
+      "methods": [
+        [
+          "Пошаговый вариант",
+          "n = int(input())\ntotal = 0\nbest_name = ''\nbest = -1\nfor _ in range(n):\n    name, price, qty = input().split()\n    cost = int(price) * int(qty)\n    total += cost\n    if cost > best:\n        best, best_name = cost, name\nprint(total, best_name)\n"
+        ],
+        [
+          "Другой способ",
+          "items = []\nfor _ in range(int(input())):\n    name, price, qty = input().split()\n    items.append((name, int(price) * int(qty)))\nprint(sum(cost for name, cost in items), max(enumerate(items), key=lambda pair: (pair[1][1], -pair[0]))[1][0])\n"
+        ]
+      ],
+      "concepts": [
+        "sum",
+        "max",
+        "records"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "projects11",
+      "stage": "projects",
+      "title": "Журнал событий",
+      "kind": "write",
+      "prompt": "Введи n сообщений вида 'INFO текст', 'WARN текст', 'ERROR текст'. Выведи числа INFO WARN ERROR через пробел.",
+      "starter": "# Твой код\n",
+      "tests": [
+        {
+          "stdin": "4\nINFO start\nERROR bad\nWARN slow\nINFO end\n",
+          "expected": "2 1 1"
+        },
+        {
+          "stdin": "2\nERROR x\nERROR y\n",
+          "expected": "0 0 2"
+        }
+      ],
+      "answer": "",
+      "hint": "Разбирай только первое слово; остальной текст здесь не нужен.",
+      "explanation": "Частотные словари помогают быстро строить отчёты по большим потокам данных.",
+      "walkthrough": "1. Разбери входные данные.\n2. Выбери действие для каждого случая.\n3. Выведи результат и проверь на примерах.",
+      "methods": [
+        [
+          "Пошаговый вариант",
+          "counts = {'INFO': 0, 'WARN': 0, 'ERROR': 0}\nfor _ in range(int(input())):\n    level, text = input().split(' ', 1)\n    counts[level] += 1\nprint(counts['INFO'], counts['WARN'], counts['ERROR'])\n"
+        ],
+        [
+          "Другой способ",
+          "from collections import Counter\nlogs = Counter()\nfor _ in range(int(input())):\n    level = input().split()[0]\n    logs[level] += 1\nprint(*(logs[level] for level in ('INFO', 'WARN', 'ERROR')))\n"
+        ]
+      ],
+      "concepts": [
+        "Counter",
+        "dict",
+        "logs"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "projects12",
+      "stage": "projects",
+      "title": "Турнирная таблица",
+      "kind": "write",
+      "prompt": "Введи n строк 'имя победы'. Выведи имена в порядке убывания побед, а при равенстве — по алфавиту, каждое с новой строки.",
+      "starter": "# Твой код\n",
+      "tests": [
+        {
+          "stdin": "3\nZed 2\nAnn 5\nBob 5\n",
+          "expected": "Ann\nBob\nZed"
+        },
+        {
+          "stdin": "2\nA 0\nB 1\n",
+          "expected": "B\nA"
+        }
+      ],
+      "answer": "",
+      "hint": "Ключ сортировки — (-победы, имя).",
+      "explanation": "Отрицательное число меняет направление сортировки, а второй элемент разбирает ничьи.",
+      "walkthrough": "1. Разбери входные данные.\n2. Выбери действие для каждого случая.\n3. Выведи результат и проверь на примерах.",
+      "methods": [
+        [
+          "Пошаговый вариант",
+          "players = []\nfor _ in range(int(input())):\n    name, wins = input().split()\n    players.append((name, int(wins)))\nplayers.sort(key=lambda row: (-row[1], row[0]))\nfor name, wins in players:\n    print(name)\n"
+        ],
+        [
+          "Другой способ",
+          "records = [input().split() for _ in range(int(input()))]\nprint(*[name for name, wins in sorted(records, key=lambda row: (-int(row[1]), row[0]))], sep='\\n')\n"
+        ]
+      ],
+      "concepts": [
+        "sorted",
+        "key",
+        "tuple"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "mastery01",
+      "stage": "mastery",
+      "title": "Система очереди",
+      "kind": "write",
+      "prompt": "Введи n команд JOIN имя, NEXT, SIZE. NEXT выводит имя первого человека или EMPTY. SIZE выводит размер очереди. JOIN добавляет в конец.",
+      "starter": "# Твой код\n",
+      "tests": [
+        {
+          "stdin": "6\nJOIN Ann\nJOIN Bob\nNEXT\nSIZE\nNEXT\nNEXT\n",
+          "expected": "Ann\n1\nBob\nEMPTY"
+        },
+        {
+          "stdin": "3\nSIZE\nNEXT\nSIZE\n",
+          "expected": "0\nEMPTY\n0"
+        }
+      ],
+      "answer": "",
+      "hint": "deque умеет popleft() — взять первый элемент за O(1).",
+      "explanation": "Реальный сервис очереди отделяет команды изменения от команд чтения состояния.",
+      "walkthrough": "1. Разбери входные данные.\n2. Выбери действие для каждого случая.\n3. Выведи результат и проверь на примерах.",
+      "methods": [
+        [
+          "Пошаговый вариант",
+          "from collections import deque\nqueue = deque()\nfor _ in range(int(input())):\n    command = input()\n    if command.startswith('JOIN '):\n        queue.append(command[5:])\n    elif command == 'NEXT':\n        print(queue.popleft() if queue else 'EMPTY')\n    else:\n        print(len(queue))\n"
+        ],
+        [
+          "Другой способ",
+          "queue = []\nfor _ in range(int(input())):\n    cmd = input().split(' ', 1)\n    if cmd[0] == 'JOIN':\n        queue.append(cmd[1])\n    elif cmd[0] == 'NEXT':\n        print(queue.pop(0) if queue else 'EMPTY')\n    else:\n        print(len(queue))\n"
+        ]
+      ],
+      "concepts": [
+        "deque",
+        "FIFO",
+        "CLI"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "mastery02",
+      "stage": "mastery",
+      "title": "История счёта",
+      "kind": "write",
+      "prompt": "Введи начальный баланс и n операций по строкам: '+ число', '- число', UNDO. UNDO отменяет последнюю неотменённую денежную операцию. Выведи баланс.",
+      "starter": "# Твой код\n",
+      "tests": [
+        {
+          "stdin": "100\n5\n+ 50\n- 20\nUNDO\n+ 10\nUNDO\n",
+          "expected": "150"
+        },
+        {
+          "stdin": "0\n3\nUNDO\n+ 7\nUNDO\n",
+          "expected": "0"
+        }
+      ],
+      "answer": "",
+      "hint": "Храни суммы изменений в стеке. Для UNDO убери последнее изменение.",
+      "explanation": "История действий — одна из основ отмены операций в редакторах и приложениях.",
+      "walkthrough": "1. Разбери входные данные.\n2. Выбери действие для каждого случая.\n3. Выведи результат и проверь на примерах.",
+      "methods": [
+        [
+          "Пошаговый вариант",
+          "balance = int(input())\nhistory = []\nfor _ in range(int(input())):\n    command = input().split()\n    if command[0] == 'UNDO':\n        if history:\n            balance -= history.pop()\n    else:\n        delta = int(command[1]) * (1 if command[0] == '+' else -1)\n        balance += delta\n        history.append(delta)\nprint(balance)\n"
+        ],
+        [
+          "Другой способ",
+          "value = int(input())\noperations = []\nfor _ in range(int(input())):\n    cmd = input()\n    if cmd == 'UNDO':\n        if operations:\n            operations.pop()\n    else:\n        sign, amount = cmd.split()\n        operations.append(int(amount) if sign == '+' else -int(amount))\nprint(value + sum(operations))\n"
+        ]
+      ],
+      "concepts": [
+        "undo",
+        "stack",
+        "состояние"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "mastery03",
+      "stage": "mastery",
+      "title": "Корзина магазина",
+      "kind": "write",
+      "prompt": "Введи n товаров 'цена количество' и процент скидки после них. Выведи итоговую стоимость с двумя знаками после точки.",
+      "starter": "# Твой код\n",
+      "tests": [
+        {
+          "stdin": "2\n100 2\n50 1\n10\n",
+          "expected": "225.00"
+        },
+        {
+          "stdin": "1\n199 1\n0\n",
+          "expected": "199.00"
+        },
+        {
+          "stdin": "2\n10 3\n20 1\n50\n",
+          "expected": "25.00"
+        }
+      ],
+      "answer": "",
+      "hint": "Сначала посчитай subtotal, потом скидку от всей суммы.",
+      "explanation": "Когда работает несколько шагов, их проще вынести в отдельные понятные переменные.",
+      "walkthrough": "1. Разбери входные данные.\n2. Выбери действие для каждого случая.\n3. Выведи результат и проверь на примерах.",
+      "methods": [
+        [
+          "Пошаговый вариант",
+          "total = 0\nfor _ in range(int(input())):\n    price, count = map(int, input().split())\n    total += price * count\ndiscount = int(input())\nprint(f'{total * (100 - discount) / 100:.2f}')\n"
+        ],
+        [
+          "Другой способ",
+          "items = [tuple(map(int, input().split())) for _ in range(int(input()))]\npercent = int(input())\nsubtotal = sum(p * q for p, q in items)\nanswer = subtotal - subtotal * percent / 100\nprint(format(answer, '.2f'))\n"
+        ]
+      ],
+      "concepts": [
+        "смета",
+        "проценты",
+        "sum"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "mastery04",
+      "stage": "mastery",
+      "title": "Разметка заголовков",
+      "kind": "write",
+      "prompt": "Введи n строк Markdown. Выведи содержимое строк, начинающихся с '# ', '## ' или '### ', с префиксом уровня '1:', '2:', '3:'. Остальные пропусти.",
+      "starter": "# Твой код\n",
+      "tests": [
+        {
+          "stdin": "4\n# Тема\nтекст\n## Раздел\n### Подраздел\n",
+          "expected": "1:Тема\n2:Раздел\n3:Подраздел"
+        },
+        {
+          "stdin": "2\nhello\n#### ignored\n",
+          "expected": ""
+        }
+      ],
+      "answer": "",
+      "hint": "Сначала проверяй самое длинное начало строки.",
+      "explanation": "Так работает простейший парсер: распознал синтаксис — извлёк данные.",
+      "walkthrough": "1. Разбери входные данные.\n2. Выбери действие для каждого случая.\n3. Выведи результат и проверь на примерах.",
+      "methods": [
+        [
+          "Пошаговый вариант",
+          "for _ in range(int(input())):\n    line = input()\n    for level in (3, 2, 1):\n        prefix = '#' * level + ' '\n        if line.startswith(prefix):\n            print(f'{level}:{line[len(prefix):]}')\n            break\n"
+        ],
+        [
+          "Другой способ",
+          "for _ in range(int(input())):\n    s = input()\n    if s.startswith('### '):\n        print('3:' + s[4:])\n    elif s.startswith('## '):\n        print('2:' + s[3:])\n    elif s.startswith('# '):\n        print('1:' + s[2:])\n"
+        ]
+      ],
+      "concepts": [
+        "markdown",
+        "startswith",
+        "parser"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "mastery05",
+      "stage": "mastery",
+      "title": "Сравнение конфигов",
+      "kind": "write",
+      "prompt": "Введи два JSON-объекта с простыми строковыми значениями. Выведи ключи, значения которых различаются или отсутствуют в одном из объектов, в алфавитном порядке через пробел.",
+      "starter": "# Твой код\n",
+      "tests": [
+        {
+          "stdin": "{\"a\":\"1\",\"b\":\"2\"}\n{\"a\":\"1\",\"b\":\"3\",\"c\":\"4\"}\n",
+          "expected": "b c"
+        },
+        {
+          "stdin": "{}\n{}\n",
+          "expected": ""
+        },
+        {
+          "stdin": "{\"x\":\"yes\"}\n{\"x\":\"no\"}\n",
+          "expected": "x"
+        }
+      ],
+      "answer": "",
+      "hint": "Объедини множества ключей двух словарей и сравни значения.",
+      "explanation": "Diff конфигураций помогает понять, что поменялось между версиями программы.",
+      "walkthrough": "1. Разбери входные данные.\n2. Выбери действие для каждого случая.\n3. Выведи результат и проверь на примерах.",
+      "methods": [
+        [
+          "Пошаговый вариант",
+          "import json\na = json.loads(input())\nb = json.loads(input())\nchanged = [key for key in a.keys() | b.keys() if a.get(key) != b.get(key)]\nprint(*sorted(changed))\n"
+        ],
+        [
+          "Другой способ",
+          "import json\nold = json.loads(input())\nnew = json.loads(input())\nkeys = set(old) | set(new)\nresult = sorted(k for k in keys if k not in old or k not in new or old[k] != new[k])\nprint(' '.join(result))\n"
+        ]
+      ],
+      "concepts": [
+        "json",
+        "set",
+        "diff"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "mastery06",
+      "stage": "mastery",
+      "title": "Из CSV в JSON",
+      "kind": "write",
+      "prompt": "Введи n строк вида 'name;score'. Выведи компактный JSON-массив объектов с полями name (строка) и score (число), не экранируя русские буквы.",
+      "starter": "# Твой код\n",
+      "tests": [
+        {
+          "stdin": "2\nAnn;12\nBob;9\n",
+          "expected": "[{\"name\":\"Ann\",\"score\":12},{\"name\":\"Bob\",\"score\":9}]"
+        },
+        {
+          "stdin": "1\nИра;5\n",
+          "expected": "[{\"name\":\"Ира\",\"score\":5}]"
+        },
+        {
+          "stdin": "0\n",
+          "expected": "[]"
+        }
+      ],
+      "answer": "",
+      "hint": "У каждого объекта должна быть одинаковая структура полей.",
+      "explanation": "Сериализация переводит набор записей из табличного формата в формат API.",
+      "walkthrough": "1. Разбери входные данные.\n2. Выбери действие для каждого случая.\n3. Выведи результат и проверь на примерах.",
+      "methods": [
+        [
+          "Пошаговый вариант",
+          "import json\nrows = []\nfor _ in range(int(input())):\n    name, score = input().split(';')\n    rows.append({'name': name, 'score': int(score)})\nprint(json.dumps(rows, ensure_ascii=False, separators=(',', ':')))\n"
+        ],
+        [
+          "Другой способ",
+          "import json\nn = int(input())\nrecords = [input().split(';') for _ in range(n)]\nresult = [{'name': name, 'score': int(score)} for name, score in records]\nprint(json.dumps(result, ensure_ascii=False, separators=(',', ':')))\n"
+        ]
+      ],
+      "concepts": [
+        "CSV",
+        "json",
+        "list"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "mastery07",
+      "stage": "mastery",
+      "title": "Поиск маршрута",
+      "kind": "write",
+      "prompt": "Введи n m, затем m двусторонних дорог 'a b' (номера от 1 до n), затем start finish. Выведи минимальное число дорог между городами или -1.",
+      "starter": "# Твой код\n",
+      "tests": [
+        {
+          "stdin": "4 4\n1 2\n2 3\n3 4\n1 4\n1 3\n",
+          "expected": "2"
+        },
+        {
+          "stdin": "3 1\n1 2\n1 3\n",
+          "expected": "-1"
+        },
+        {
+          "stdin": "1 0\n1 1\n",
+          "expected": "0"
+        }
+      ],
+      "answer": "",
+      "hint": "Пройди граф поиском в ширину. Каждая новая вершина получает расстояние +1.",
+      "explanation": "Это тот же принцип BFS, который применяется в маршрутах и социальных графах.",
+      "walkthrough": "1. Разбери входные данные.\n2. Выбери действие для каждого случая.\n3. Выведи результат и проверь на примерах.",
+      "methods": [
+        [
+          "Пошаговый вариант",
+          "from collections import deque\nn, m = map(int, input().split())\ng = [[] for _ in range(n + 1)]\nfor _ in range(m):\n    a, b = map(int, input().split())\n    g[a].append(b)\n    g[b].append(a)\nstart, finish = map(int, input().split())\ndist = [-1] * (n + 1)\ndist[start] = 0\nqueue = deque([start])\nwhile queue:\n    u = queue.popleft()\n    for v in g[u]:\n        if dist[v] < 0:\n            dist[v] = dist[u] + 1\n            queue.append(v)\nprint(dist[finish])\n"
+        ],
+        [
+          "Другой способ",
+          "n, m = map(int, input().split())\ngraph = {i: [] for i in range(1, n + 1)}\nfor _ in range(m):\n    a, b = map(int, input().split())\n    graph[a].append(b)\n    graph[b].append(a)\nstart, target = map(int, input().split())\nlevel = {start: 0}\nfront = [start]\nfor u in front:\n    for v in graph[u]:\n        if v not in level:\n            level[v] = level[u] + 1\n            front.append(v)\nprint(level.get(target, -1))\n"
+        ]
+      ],
+      "concepts": [
+        "BFS",
+        "graph",
+        "deque"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "mastery08",
+      "stage": "mastery",
+      "title": "Встречи без пересечений",
+      "kind": "write",
+      "prompt": "Введи n встреч 'начало конец' в часах от 0 до 24. Выведи YES, если никакие два интервала не пересекаются. Касание границ допустимо.",
+      "starter": "# Твой код\n",
+      "tests": [
+        {
+          "stdin": "3\n9 10\n10 12\n13 15\n",
+          "expected": "YES"
+        },
+        {
+          "stdin": "2\n9 12\n11 14\n",
+          "expected": "NO"
+        },
+        {
+          "stdin": "1\n0 24\n",
+          "expected": "YES"
+        }
+      ],
+      "answer": "",
+      "hint": "Отсортируй встречи по началу и сравни соседние интервалы.",
+      "explanation": "Проверка пересечений нужна для бронирования, календарей и расписаний.",
+      "walkthrough": "1. Разбери входные данные.\n2. Выбери действие для каждого случая.\n3. Выведи результат и проверь на примерах.",
+      "methods": [
+        [
+          "Пошаговый вариант",
+          "meetings = [tuple(map(int, input().split())) for _ in range(int(input()))]\nmeetings.sort()\nvalid = all(meetings[i][1] <= meetings[i + 1][0] for i in range(len(meetings) - 1))\nprint('YES' if valid else 'NO')\n"
+        ],
+        [
+          "Другой способ",
+          "intervals = [tuple(map(int, input().split())) for _ in range(int(input()))]\nintervals.sort(key=lambda item: item[0])\nprevious_end = -1\nfree = True\nfor start, end in intervals:\n    if start < previous_end:\n        free = False\n    previous_end = max(previous_end, end)\nprint('YES' if free else 'NO')\n"
+        ]
+      ],
+      "concepts": [
+        "интервалы",
+        "sort",
+        "all"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "mastery09",
+      "stage": "mastery",
+      "title": "Зависимости задач",
+      "kind": "write",
+      "prompt": "Введи n m, затем m зависимостей 'a b' (сначала a, потом b), узлы от 1 до n. Выведи YES, если есть порядок выполнения всех задач, иначе NO.",
+      "starter": "# Твой код\n",
+      "tests": [
+        {
+          "stdin": "3 2\n1 2\n2 3\n",
+          "expected": "YES"
+        },
+        {
+          "stdin": "2 2\n1 2\n2 1\n",
+          "expected": "NO"
+        },
+        {
+          "stdin": "3 0\n",
+          "expected": "YES"
+        }
+      ],
+      "answer": "",
+      "hint": "Нужно проверить, нет ли цикла в ориентированном графе.",
+      "explanation": "Топологическая сортировка работает, если зависимости не образуют замкнутый круг.",
+      "walkthrough": "1. Разбери входные данные.\n2. Выбери действие для каждого случая.\n3. Выведи результат и проверь на примерах.",
+      "methods": [
+        [
+          "Пошаговый вариант",
+          "from collections import deque\nn, m = map(int, input().split())\ngraph = [[] for _ in range(n + 1)]\ndegree = [0] * (n + 1)\nfor _ in range(m):\n    a, b = map(int, input().split())\n    graph[a].append(b)\n    degree[b] += 1\nqueue = deque(i for i in range(1, n + 1) if degree[i] == 0)\ndone = 0\nwhile queue:\n    u = queue.popleft()\n    done += 1\n    for v in graph[u]:\n        degree[v] -= 1\n        if degree[v] == 0:\n            queue.append(v)\nprint('YES' if done == n else 'NO')\n"
+        ],
+        [
+          "Другой способ",
+          "n, m = map(int, input().split())\ngraph = [[] for _ in range(n + 1)]\nfor _ in range(m):\n    a, b = map(int, input().split())\n    graph[a].append(b)\nstate = [0] * (n + 1)\ndef cycle(u):\n    state[u] = 1\n    for v in graph[u]:\n        if state[v] == 1 or (state[v] == 0 and cycle(v)):\n            return True\n    state[u] = 2\n    return False\nfound = any(state[u] == 0 and cycle(u) for u in range(1, n + 1))\nprint('NO' if found else 'YES')\n"
+        ]
+      ],
+      "concepts": [
+        "DAG",
+        "топосортировка",
+        "graph"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "mastery10",
+      "stage": "mastery",
+      "title": "Словарь переводчика",
+      "kind": "write",
+      "prompt": "Введи n пар 'английское=русское', затем m английских слов по одному в строке. Выведи перевод каждого или '?' для отсутствующего.",
+      "starter": "# Твой код\n",
+      "tests": [
+        {
+          "stdin": "2\ncat=кот\ndog=пёс\n3\ndog\nfox\ncat\n",
+          "expected": "пёс\n?\nкот"
+        },
+        {
+          "stdin": "1\nhello=привет\n2\nhello\nworld\n",
+          "expected": "привет\n?"
+        }
+      ],
+      "answer": "",
+      "hint": "Храни пары переводов в словаре. Отсутствующие ключи обрабатывай через get.",
+      "explanation": "Стабильный словарь терминов лучше слепого угадывания для специфичных технических слов.",
+      "walkthrough": "1. Разбери входные данные.\n2. Выбери действие для каждого случая.\n3. Выведи результат и проверь на примерах.",
+      "methods": [
+        [
+          "Пошаговый вариант",
+          "dictionary = {}\nfor _ in range(int(input())):\n    en, ru = input().split('=', 1)\n    dictionary[en] = ru\nfor _ in range(int(input())):\n    print(dictionary.get(input(), '?'))\n"
+        ],
+        [
+          "Другой способ",
+          "items = [input().split('=', 1) for _ in range(int(input()))]\nglossary = dict(items)\nqueries = [input() for _ in range(int(input()))]\nprint(*(glossary.get(word, '?') for word in queries), sep='\\n')\n"
+        ]
+      ],
+      "concepts": [
+        "dict",
+        "split",
+        "glossary"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "mastery11",
+      "stage": "mastery",
+      "title": "LRU-кэш",
+      "kind": "write",
+      "prompt": "Введи размер кэша k и n команд GET ключ или PUT ключ значение. GET выводит значение либо NONE. PUT обновляет недавность. При переполнении удаляй ключ, которым давно не пользовались.",
+      "starter": "# Твой код\n",
+      "tests": [
+        {
+          "stdin": "2\n7\nPUT a 1\nPUT b 2\nGET a\nPUT c 3\nGET b\nGET a\nGET c\n",
+          "expected": "1\nNONE\n1\n3"
+        },
+        {
+          "stdin": "1\n4\nPUT a 2\nPUT b 3\nGET a\nGET b\n",
+          "expected": "NONE\n3"
+        }
+      ],
+      "answer": "",
+      "hint": "OrderedDict умеет перемещать использованный ключ в конец.",
+      "explanation": "LRU — правило вытеснения: удаляется запись, которую использовали давнее всего.",
+      "walkthrough": "1. Разбери входные данные.\n2. Выбери действие для каждого случая.\n3. Выведи результат и проверь на примерах.",
+      "methods": [
+        [
+          "Пошаговый вариант",
+          "from collections import OrderedDict\nk = int(input())\nn = int(input())\ncache = OrderedDict()\nfor _ in range(n):\n    cmd = input().split()\n    if cmd[0] == 'GET':\n        key = cmd[1]\n        if key not in cache:\n            print('NONE')\n        else:\n            cache.move_to_end(key)\n            print(cache[key])\n    else:\n        key, value = cmd[1], cmd[2]\n        cache[key] = value\n        cache.move_to_end(key)\n        if len(cache) > k:\n            cache.popitem(last=False)\n"
+        ],
+        [
+          "Другой способ",
+          "k = int(input())\nn = int(input())\ndata, recent = {}, []\nfor _ in range(n):\n    parts = input().split()\n    cmd, key = parts[:2]\n    if cmd == 'GET':\n        print(data.get(key, 'NONE'))\n    if cmd == 'PUT':\n        data[key] = parts[2]\n    if key in data:\n        if key in recent:\n            recent.remove(key)\n        recent.append(key)\n    if len(recent) > k:\n        oldest = recent.pop(0)\n        del data[oldest]\n"
+        ]
+      ],
+      "concepts": [
+        "LRU",
+        "OrderedDict",
+        "cache"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "mastery12",
+      "stage": "mastery",
+      "title": "Мини-база с запросами",
+      "kind": "write",
+      "prompt": "Введи n строк 'имя балл', затем q команд: COUNT, AVG, TOP, FIND имя. COUNT — число записей, AVG — среднее с 1 знаком, TOP — имя лидера (при равенстве первое по алфавиту), FIND — балл или NONE. n>=1.",
+      "starter": "# Твой код\n",
+      "tests": [
+        {
+          "stdin": "3\nAnn 7\nBob 10\nMax 8\n5\nCOUNT\nAVG\nTOP\nFIND Max\nFIND Jo\n",
+          "expected": "3\n8.3\nBob\n8\nNONE"
+        },
+        {
+          "stdin": "2\nZ 10\nA 10\n3\nTOP\nAVG\nCOUNT\n",
+          "expected": "A\n10.0\n2"
+        }
+      ],
+      "answer": "",
+      "hint": "Сначала прочитай записи, затем отдельно разберите каждую команду.",
+      "explanation": "Мини-база сочетает структуру данных, сортировку, агрегации и запросы — основу прикладного программирования.",
+      "walkthrough": "1. Разбери входные данные.\n2. Выбери действие для каждого случая.\n3. Выведи результат и проверь на примерах.",
+      "methods": [
+        [
+          "Пошаговый вариант",
+          "rows = []\nfor _ in range(int(input())):\n    name, score = input().split()\n    rows.append((name, int(score)))\nlookup = dict(rows)\nfor _ in range(int(input())):\n    command = input().split()\n    if command[0] == 'COUNT':\n        print(len(rows))\n    elif command[0] == 'AVG':\n        print(f'{sum(score for _, score in rows) / len(rows):.1f}')\n    elif command[0] == 'TOP':\n        print(min(rows, key=lambda item: (-item[1], item[0]))[0])\n    else:\n        print(lookup.get(command[1], 'NONE'))\n"
+        ],
+        [
+          "Другой способ",
+          "records = [input().split() for _ in range(int(input()))]\ndata = [(name, int(score)) for name, score in records]\nfor _ in range(int(input())):\n    text = input().split()\n    if text[0] == 'COUNT':\n        print(len(data))\n    elif text[0] == 'AVG':\n        print(format(sum(item[1] for item in data) / len(data), '.1f'))\n    elif text[0] == 'TOP':\n        print(sorted(data, key=lambda x: (-x[1], x[0]))[0][0])\n    else:\n        found = next((str(score) for name, score in data if name == text[1]), 'NONE')\n        print(found)\n"
+        ]
+      ],
+      "concepts": [
+        "CLI",
+        "dict",
+        "aggregate"
+      ],
+      "difficulty": 3
+    }
+  ],
+  "topics": {
+    "print": {
+      "title": "print()",
+      "meaning": "Показывает значение на экране.",
+      "example": "name = 'Аня'\nprint(name)",
+      "pitfall": "print(name) выводит переменную; print('name') — слово name."
+    },
+    "input": {
+      "title": "input()",
+      "meaning": "Ждёт, когда человек введёт строку, и возвращает её как текст.",
+      "example": "name = input()\nprint('Привет,', name)",
+      "pitfall": "input() сам по себе не возвращает число."
+    },
+    "int": {
+      "title": "int()",
+      "meaning": "Превращает подходящий текст в целое число.",
+      "example": "age = int(input())\nprint(age + 1)",
+      "pitfall": "int('кот') вызовет ValueError."
+    },
+    "float": {
+      "title": "float()",
+      "meaning": "Превращает текст в число с дробной частью.",
+      "example": "price = float(input())\nprint(price * 2)",
+      "pitfall": "Для дробных чисел используй точку, а не запятую."
+    },
+    "str": {
+      "title": "str()",
+      "meaning": "Превращает значение в текст.",
+      "example": "print('Мне ' + str(18))",
+      "pitfall": "Строку и число нельзя просто сложить через +."
+    },
+    "bool": {
+      "title": "bool",
+      "meaning": "Логическое значение: True или False.",
+      "example": "ready = 5 > 2\nprint(ready)",
+      "pitfall": "True и False пишутся с заглавной буквы."
+    },
+    "переменная": {
+      "title": "Переменная",
+      "meaning": "Имя, под которым хранится значение. Его можно менять.",
+      "example": "count = 1\ncount = count + 1",
+      "pitfall": "Разные имена count и Count — разные переменные."
+    },
+    "присваивание": {
+      "title": "Оператор =",
+      "meaning": "Записывает результат справа в переменную слева.",
+      "example": "x = 2\nx = x + 3",
+      "pitfall": "Для сравнения нужен ==, а не =."
+    },
+    "=": {
+      "title": "=",
+      "meaning": "Присваивает значение, а не проверяет равенство.",
+      "example": "name = 'Alex'",
+      "pitfall": "В if нужно ==."
+    },
+    "==": {
+      "title": "==",
+      "meaning": "Проверяет, равны ли два значения.",
+      "example": "print(5 == 5)  # True",
+      "pitfall": "Не путай с одиночным =."
+    },
+    ">": {
+      "title": "Сравнение >",
+      "meaning": "Проверяет, больше ли левое значение правого.",
+      "example": "print(7 > 3)  # True",
+      "pitfall": "7 > 7 — False."
+    },
+    "%": {
+      "title": "Остаток %",
+      "meaning": "Показывает остаток после деления.",
+      "example": "print(10 % 3)  # 1",
+      "pitfall": "Для целой части деления нужен //."
+    },
+    "//": {
+      "title": "Целочисленное деление //",
+      "meaning": "Деление с округлением результата вниз.",
+      "example": "print(9 // 2)  # 4",
+      "pitfall": "Для отрицательных чисел округляет к меньшему целому."
+    },
+    "*": {
+      "title": "Умножение *",
+      "meaning": "Умножает числа или повторяет строки.",
+      "example": "print(3 * 4)  # 12",
+      "pitfall": "Степень задаётся **, а не *."
+    },
+    "**": {
+      "title": "Степень **",
+      "meaning": "Возводит число в степень.",
+      "example": "print(2 ** 3)  # 8",
+      "pitfall": "2 ** 3 — не то же самое, что 2 * 3."
+    },
+    "проценты": {
+      "title": "Проценты",
+      "meaning": "Один процент — одна сотая часть.",
+      "example": "price = 200\nprint(price * 80 / 100)",
+      "pitfall": "При скидке 20% остаётся 80%, а не 20%."
+    },
+    "if": {
+      "title": "if",
+      "meaning": "Запускает блок, только когда условие истинно.",
+      "example": "if age >= 18:\n    print('Можно')",
+      "pitfall": "После условия нужны двоеточие и отступ."
+    },
+    "elif": {
+      "title": "elif",
+      "meaning": "Проверяет другое условие, если предыдущие не сработали.",
+      "example": "if x > 0:\n    print('плюс')\nelif x < 0:\n    print('минус')",
+      "pitfall": "elif не выполняется одновременно с уже сработавшим if."
+    },
+    "else": {
+      "title": "else",
+      "meaning": "Ветка на все остальные случаи.",
+      "example": "if n == 0:\n    print('ноль')\nelse:\n    print('не ноль')",
+      "pitfall": "У else нет отдельного условия."
+    },
+    "and": {
+      "title": "and",
+      "meaning": "Оба условия должны быть верны.",
+      "example": "print(3 < 5 and 5 < 7)",
+      "pitfall": "Если хотя бы одно False, всё выражение False."
+    },
+    "or": {
+      "title": "or",
+      "meaning": "Достаточно, чтобы одно условие было верным.",
+      "example": "print(3 > 5 or 7 > 5)",
+      "pitfall": "or отличается от and: достаточно одного True."
+    },
+    "in": {
+      "title": "in",
+      "meaning": "Проверяет, содержится ли элемент в последовательности или ключ в словаре.",
+      "example": "print('a' in 'cat')  # True",
+      "pitfall": "Для словаря in ищет среди ключей."
+    },
+    "range": {
+      "title": "range()",
+      "meaning": "Создаёт последовательность целых чисел для цикла.",
+      "example": "for i in range(1, 4):\n    print(i)",
+      "pitfall": "Верхняя граница не входит: будет 1, 2, 3."
+    },
+    "for": {
+      "title": "for",
+      "meaning": "Повторяет тело для каждого элемента.",
+      "example": "for n in [2, 4, 6]:\n    print(n)",
+      "pitfall": "После for нужна двоеточие и отступ."
+    },
+    "while": {
+      "title": "while",
+      "meaning": "Повторяет блок, пока условие истинно.",
+      "example": "n = 3\nwhile n > 0:\n    print(n)\n    n -= 1",
+      "pitfall": "Не забывай менять условие: иначе получится бесконечный цикл."
+    },
+    "break": {
+      "title": "break",
+      "meaning": "Сразу завершает ближайший цикл.",
+      "example": "for n in range(5):\n    if n == 3:\n        break",
+      "pitfall": "Не выходит сразу из всей программы, только из цикла."
+    },
+    "continue": {
+      "title": "continue",
+      "meaning": "Пропускает остаток текущей итерации цикла.",
+      "example": "for n in range(4):\n    if n == 2:\n        continue\n    print(n)",
+      "pitfall": "Не путай с break, который завершает весь цикл."
+    },
+    "список": {
+      "title": "list / список",
+      "meaning": "Хранит несколько значений по порядку.",
+      "example": "items = ['кот', 'дом']\nprint(items[0])",
+      "pitfall": "Индексы начинаются с 0."
+    },
+    "list": {
+      "title": "list()",
+      "meaning": "Создаёт список из последовательности.",
+      "example": "print(list(range(3)))",
+      "pitfall": "Список может содержать повторы."
+    },
+    "len": {
+      "title": "len()",
+      "meaning": "Возвращает количество элементов.",
+      "example": "print(len('кот'))  # 3",
+      "pitfall": "len не считает сумму значений."
+    },
+    "split": {
+      "title": "split()",
+      "meaning": "Разбивает строку на части.",
+      "example": "print('a b c'.split())",
+      "pitfall": "split() возвращает строки, даже если элементы похожи на числа."
+    },
+    "lower": {
+      "title": "lower()",
+      "meaning": "Приводит буквы к нижнему регистру.",
+      "example": "print('Python'.lower())",
+      "pitfall": "lower() возвращает новую строку."
+    },
+    "strip": {
+      "title": "strip()",
+      "meaning": "Убирает пробелы и переводы строк по краям.",
+      "example": "print('  кот  '.strip())",
+      "pitfall": "Внутренние пробелы strip() не убирает."
+    },
+    "startswith": {
+      "title": "startswith()",
+      "meaning": "Проверяет начало строки.",
+      "example": "print('ERROR:disk'.startswith('ERROR:'))",
+      "pitfall": "Проверяет конкретный префикс, а не слово где угодно."
+    },
+    "срез": {
+      "title": "Срез [start:stop:step]",
+      "meaning": "Берёт часть строки или списка по индексам.",
+      "example": "print('python'[1:4])  # yth",
+      "pitfall": "Индекс stop не включается."
+    },
+    "f-строка": {
+      "title": "f-строка",
+      "meaning": "Позволяет подставлять переменные внутрь текста.",
+      "example": "name = 'Ира'\nprint(f'Привет, {name}')",
+      "pitfall": "Буква f должна быть перед кавычкой."
+    },
+    "def": {
+      "title": "def",
+      "meaning": "Объявляет функцию под своим именем.",
+      "example": "def double(x):\n    return x * 2",
+      "pitfall": "Объявление функции не запускает её автоматически."
+    },
+    "return": {
+      "title": "return",
+      "meaning": "Возвращает результат и завершает функцию.",
+      "example": "def cube(x):\n    return x ** 3",
+      "pitfall": "print показывает на экране, return отдаёт значение вызывающему коду."
+    },
+    "аргументы": {
+      "title": "Аргументы",
+      "meaning": "Значения, которые передают в функцию при вызове.",
+      "example": "def hello(name):\n    print(name)\nhello('Аня')",
+      "pitfall": "Количество аргументов должно подходить определению функции."
+    },
+    "функция": {
+      "title": "Функция",
+      "meaning": "Именованный кусок логики, который можно вызывать повторно.",
+      "example": "def plus_one(x):\n    return x + 1",
+      "pitfall": "Большие функции сложнее проверять. Лучше делить задачу на шаги."
+    },
+    "dict": {
+      "title": "dict / словарь",
+      "meaning": "Хранит пары ключ → значение.",
+      "example": "prices = {'чай': 30}\nprint(prices['чай'])",
+      "pitfall": "Повтор ключа перезапишет его значение."
+    },
+    "словарь": {
+      "title": "Словарь",
+      "meaning": "Достаёт данные по ключу вместо номера индекса.",
+      "example": "data = {'name': 'Аня'}",
+      "pitfall": "Не все ключи обязательно присутствуют."
+    },
+    "get": {
+      "title": "dict.get()",
+      "meaning": "Читает значение, а при отсутствии ключа отдаёт запасное.",
+      "example": "age = data.get('age', 0)",
+      "pitfall": "data[key] без проверки может выбросить KeyError."
+    },
+    "set": {
+      "title": "set / множество",
+      "meaning": "Хранит уникальные элементы.",
+      "example": "print(set([1, 1, 2]))",
+      "pitfall": "Обычное множество не гарантирует нужный порядок печати."
+    },
+    "множество": {
+      "title": "Множество",
+      "meaning": "Коллекция без повторов, удобная для проверок принадлежности.",
+      "example": "unique = set(['a', 'a', 'b'])",
+      "pitfall": "Для упорядоченного вывода используй sorted()."
+    },
+    "sorted": {
+      "title": "sorted()",
+      "meaning": "Возвращает отсортированный список, не меняя исходную коллекцию.",
+      "example": "print(sorted([3, 1, 2]))",
+      "pitfall": "Для сложных объектов укажи key=."
+    },
+    "max": {
+      "title": "max()",
+      "meaning": "Находит наибольший элемент.",
+      "example": "print(max([1, 5, 3]))",
+      "pitfall": "max([]) вызовет ValueError без значения по умолчанию."
+    },
+    "sum": {
+      "title": "sum()",
+      "meaning": "Суммирует числа.",
+      "example": "print(sum([1, 2, 3]))",
+      "pitfall": "Для склеивания текста лучше использовать ''.join(...)."
+    },
+    "map": {
+      "title": "map()",
+      "meaning": "Применяет функцию к каждому элементу.",
+      "example": "nums = map(int, '1 2'.split())",
+      "pitfall": "В Python 3 map — итератор, а не готовый список."
+    },
+    "filter": {
+      "title": "filter()",
+      "meaning": "Оставляет элементы, прошедшие проверку.",
+      "example": "print(list(filter(lambda x: x > 0, [-1, 2])))",
+      "pitfall": "Не путай с сортировкой, порядок не меняется."
+    },
+    "lambda": {
+      "title": "lambda",
+      "meaning": "Небольшая функция без отдельного имени.",
+      "example": "sorted(words, key=lambda w: len(w))",
+      "pitfall": "Если выражение сложное, обычный def читается лучше."
+    },
+    "count": {
+      "title": "count()",
+      "meaning": "Считает одинаковые элементы.",
+      "example": "print([1, 2, 1].count(1))",
+      "pitfall": "Считает точные совпадения, с учётом регистра строк."
+    },
+    "json": {
+      "title": "JSON",
+      "meaning": "Текстовый формат для передачи данных и настроек.",
+      "example": "import json\ndata = json.loads('{\"x\": 1}')",
+      "pitfall": "В JSON строки и ключи должны быть в двойных кавычках."
+    },
+    "json.dumps": {
+      "title": "json.dumps()",
+      "meaning": "Преобразует объект Python в JSON-строку.",
+      "example": "json.dumps({'a': 1})",
+      "pitfall": "Для русского текста добавь ensure_ascii=False."
+    },
+    "import": {
+      "title": "import",
+      "meaning": "Подключает код из готового модуля.",
+      "example": "import math\nprint(math.sqrt(9))",
+      "pitfall": "Не называй свой файл так же, как стандартный модуль."
+    },
+    "csv": {
+      "title": "CSV",
+      "meaning": "Табличные данные в строках. Поля разделены запятыми или другим символом.",
+      "example": "import csv\nrows = list(csv.reader(['a,b']))",
+      "pitfall": "Простой split(',') не понимает запятые внутри кавычек."
+    },
+    "try": {
+      "title": "try/except",
+      "meaning": "Позволяет пережить ожидаемую ошибку и обработать её.",
+      "example": "try:\n    n = int(input())\nexcept ValueError:\n    print('Не число')",
+      "pitfall": "Не стоит без необходимости перехватывать сразу все ошибки."
+    },
+    "except": {
+      "title": "except",
+      "meaning": "Запускается при определённой ошибке в блоке try.",
+      "example": "except ValueError:\n    print('Ошибка')",
+      "pitfall": "Лови конкретные ошибки, а не маскируй ошибки программы."
+    },
+    "ValueError": {
+      "title": "ValueError",
+      "meaning": "Ошибка при неподходящем значении.",
+      "example": "int('кот')  # ValueError",
+      "pitfall": "Это не то же самое, что ошибка отсутствующего имени."
+    },
+    "ZeroDivisionError": {
+      "title": "ZeroDivisionError",
+      "meaning": "Ошибка деления на ноль.",
+      "example": "print(3 / 0)  # ошибка",
+      "pitfall": "Проверь знаменатель или обработай исключение."
+    },
+    "class": {
+      "title": "class",
+      "meaning": "Описывает тип объекта: его данные и методы.",
+      "example": "class Dog:\n    def bark(self):\n        return 'гав'",
+      "pitfall": "Класс — чертёж; объект — созданный экземпляр."
+    },
+    "self": {
+      "title": "self",
+      "meaning": "Ссылка на текущий экземпляр класса внутри его методов.",
+      "example": "self.name = name",
+      "pitfall": "У обычных методов self — первый параметр."
+    },
+    "__init__": {
+      "title": "__init__",
+      "meaning": "Метод настройки нового объекта после создания.",
+      "example": "def __init__(self, name):\n    self.name = name",
+      "pitfall": "В __init__ нельзя возвращать произвольное значение."
+    },
+    "__str__": {
+      "title": "__str__",
+      "meaning": "Определяет, как объект выглядит при print/str.",
+      "example": "def __str__(self):\n    return self.name",
+      "pitfall": "__str__ обязан возвращать строку."
+    },
+    "property": {
+      "title": "@property",
+      "meaning": "Позволяет читать вычисляемое свойство как обычное поле.",
+      "example": "@property\ndef age(self):\n    return self._age",
+      "pitfall": "Не всегда нужно: простое поле обычно достаточно."
+    },
+    "staticmethod": {
+      "title": "@staticmethod",
+      "meaning": "Метод класса, которому не нужен self.",
+      "example": "@staticmethod\ndef add(a, b):\n    return a + b",
+      "pitfall": "Если функция не связана с классом, можно вынести её в модуль."
+    },
+    "наследование": {
+      "title": "Наследование",
+      "meaning": "Новый класс получает свойства другого и может их менять.",
+      "example": "class Dog(Animal):\n    pass",
+      "pitfall": "Не используй наследование просто ради повторного применения кода."
+    },
+    "композиция": {
+      "title": "Композиция",
+      "meaning": "Один объект содержит другой объект.",
+      "example": "self.address = Address(city)",
+      "pitfall": "Отношение «имеет» лучше выражать композицией, чем наследованием."
+    },
+    "deque": {
+      "title": "deque",
+      "meaning": "Двусторонняя очередь из collections.",
+      "example": "from collections import deque\nq = deque([1])\nprint(q.popleft())",
+      "pitfall": "pop(0) у большого списка может быть дорогим."
+    },
+    "queue": {
+      "title": "Очередь FIFO",
+      "meaning": "Кто раньше пришёл, тот раньше обслуживается.",
+      "example": "queue.append('А')\nqueue.popleft()",
+      "pitfall": "Не путай очередь со стеком LIFO."
+    },
+    "stack": {
+      "title": "Стек LIFO",
+      "meaning": "Последний добавленный элемент извлекается первым.",
+      "example": "stack = [1, 2]\nprint(stack.pop())",
+      "pitfall": "Если стек пуст, pop() выдаст ошибку."
+    },
+    "BFS": {
+      "title": "BFS — поиск в ширину",
+      "meaning": "Обходит граф слоями, находит кратчайший путь в невзвешенном графе.",
+      "example": "# очередь вершин\n# dist[v] = dist[u] + 1",
+      "pitfall": "Для дорог с разными весами простой BFS не подходит."
+    },
+    "graph": {
+      "title": "Граф",
+      "meaning": "Набор вершин и связей между ними.",
+      "example": "edges = {1: [2, 3], 2: [1]}",
+      "pitfall": "Граф не обязательно связан целиком."
+    },
+    "алгоритм": {
+      "title": "Алгоритм",
+      "meaning": "Понятная последовательность шагов для решения задачи.",
+      "example": "# прочитать -> обработать -> вывести",
+      "pitfall": "Быстрый код не всегда значит понятный и корректный."
+    },
+    "O(n)": {
+      "title": "O(n)",
+      "meaning": "Время работы растёт примерно вместе с числом элементов.",
+      "example": "for item in items:\n    print(item)",
+      "pitfall": "O(n) — оценка роста, а не точная скорость в секундах."
+    },
+    "O(n²)": {
+      "title": "O(n²)",
+      "meaning": "Количество операций растёт примерно как квадрат числа элементов.",
+      "example": "for a in items:\n    for b in items:\n        ...",
+      "pitfall": "Двойной цикл не всегда плох: для маленьких данных он может быть проще."
+    },
+    "O(log n)": {
+      "title": "O(log n)",
+      "meaning": "Число шагов растёт медленно, если каждый шаг сокращает поиск вдвое.",
+      "example": "# бинарный поиск",
+      "pitfall": "Для бинарного поиска элементы должны быть отсортированы."
+    },
+    "рекурсия": {
+      "title": "Рекурсия",
+      "meaning": "Функция вызывает сама себя на меньшей задаче.",
+      "example": "def fact(n):\n    return 1 if n < 2 else n * fact(n-1)",
+      "pitfall": "Без базового случая рекурсия не остановится."
+    },
+    "скользящее окно": {
+      "title": "Скользящее окно",
+      "meaning": "Повторно использует сумму соседнего участка без полного пересчёта.",
+      "example": "total += new - old",
+      "pitfall": "Следи за границами первого и последнего окна."
+    },
+    "DAG": {
+      "title": "DAG",
+      "meaning": "Ориентированный граф без циклов.",
+      "example": "# зависимости: a -> b",
+      "pitfall": "Если есть цикл, задачи нельзя упорядочить по зависимостям."
+    },
+    "топосортировка": {
+      "title": "Топологическая сортировка",
+      "meaning": "Порядок выполнения задач с зависимостями.",
+      "example": "# сначала нулевые входящие степени",
+      "pitfall": "Работает только для графа без циклов."
+    },
+    "интервалы": {
+      "title": "Интервалы",
+      "meaning": "Промежутки с началом и концом: встречи, бронирования.",
+      "example": "if start < previous_end:\n    print('пересечение')",
+      "pitfall": "Заранее реши, считается ли касание границ пересечением."
+    },
+    "CLI": {
+      "title": "CLI",
+      "meaning": "Интерфейс через текстовые команды.",
+      "example": "command = input().split()",
+      "pitfall": "Отдельно разбирай команду и выполняй её действие."
+    },
+    "CRUD": {
+      "title": "CRUD",
+      "meaning": "Создать, прочитать, изменить и удалить запись.",
+      "example": "data[key] = value\ndata.pop(key, None)",
+      "pitfall": "Проверяй случай, когда запись не найдена."
+    },
+    "LRU": {
+      "title": "LRU",
+      "meaning": "Вытесняет из кэша то, что использовали давнее всего.",
+      "example": "cache.move_to_end(key)",
+      "pitfall": "Обращение к элементу меняет его положение в очереди недавности."
+    },
+    "cache": {
+      "title": "Кэш",
+      "meaning": "Хранит недавно использованные результаты для быстрого доступа.",
+      "example": "cache = {}",
+      "pitfall": "Нужно продумать момент устаревания данных."
+    },
+    "diff": {
+      "title": "diff",
+      "meaning": "Разница между двумя версиями данных.",
+      "example": "changed = old != new",
+      "pitfall": "Сравнивай отсутствующие ключи отдельно от значений."
+    },
+    "glossary": {
+      "title": "Глоссарий",
+      "meaning": "Согласованный словарь терминов и переводов.",
+      "example": "terms = {'cat': 'кот'}",
+      "pitfall": "При переводе технических терминов важна последовательность."
+    },
+    "aggregate": {
+      "title": "Агрегация",
+      "meaning": "Подсчёт сводных значений по набору данных.",
+      "example": "total = sum(scores)",
+      "pitfall": "Проверяй пустые коллекции до деления на количество."
+    },
+    "&": {
+      "title": "Пересечение множеств &",
+      "meaning": "Оставляет элементы, которые есть в обоих множествах.",
+      "example": "print({1,2} & {2,3})  # {2}",
+      "pitfall": "Оператор & для множеств не то же самое, что and."
+    },
+    "CSV": {
+      "title": "CSV",
+      "meaning": "Таблица из строк и разделителей.",
+      "example": "name, score = 'Ann;5'.split(';')",
+      "pitfall": "Сложные CSV с кавычками читай через csv.reader."
+    },
+    "Counter": {
+      "title": "Counter",
+      "meaning": "Счётчик элементов из collections.",
+      "example": "from collections import Counter\nprint(Counter('aaba'))",
+      "pitfall": "Ненайденный ключ возвращает 0."
+    },
+    "FIFO": {
+      "title": "FIFO",
+      "meaning": "Первым пришёл — первым ушёл.",
+      "example": "# очередь: A,B,C -> заберём A",
+      "pitfall": "Для очереди из многих элементов лучше deque."
+    },
+    "Fibonacci": {
+      "title": "Фибоначчи",
+      "meaning": "Каждое число — сумма предыдущих двух.",
+      "example": "a,b = 0,1\na,b = b,a+b",
+      "pitfall": "Не путай F0=0 и F1=1."
+    },
+    "OrderedDict": {
+      "title": "OrderedDict",
+      "meaning": "Словарь с дополнительными операциями упорядочивания.",
+      "example": "from collections import OrderedDict\nd=OrderedDict()",
+      "pitfall": "Используй move_to_end для LRU, иначе он будет обычным словарём."
+    },
+    "all": {
+      "title": "all()",
+      "meaning": "True, когда все элементы истинны.",
+      "example": "print(all([True, True]))",
+      "pitfall": "all([]) тоже True."
+    },
+    "any": {
+      "title": "any()",
+      "meaning": "True, если хотя бы один элемент истинный.",
+      "example": "print(any([False, True]))",
+      "pitfall": "any([]) — False."
+    },
+    "base case": {
+      "title": "Базовый случай",
+      "meaning": "Условие завершения рекурсивных вызовов.",
+      "example": "if n <= 1:\n    return 1",
+      "pitfall": "Без него рекурсия станет бесконечной."
+    },
+    "bisect": {
+      "title": "bisect",
+      "meaning": "Библиотека бинарного поиска в отсортированном списке.",
+      "example": "from bisect import bisect_left\nprint(bisect_left([1,3,5],3))",
+      "pitfall": "Список должен быть отсортирован."
+    },
+    "divmod": {
+      "title": "divmod()",
+      "meaning": "Возвращает целую часть деления и остаток сразу.",
+      "example": "print(divmod(125,60))  # (2,5)",
+      "pitfall": "Второе число не должно быть нулём."
+    },
+    "edge case": {
+      "title": "Крайний случай",
+      "meaning": "Редкий, но допустимый вход: пустой список, ноль, одно значение.",
+      "example": "# тесты: [], [1], [1,1]",
+      "pitfall": "Один основной пример не доказывает, что код корректен."
+    },
+    "enumerate": {
+      "title": "enumerate()",
+      "meaning": "Даёт индекс и элемент вместе.",
+      "example": "for i, x in enumerate(['a','b'],1):\n    print(i,x)",
+      "pitfall": "По умолчанию отсчёт с нуля."
+    },
+    "gcd": {
+      "title": "gcd()",
+      "meaning": "Наибольший общий делитель.",
+      "example": "from math import gcd\nprint(gcd(12,18))",
+      "pitfall": "У 0 и 0 нет положительного НОД, в Python gcd(0,0)=0."
+    },
+    "isalpha": {
+      "title": "isalpha()",
+      "meaning": "Проверяет, что строка непуста и содержит только буквенные символы.",
+      "example": "print('кот'.isalpha())",
+      "pitfall": "Цифры и пробелы дадут False."
+    },
+    "isdigit": {
+      "title": "isdigit()",
+      "meaning": "Проверяет, что строка непуста и состоит из цифровых символов.",
+      "example": "print('123'.isdigit())",
+      "pitfall": "Отрицательные числа ('-3') не пройдут такую проверку."
+    },
+    "key": {
+      "title": "key=",
+      "meaning": "Функция для выбора критерия сортировки.",
+      "example": "sorted(['bbb','a'],key=len)",
+      "pitfall": "Сама функция key должна возвращать сравнимое значение."
+    },
+    "logs": {
+      "title": "Логи",
+      "meaning": "Сообщения программы о событиях и ошибках.",
+      "example": "print('INFO started')",
+      "pitfall": "Не выводи в логи пароли и токены."
+    },
+    "markdown": {
+      "title": "Markdown",
+      "meaning": "Простая разметка: # заголовки, **жирный**, списки.",
+      "example": "# Заголовок\n## Раздел",
+      "pitfall": "Число # задаёт уровень заголовка."
+    },
+    "memoization": {
+      "title": "Мемоизация",
+      "meaning": "Запоминание результатов функций, чтобы не считать заново.",
+      "example": "from functools import lru_cache\n@lru_cache(None)\ndef f(x): return x",
+      "pitfall": "Следи, чтобы результат зависел только от аргументов."
+    },
+    "method": {
+      "title": "Метод",
+      "meaning": "Функция, объявленная внутри класса.",
+      "example": "class A:\n    def run(self):\n        pass",
+      "pitfall": "У обычного метода первый аргумент self."
+    },
+    "метод": {
+      "title": "Метод",
+      "meaning": "Действие объекта, описанное внутри класса.",
+      "example": "item.calculate()",
+      "pitfall": "Если метод использует поля объекта, обращайся к ним через self."
+    },
+    "min": {
+      "title": "min()",
+      "meaning": "Находит наименьшее значение.",
+      "example": "print(min(5,2))",
+      "pitfall": "Пустой список без default приведёт к ошибке."
+    },
+    "operator": {
+      "title": "operator",
+      "meaning": "Стандартный модуль функций для математических операций.",
+      "example": "import operator\nprint(operator.add(2,3))",
+      "pitfall": "Не запускай строку через eval ради калькулятора."
+    },
+    "override": {
+      "title": "Переопределение метода",
+      "meaning": "Дочерний класс заменяет метод родителя.",
+      "example": "class Dog(Animal):\n    def sound(self): return 'гав'",
+      "pitfall": "Следи, чтобы интерфейс метода остался понятным."
+    },
+    "parser": {
+      "title": "Парсер",
+      "meaning": "Извлекает структуру из текстовых данных.",
+      "example": "name,score = line.split(';')",
+      "pitfall": "Всегда проверяй формат входных данных."
+    },
+    "pop": {
+      "title": "pop()",
+      "meaning": "Удаляет и возвращает элемент коллекции.",
+      "example": "stack=[1,2]\nprint(stack.pop())",
+      "pitfall": "Для отсутствующего ключа словаря удобно pop(key, None)."
+    },
+    "prime": {
+      "title": "Простое число",
+      "meaning": "Натуральное число больше 1, делящееся только на 1 и себя.",
+      "example": "# 2,3,5,7 — простые",
+      "pitfall": "1 не является простым числом."
+    },
+    "records": {
+      "title": "Записи",
+      "meaning": "Несколько полей, относящихся к одной сущности.",
+      "example": "item={'name':'чай','price':30}",
+      "pitfall": "Держи одинаковые поля в однотипных записях."
+    },
+    "settings": {
+      "title": "Настройки",
+      "meaning": "Данные, управляющие поведением программы.",
+      "example": "config={'theme':'dark'}",
+      "pitfall": "Не добавляй секретные пароли в открытый конфиг."
+    },
+    "настройки": {
+      "title": "Настройки",
+      "meaning": "Например, тема, громкость и язык приложения.",
+      "example": "settings['theme']='dark'",
+      "pitfall": "Проверяй допустимые значения перед сохранением."
+    },
+    "sort": {
+      "title": "sort()",
+      "meaning": "Сортирует список на месте.",
+      "example": "a=[3,1]\na.sort()",
+      "pitfall": "sort() возвращает None, а не новый список."
+    },
+    "tuple": {
+      "title": "Кортеж",
+      "meaning": "Упорядоченная коллекция, обычно фиксированной длины.",
+      "example": "point=(10,20)",
+      "pitfall": "В отличие от списка, элементы кортежа нельзя менять."
+    },
+    "undo": {
+      "title": "UNDO",
+      "meaning": "Отмена последнего действия через историю операций.",
+      "example": "history.append(change)\nhistory.pop()",
+      "pitfall": "Подумай, что делать, если история пустая."
+    },
+    "update": {
+      "title": "dict.update()",
+      "meaning": "Добавляет или заменяет сразу несколько пар словаря.",
+      "example": "data.update({'x':1})",
+      "pitfall": "Совпавшие ключи будут перезаписаны."
+    },
+    "арифметика": {
+      "title": "Арифметика",
+      "meaning": "Операции с числами: +, -, *, /, //, %, **.",
+      "example": "print(2+3*4)",
+      "pitfall": "Помни про порядок действий и скобки."
+    },
+    "атрибут": {
+      "title": "Атрибут",
+      "meaning": "Поле, принадлежащее конкретному объекту.",
+      "example": "self.name = 'кот'",
+      "pitfall": "Не путай атрибут экземпляра и переменную функции."
+    },
+    "границы диапазона": {
+      "title": "Границы",
+      "meaning": "Ровно на пороге условия часто скрываются ошибки.",
+      "example": "print(10 <= x <= 20)",
+      "pitfall": "Проверь значения 9, 10, 20 и 21."
+    },
+    "команда": {
+      "title": "Команда",
+      "meaning": "Одна текстовая операция в консольном приложении.",
+      "example": "action = input().split()[0]",
+      "pitfall": "Сначала разбери, потом выполняй действие."
+    },
+    "объект": {
+      "title": "Объект",
+      "meaning": "Экземпляр класса с собственными данными.",
+      "example": "dog = Dog('Бим')",
+      "pitfall": "Класс описывает тип, объект — отдельный экземпляр."
+    },
+    "смета": {
+      "title": "Смета",
+      "meaning": "Подсчёт стоимости нескольких позиций.",
+      "example": "total += price * quantity",
+      "pitfall": "Для денег в серьёзном приложении предпочтительнее Decimal."
+    },
+    "состояние": {
+      "title": "Состояние",
+      "meaning": "Данные программы в текущий момент.",
+      "example": "balance += amount",
+      "pitfall": "Любая команда должна менять только нужную часть состояния."
+    },
+    "сравнение": {
+      "title": "Сравнение",
+      "meaning": "Проверка >, <, ==, !=, >=, <=.",
+      "example": "print(5 >= 3)",
+      "pitfall": "Одиночный = — присваивание."
+    },
+    "строка": {
+      "title": "Строка",
+      "meaning": "Текст в кавычках, например 'Привет'.",
+      "example": "word = 'Python'",
+      "pitfall": "Каждый символ имеет индекс начиная с 0."
+    },
+    "сумма": {
+      "title": "Сумма",
+      "meaning": "Результат сложения нескольких значений.",
+      "example": "total = sum([1,2,3])",
+      "pitfall": "Сначала преобразуй строки с числами через int."
+    },
+    "формула": {
+      "title": "Формула",
+      "meaning": "Зависимость результата от входных чисел.",
+      "example": "area = width * height",
+      "pitfall": "Проверяй порядок действий и единицы измерения."
+    },
+    "цикл": {
+      "title": "Цикл",
+      "meaning": "Повторяет блок кода несколько раз.",
+      "example": "for i in range(3): print(i)",
+      "pitfall": "Не забывай менять условие в while."
+    },
+    "экземпляр": {
+      "title": "Экземпляр",
+      "meaning": "Конкретный объект, созданный по классу.",
+      "example": "person = Person('Ann')",
+      "pitfall": "Экземпляры хранят свои значения полей."
+    }
+  },
+  "guides": {
+    "start": {
+      "title": "Первые шаги",
+      "overview": "Переменная хранит значение. print() его показывает. input() читает текст, который часто нужно превратить в число.",
+      "steps": [
+        "Научись отличать текст от числа.",
+        "Уверенно используй =, +, -, *, //, %.",
+        "Объясни вслух, что хранится в каждой переменной."
+      ],
+      "example": "x = int(input())\nx = x + 1\nprint(x)",
+      "advice": "Сначала читай код по строкам. Не спеши сокращать его до одной строки."
+    },
+    "conditions": {
+      "title": "Условия",
+      "overview": "Программа выбирает действие в зависимости от результата сравнения.",
+      "steps": [
+        "Проверяй границы: ровно 0, ровно 10, ровно 18.",
+        "Не путай присваивание = и сравнение ==.",
+        "Помни, что из if / elif / else сработает одна подходящая ветка."
+      ],
+      "example": "age = int(input())\nif age >= 18:\n    print('взрослый')\nelse:\n    print('младше 18')",
+      "advice": "Напиши три примера входа, при которых программа идёт по разным веткам."
+    },
+    "loops": {
+      "title": "Циклы",
+      "overview": "Цикл повторяет действие. for удобен для известной последовательности, while — для условия.",
+      "steps": [
+        "Пройди 2–3 итерации на бумаге.",
+        "Проверяй пустые диапазоны и последний шаг.",
+        "Следи, чтобы while когда-нибудь остановился."
+      ],
+      "example": "total = 0\nfor i in range(1, 4):\n    total += i\nprint(total)  # 6",
+      "advice": "Если не понимаешь результат, запиши таблицу i и total на каждом шаге."
+    },
+    "data": {
+      "title": "Данные и функции",
+      "overview": "Строки и списки содержат последовательности. Функции позволяют повторно использовать действия.",
+      "steps": [
+        "Научись брать элемент по индексу.",
+        "Разберись с .split(), len() и срезами.",
+        "Разделяй ввод, вычисление и вывод."
+      ],
+      "example": "words = input().split()\nprint(len(words))",
+      "advice": "Сначала напиши простой цикл; сокращённые варианты изучай после."
+    },
+    "functions": {
+      "title": "Функции и словари",
+      "overview": "Функции принимают аргументы, возвращают значения. Словари быстро находят данные по ключу.",
+      "steps": [
+        "Различай print() и return.",
+        "Разбивай большую задачу на маленькие функции.",
+        "Проверяй отсутствие ключа через get()."
+      ],
+      "example": "def price_with_tax(price):\n    return price * 1.1\n\nprint(price_with_tax(100))",
+      "advice": "Если функция делает две разные вещи, попробуй разделить её."
+    },
+    "files": {
+      "title": "Файлы и ошибки",
+      "overview": "JSON, CSV и текстовые журналы — обычные форматы данных. Ошибки ввода нужно обрабатывать.",
+      "steps": [
+        "Умей превратить JSON-текст в объект Python.",
+        "Обрабатывай ожидаемый ValueError и ZeroDivisionError.",
+        "Проверяй неверные данные, а не только правильные."
+      ],
+      "example": "import json\ndata = json.loads('{\"name\": \"Ann\"}')\nprint(data['name'])",
+      "advice": "Некорректный ввод — не редкое исключение, а нормальный тест для программы."
+    },
+    "objects": {
+      "title": "Классы и ООП",
+      "overview": "Класс объединяет состояние объекта и действия, которые над ним выполняют.",
+      "steps": [
+        "Различай класс и экземпляр.",
+        "Понимай, что такое self и __init__.",
+        "Используй композицию, когда один объект содержит другой."
+      ],
+      "example": "class Counter:\n    def __init__(self):\n        self.count = 0\n\n    def add(self):\n        self.count += 1",
+      "advice": "Не создавай класс там, где хватит простой функции."
+    },
+    "algorithms": {
+      "title": "Алгоритмы",
+      "overview": "Важно не только получить ответ, но и понимать, почему решение подходит и как растёт количество операций.",
+      "steps": [
+        "Проверяй крайние случаи.",
+        "Сравни простое и быстрое решение.",
+        "Познакомься с очередью, стеком, бинарным поиском и графами."
+      ],
+      "example": "seen = set()\nfor x in numbers:\n    if target - x in seen:\n        print('нашли пару')\n    seen.add(x)",
+      "advice": "Сначала докажи правильность на маленьких примерах, потом думай об оптимизации."
+    },
+    "projects": {
+      "title": "Проекты",
+      "overview": "Теперь входных данных несколько и действия зависят друг от друга. Нужны ясные переменные и отдельные шаги.",
+      "steps": [
+        "Составь формат команд и выходных данных.",
+        "Отдели хранение данных от вычислений.",
+        "Проверь команды в неожиданном порядке."
+      ],
+      "example": "state = {}\nfor command in commands:\n    # разбери команду\n    # обнови состояние",
+      "advice": "Пиши код небольшими частями. Проверяй каждую часть, прежде чем добавлять новую."
+    },
+    "mastery": {
+      "title": "Самостоятельная работа",
+      "overview": "Собери целую небольшую программу: вход, хранение состояния, алгоритм, граничные случаи и вывод.",
+      "steps": [
+        "Сначала сформулируй правила своими словами.",
+        "Сделай несколько своих тестов, включая ошибки и пустые наборы.",
+        "После правильного ответа попробуй улучшить читаемость решения."
+      ],
+      "example": "def solve():\n    # чтение\n    # обработка\n    # вывод\n    pass\n\nsolve()",
+      "advice": "SSS внутри CodeRise — финал учебного курса, а не обещание уровня Senior-разработчика."
+    }
+  },
+  "legacy": {
+    "g01": [
+      "Сначала умножь 3 на 4, затем прибавь 2.",
+      [
+        "print(2 + 3 * 4)",
+        "x = 3 * 4\nprint(2 + x)"
+      ],
+      [
+        "*",
+        "print"
+      ]
+    ],
+    "g02": [
+      "Строка 'Мир' уже хранится в name — передай переменную в print.",
+      [
+        "name = 'Мир'\nprint(name)",
+        "name = 'Мир'\nmessage = name\nprint(message)"
+      ],
+      [
+        "переменная",
+        "print"
+      ]
+    ],
+    "g03": [
+      "Нужен ровно один вызов print с текстом в кавычках.",
+      [
+        "print(\"Привет, мир!\")",
+        "text = 'Привет, мир!'\nprint(text)"
+      ],
+      [
+        "print",
+        "строка"
+      ]
+    ],
+    "g04": [
+      "В Python переменные с разными именами считаются разными.",
+      [
+        "age = 18\nprint(age)",
+        "age = 18\nresult = age\nprint(result)"
+      ],
+      [
+        "переменная",
+        "print"
+      ]
+    ],
+    "g05": [
+      "// берёт целую часть от деления; остаток можно узнать через %.",
+      [
+        "print(9 // 2)",
+        "n = 9\nprint(n // 2)"
+      ],
+      [
+        "//",
+        "%"
+      ]
+    ],
+    "g06": [
+      "Прочитай каждую строку, преврати её в int, сложи и выведи.",
+      [
+        "a = int(input())\nb = int(input())\nprint(a + b)",
+        "numbers = [int(input()) for _ in range(2)]\nprint(sum(numbers))"
+      ],
+      [
+        "input",
+        "int",
+        "print"
+      ]
+    ],
+    "f01": [
+      "Сравни x и 5. При x=7 условие выполняется.",
+      [
+        "x = 7\nif x > 5:\n    print(\"да\")\nelse:\n    print(\"нет\")",
+        "x = 7\nprint(\"да\" if x > 5 else \"нет\")"
+      ],
+      [
+        "if",
+        "else",
+        ">"
+      ]
+    ],
+    "f02": [
+      "Для сравнения используй ==, не =.",
+      [
+        "number = int(input())\nprint(\"чётное\" if number % 2 == 0 else \"нечётное\")",
+        "n = int(input())\nif n % 2 == 0:\n    print(\"чётное\")\nelse:\n    print(\"нечётное\")"
+      ],
+      [
+        "if",
+        "%",
+        "=="
+      ]
+    ],
+    "f03": [
+      "Внутри if напиши печать с четырьмя пробелами в начале строки.",
+      [
+        "n = int(input())\nif n > 3:\n    print(\"да\")\nelse:\n    print(\"нет\")",
+        "n = int(input())\nprint(\"да\" if n > 3 else \"нет\")"
+      ],
+      [
+        "if",
+        "else",
+        ">"
+      ]
+    ],
+    "f04": [
+      "Понадобятся три ветки: положительное, отрицательное и ноль.",
+      [
+        "n = int(input())\nif n > 0:\n    print(\"плюс\")\nelif n < 0:\n    print(\"минус\")\nelse:\n    print(\"ноль\")",
+        "n = int(input())\nprint(\"плюс\" if n > 0 else \"минус\" if n < 0 else \"ноль\")"
+      ],
+      [
+        "if",
+        "elif",
+        "else"
+      ]
+    ],
+    "f05": [
+      "В and оба условия должны быть истинны; второе здесь ложно.",
+      [
+        "a = 4\nb = 9\nprint(a > 2 and b < 5)",
+        "left = 4 > 2\nright = 9 < 5\nprint(left and right)"
+      ],
+      [
+        "and",
+        "if"
+      ]
+    ],
+    "f06": [
+      "Сравни a и b или используй min(a, b).",
+      [
+        "a = int(input())\nb = int(input())\nprint(min(a, b))",
+        "a = int(input())\nb = int(input())\nif a <= b:\n    print(a)\nelse:\n    print(b)"
+      ],
+      [
+        "if",
+        "min"
+      ]
+    ],
+    "e01": [
+      "range(1, 5) даёт 1,2,3,4. После каждого шага растёт x.",
+      [
+        "x = 0\nfor i in range(1, 5):\n    x += i\nprint(x)",
+        "print(sum(range(1, 5)))"
+      ],
+      [
+        "for",
+        "range",
+        "sum"
+      ]
+    ],
+    "e02": [
+      "В if складывай лишь i больше трёх.",
+      [
+        "x = 0\nfor i in range(1, 6):\n    if i > 3:\n        x += i\nprint(x)",
+        "print(sum(i for i in range(1, 6) if i > 3))"
+      ],
+      [
+        "for",
+        "if",
+        "range"
+      ]
+    ],
+    "e03": [
+      "Тело цикла всегда с отступом.",
+      [
+        "for i in range(1, 4):\n    print(i)",
+        "print(*range(1, 4), sep='\\n')"
+      ],
+      [
+        "for",
+        "range"
+      ]
+    ],
+    "e04": [
+      "Поставь шаг 2 — 2,4,6 и так далее.",
+      [
+        "n = int(input())\nfor i in range(2, n + 1, 2):\n    print(i)",
+        "n = int(input())\nprint(*(i for i in range(1, n + 1) if i % 2 == 0), sep='\\n')"
+      ],
+      [
+        "for",
+        "range",
+        "%"
+      ]
+    ],
+    "e05": [
+      "range(3) начинается с 0, end='' убирает перенос.",
+      [
+        "for i in range(3):\n    print(i, end=\"\")",
+        "print(''.join(str(i) for i in range(3)))"
+      ],
+      [
+        "for",
+        "range",
+        "print"
+      ]
+    ],
+    "e06": [
+      "Факториал — последовательное умножение, для n=0 оставь 1.",
+      [
+        "n = int(input())\nresult = 1\nfor i in range(1, n + 1):\n    result *= i\nprint(result)",
+        "from math import factorial\nprint(factorial(int(input())))"
+      ],
+      [
+        "for",
+        "*",
+        "range"
+      ]
+    ],
+    "d01": [
+      "Индекс -1 означает последний элемент списка.",
+      [
+        "items = [3, 5, 8]\nprint(items[-1])",
+        "items = [3, 5, 8]\nprint(items[len(items) - 1])"
+      ],
+      [
+        "список",
+        "len"
+      ]
+    ],
+    "d02": [
+      "Функция len возвращает количество элементов.",
+      [
+        "words = [\"кот\", \"дом\", \"лес\"]\nprint(len(words))",
+        "words = [\"кот\", \"дом\", \"лес\"]\nprint(sum(1 for word in words))"
+      ],
+      [
+        "len",
+        "список"
+      ]
+    ],
+    "d03": [
+      "input возвращает строку. Квадрат считают уже от числа.",
+      [
+        "def square(x):\n    return x * x\nprint(square(int(input())))",
+        "def square(x):\n    return x ** 2\nnumber = int(input())\nprint(square(number))"
+      ],
+      [
+        "def",
+        "return",
+        "int"
+      ]
+    ],
+    "d04": [
+      "Раздели строку, преобразуй элементы в int и сложи.",
+      [
+        "numbers = list(map(int, input().split()))\nprint(sum(numbers))",
+        "total = 0\nfor item in input().split():\n    total += int(item)\nprint(total)"
+      ],
+      [
+        "split",
+        "map",
+        "sum"
+      ]
+    ],
+    "d05": [
+      "В срезе [1:4] берутся символы с индексами 1, 2 и 3.",
+      [
+        "word = \"python\"\nprint(word[1:4])",
+        "word = \"python\"\nprint(word[1] + word[2] + word[3])"
+      ],
+      [
+        "срез",
+        "строка"
+      ]
+    ],
+    "d06": [
+      "Остаток от деления на 2 равен нулю у чётного числа.",
+      [
+        "def is_even(n):\n    return n % 2 == 0\nprint(is_even(int(input())))",
+        "def is_even(n):\n    if n % 2 == 0:\n        return True\n    return False\nprint(is_even(int(input())))"
+      ],
+      [
+        "def",
+        "return",
+        "%"
+      ]
+    ]
+  }
+}
