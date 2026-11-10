@@ -130,6 +130,7 @@ class StudyDialog(QDialog):
         layout.setSpacing(14)
         header = QLabel('СПРАВОЧНИК  /  ' + exercise.title)
         header.setStyleSheet('font-size:18px;font-weight:700;color:#c9e4ff;')
+        header.setWordWrap(True)
         layout.addWidget(header)
 
         self.tabs = QTabWidget()
