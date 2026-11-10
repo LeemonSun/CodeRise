@@ -1,6 +1,5 @@
 from dataclasses import dataclass
 
-
 @dataclass(frozen=True, slots=True)
 class Stage:
     code: str
@@ -8,12 +7,10 @@ class Stage:
     rank: str
     subtitle: str
 
-
 @dataclass(frozen=True, slots=True)
 class Case:
     stdin: str
     expected: str
-
 
 @dataclass(frozen=True, slots=True)
 class Exercise:
@@ -27,3 +24,7 @@ class Exercise:
     answer: str = ""
     hint: str = ""
     explanation: str = ""
+    walkthrough: str = ""
+    methods: tuple[tuple[str, str], ...] = ()
+    concepts: tuple[str, ...] = ()
+    difficulty: int = 1
