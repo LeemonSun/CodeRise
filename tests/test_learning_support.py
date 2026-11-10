@@ -35,7 +35,8 @@ class StudySupportTests(unittest.TestCase):
         self.assertEqual(notes[0][0], "Комментарий")
 
     def test_name_error_hint(self):
-        message = 'File "solution.py", line 2\nNameError: name \\'scoree\\' is not defined'
+        message = """File "solution.py", line 2
+NameError: name 'scoree' is not defined"""
         hint = explain_python_error(message)
         self.assertIn("scoree", hint)
         self.assertIn("2", hint)
