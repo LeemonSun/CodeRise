@@ -1,4 +1,4 @@
-# Проверка, сборка приложения и установщика. Только Windows.
+﻿# Проверка, сборка приложения и установщика. Только Windows.
 # Запуск: powershell -NoProfile -ExecutionPolicy Bypass -File scripts\build_windows.ps1
 param(
     [switch]$SkipTests,
