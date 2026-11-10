@@ -1,4 +1,4 @@
-# Publish the locally built Windows installer as one GitHub release asset.
+﻿# Publish the locally built Windows installer as one GitHub release asset.
 # Does not use GitHub Actions. Needs authenticated GitHub CLI (gh).
 # Run only after building and checking release\CodeRise-Setup-0.3.0.exe.
 param([string]$Version = "0.3.0")
