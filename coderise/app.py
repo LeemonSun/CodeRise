@@ -10,6 +10,7 @@ from PySide6.QtWidgets import (
     QApplication,
     QDialog,
     QFrame,
+    QGridLayout,
     QHBoxLayout,
     QLabel,
     QLineEdit,
@@ -345,26 +346,25 @@ class CodeRiseWindow(QMainWindow):
         actions.addWidget(self.next_button)
         main_layout.addLayout(actions)
 
-        help_actions = QHBoxLayout()
+        help_actions = QGridLayout()
         help_actions.setSpacing(10)
         self.line_button = QPushButton("Разобрать строку")
         self.line_button.setObjectName("guide")
         self.line_button.setToolTip("Поставь курсор на нужную строку и нажми здесь")
         self.line_button.clicked.connect(self.open_line_help)
-        help_actions.addWidget(self.line_button)
+        help_actions.addWidget(self.line_button, 0, 0)
         self.study_button = QPushButton("Справка по заданию")
         self.study_button.setObjectName("guide")
         self.study_button.clicked.connect(lambda: self.open_study(0))
-        help_actions.addWidget(self.study_button)
+        help_actions.addWidget(self.study_button, 0, 1)
         self.theory_button = QPushButton("Теория главы")
         self.theory_button.setObjectName("guide")
         self.theory_button.clicked.connect(lambda: self.open_study(1))
-        help_actions.addWidget(self.theory_button)
+        help_actions.addWidget(self.theory_button, 1, 0)
         self.solutions_button = QPushButton("Два решения")
         self.solutions_button.setObjectName("guide")
         self.solutions_button.clicked.connect(lambda: self.open_study(2))
-        help_actions.addWidget(self.solutions_button)
-        help_actions.addStretch()
+        help_actions.addWidget(self.solutions_button, 1, 1)
         main_layout.addLayout(help_actions)
 
         self.hint_label = QLabel()
