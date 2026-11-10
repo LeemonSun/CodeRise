@@ -1,4 +1,4 @@
-; CodeRise 0.3 — локальный установщик Inno Setup 6
+﻿; CodeRise 0.3 — локальный установщик Inno Setup 6
 
 #define AppName "CodeRise"
 #define AppVersion "0.3.0"
