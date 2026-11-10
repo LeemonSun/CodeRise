@@ -4013,6 +4013,684 @@
         "aggregate"
       ],
       "difficulty": 3
+    },
+    {
+      "id": "start13",
+      "stage": "start",
+      "title": "Значение меняется",
+      "kind": "predict",
+      "prompt": "Не запускай код. Определи, что появится на экране.",
+      "starter": "x = 4\nx += 3\nprint(x * 2)\n",
+      "tests": [],
+      "answer": "14",
+      "hint": "Проследи, чему равен x после +=.",
+      "explanation": "Сначала x равно 4, затем 7. Программа выводит 7 * 2 = 14.",
+      "walkthrough": "Сначала x равно 4, затем 7. Программа выводит 7 * 2 = 14.",
+      "methods": [
+        [
+          "По строкам",
+          "x = 4\nx += 3\nprint(x * 2)\n"
+        ],
+        [
+          "Другой способ",
+          "print((4 + 3) * 2)\n"
+        ]
+      ],
+      "concepts": [
+        "переменная",
+        "print"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "start14",
+      "stage": "start",
+      "title": "Большая и маленькая буква",
+      "kind": "fix",
+      "prompt": "Исправь ошибку: программа должна поздороваться с введённым именем.",
+      "starter": "name = input()\nprint('Привет, ' + Name)\n",
+      "tests": [
+        {
+          "stdin": "Лена\n",
+          "expected": "Привет, Лена"
+        },
+        {
+          "stdin": "Мир\n",
+          "expected": "Привет, Мир"
+        }
+      ],
+      "answer": "",
+      "hint": "Проверь регистр имени переменной.",
+      "explanation": "Name и name — разные имена. Используй name в обеих строках.",
+      "walkthrough": "Name и name — разные имена. Используй name в обеих строках.",
+      "methods": [
+        [
+          "Исправленный код",
+          "name = input()\nprint('Привет, ' + name)\n"
+        ],
+        [
+          "Другой подход",
+          "name = input()\nprint(f'Привет, {name}')\n"
+        ]
+      ],
+      "concepts": [
+        "переменная",
+        "print"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "conditions13",
+      "stage": "conditions",
+      "title": "Условие с остатком",
+      "kind": "predict",
+      "prompt": "Не запускай код. Определи, что появится на экране.",
+      "starter": "n = 8\nif n % 2 == 0:\n    print('even')\nelse:\n    print('odd')\n",
+      "tests": [],
+      "answer": "even",
+      "hint": "Проверь 8 % 2.",
+      "explanation": "Остаток от деления 8 на 2 равен 0. Срабатывает ветка if.",
+      "walkthrough": "Остаток от деления 8 на 2 равен 0. Срабатывает ветка if.",
+      "methods": [
+        [
+          "По строкам",
+          "n = 8\nif n % 2 == 0:\n    print('even')\nelse:\n    print('odd')\n"
+        ],
+        [
+          "Другой способ",
+          "n = 8\nprint('even' if n % 2 == 0 else 'odd')\n"
+        ]
+      ],
+      "concepts": [
+        "if",
+        "%",
+        "else"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "conditions14",
+      "stage": "conditions",
+      "title": "Важная граница",
+      "kind": "fix",
+      "prompt": "Балл 60 тоже считается проходным. Исправь условие.",
+      "starter": "score = int(input())\nif score > 60:\n    print('PASS')\nelse:\n    print('FAIL')\n",
+      "tests": [
+        {
+          "stdin": "60\n",
+          "expected": "PASS"
+        },
+        {
+          "stdin": "59\n",
+          "expected": "FAIL"
+        },
+        {
+          "stdin": "95\n",
+          "expected": "PASS"
+        }
+      ],
+      "answer": "",
+      "hint": "«Не меньше» означает >=.",
+      "explanation": "Сравнение > 60 исключает саму границу. Нужно >= 60.",
+      "walkthrough": "Сравнение > 60 исключает саму границу. Нужно >= 60.",
+      "methods": [
+        [
+          "Исправленный код",
+          "score = int(input())\nif score >= 60:\n    print('PASS')\nelse:\n    print('FAIL')\n"
+        ],
+        [
+          "Другой подход",
+          "score = int(input())\nprint('PASS' if score >= 60 else 'FAIL')\n"
+        ]
+      ],
+      "concepts": [
+        "if",
+        "границы диапазона"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "loops13",
+      "stage": "loops",
+      "title": "Шаг диапазона",
+      "kind": "predict",
+      "prompt": "Не запускай код. Определи, что появится на экране.",
+      "starter": "total = 0\nfor i in range(2, 7, 2):\n    total += i\nprint(total)\n",
+      "tests": [],
+      "answer": "12",
+      "hint": "range(2, 7, 2) содержит 2, 4 и 6.",
+      "explanation": "Цикл складывает 2 + 4 + 6 = 12, а число 7 не входит в диапазон.",
+      "walkthrough": "Цикл складывает 2 + 4 + 6 = 12, а число 7 не входит в диапазон.",
+      "methods": [
+        [
+          "По строкам",
+          "total = 0\nfor i in range(2, 7, 2):\n    total += i\nprint(total)\n"
+        ],
+        [
+          "Другой способ",
+          "print(sum(range(2, 7, 2)))\n"
+        ]
+      ],
+      "concepts": [
+        "for",
+        "range"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "loops14",
+      "stage": "loops",
+      "title": "Последнее число",
+      "kind": "fix",
+      "prompt": "Программа должна вывести числа от 1 до n включительно. Исправь границу диапазона.",
+      "starter": "n = int(input())\nfor i in range(1, n):\n    print(i)\n",
+      "tests": [
+        {
+          "stdin": "1\n",
+          "expected": "1"
+        },
+        {
+          "stdin": "4\n",
+          "expected": "1\n2\n3\n4"
+        }
+      ],
+      "answer": "",
+      "hint": "Правая граница range не входит.",
+      "explanation": "Для n=1 исходный цикл пуст. Нужна правая граница n + 1.",
+      "walkthrough": "Для n=1 исходный цикл пуст. Нужна правая граница n + 1.",
+      "methods": [
+        [
+          "Исправленный код",
+          "n = int(input())\nfor i in range(1, n + 1):\n    print(i)\n"
+        ],
+        [
+          "Другой подход",
+          "n = int(input())\ni = 1\nwhile i <= n:\n    print(i)\n    i += 1\n"
+        ]
+      ],
+      "concepts": [
+        "range",
+        "while"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "data13",
+      "stage": "data",
+      "title": "Список с конца",
+      "kind": "predict",
+      "prompt": "Не запускай код. Определи, что появится на экране.",
+      "starter": "a = [10, 20, 30]\nprint(a[-2])\n",
+      "tests": [],
+      "answer": "20",
+      "hint": "Индекс -1 означает последний элемент.",
+      "explanation": "-2 — второй элемент с конца: 20.",
+      "walkthrough": "-2 — второй элемент с конца: 20.",
+      "methods": [
+        [
+          "По строкам",
+          "a = [10, 20, 30]\nprint(a[-2])\n"
+        ],
+        [
+          "Другой способ",
+          "a = [10, 20, 30]\nprint(a[1])\n"
+        ]
+      ],
+      "concepts": [
+        "список",
+        "срез"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "data14",
+      "stage": "data",
+      "title": "Лишний ввод",
+      "kind": "fix",
+      "prompt": "Считай количество слов только из одной строки, не запрашивай вторую.",
+      "starter": "words = input().split()\nprint(len(input()))\n",
+      "tests": [
+        {
+          "stdin": "кот дом\n",
+          "expected": "2"
+        },
+        {
+          "stdin": "одно\n",
+          "expected": "1"
+        },
+        {
+          "stdin": "\n",
+          "expected": "0"
+        }
+      ],
+      "answer": "",
+      "hint": "Список words уже содержит нужные слова.",
+      "explanation": "Нужно len(words), а не второй вызов input().",
+      "walkthrough": "Нужно len(words), а не второй вызов input().",
+      "methods": [
+        [
+          "Исправленный код",
+          "words = input().split()\nprint(len(words))\n"
+        ],
+        [
+          "Другой подход",
+          "print(len(input().split()))\n"
+        ]
+      ],
+      "concepts": [
+        "split",
+        "len"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "functions13",
+      "stage": "functions",
+      "title": "Значение по ключу",
+      "kind": "predict",
+      "prompt": "Не запускай код. Определи, что появится на экране.",
+      "starter": "scores = {'a': 4}\nscores['a'] += 3\nprint(scores.get('b', 0) + scores['a'])\n",
+      "tests": [],
+      "answer": "7",
+      "hint": "Отсутствующий ключ b даст ноль.",
+      "explanation": "Значение a стало 7, get для b вернул 0. Сумма — 7.",
+      "walkthrough": "Значение a стало 7, get для b вернул 0. Сумма — 7.",
+      "methods": [
+        [
+          "По строкам",
+          "scores = {'a': 4}\nscores['a'] += 3\nprint(scores.get('b', 0) + scores['a'])\n"
+        ],
+        [
+          "Другой способ",
+          "scores = {'a': 7}\nprint(scores['a'])\n"
+        ]
+      ],
+      "concepts": [
+        "dict",
+        "get"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "functions14",
+      "stage": "functions",
+      "title": "Лишний None",
+      "kind": "fix",
+      "prompt": "Функция должна вернуть удвоенное число и вывести его ровно один раз.",
+      "starter": "def twice(x):\n    print(x * 2)\nprint(twice(int(input())))\n",
+      "tests": [
+        {
+          "stdin": "3\n",
+          "expected": "6"
+        },
+        {
+          "stdin": "-4\n",
+          "expected": "-8"
+        }
+      ],
+      "answer": "",
+      "hint": "Вместо внутреннего print нужен return.",
+      "explanation": "Если нет return, функция возвращает None. Выводи только результат вызова.",
+      "walkthrough": "Если нет return, функция возвращает None. Выводи только результат вызова.",
+      "methods": [
+        [
+          "Исправленный код",
+          "def twice(x):\n    return x * 2\nprint(twice(int(input())))\n"
+        ],
+        [
+          "Другой подход",
+          "def twice(x):\n    return x + x\nn = int(input())\nresult = twice(n)\nprint(result)\n"
+        ]
+      ],
+      "concepts": [
+        "def",
+        "return"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "files13",
+      "stage": "files",
+      "title": "Из JSON в словарь",
+      "kind": "predict",
+      "prompt": "Не запускай код. Определи, что появится на экране.",
+      "starter": "import json\nd = json.loads('{\"age\": 5}')\nprint(d['age'] + 1)\n",
+      "tests": [],
+      "answer": "6",
+      "hint": "После loads поле age содержит число.",
+      "explanation": "JSON преобразуется в словарь; 5 + 1 = 6.",
+      "walkthrough": "JSON преобразуется в словарь; 5 + 1 = 6.",
+      "methods": [
+        [
+          "По строкам",
+          "import json\nd = json.loads('{\"age\": 5}')\nprint(d['age'] + 1)\n"
+        ],
+        [
+          "Другой способ",
+          "d = {'age': 5}\nprint(d.get('age') + 1)\n"
+        ]
+      ],
+      "concepts": [
+        "json",
+        "import"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "files14",
+      "stage": "files",
+      "title": "Неправильное число",
+      "kind": "fix",
+      "prompt": "Выводи ERROR и для нуля, и для текста, который не превращается в число.",
+      "starter": "try:\n    n = int(input())\n    print(100 // n)\nexcept ZeroDivisionError:\n    print('ERROR')\n",
+      "tests": [
+        {
+          "stdin": "4\n",
+          "expected": "25"
+        },
+        {
+          "stdin": "0\n",
+          "expected": "ERROR"
+        },
+        {
+          "stdin": "cat\n",
+          "expected": "ERROR"
+        }
+      ],
+      "answer": "",
+      "hint": "int('cat') вызывает ValueError.",
+      "explanation": "Нужно обработать обе ошибки: неправильное число и деление на ноль.",
+      "walkthrough": "Нужно обработать обе ошибки: неправильное число и деление на ноль.",
+      "methods": [
+        [
+          "Исправленный код",
+          "try:\n    n = int(input())\n    print(100 // n)\nexcept (ValueError, ZeroDivisionError):\n    print('ERROR')\n"
+        ],
+        [
+          "Другой подход",
+          "try:\n    print(100 // int(input()))\nexcept ValueError:\n    print('ERROR')\nexcept ZeroDivisionError:\n    print('ERROR')\n"
+        ]
+      ],
+      "concepts": [
+        "try",
+        "except",
+        "ValueError"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "objects13",
+      "stage": "objects",
+      "title": "Поле объекта",
+      "kind": "predict",
+      "prompt": "Не запускай код. Определи, что появится на экране.",
+      "starter": "class Box:\n    def __init__(self, n):\n        self.n = n\n    def add(self, x):\n        self.n += x\nb = Box(2)\nb.add(3)\nprint(b.n)\n",
+      "tests": [],
+      "answer": "5",
+      "hint": "Сначала b.n равно 2, затем увеличивается на 3.",
+      "explanation": "Метод add меняет поле конкретного объекта: 2 + 3 = 5.",
+      "walkthrough": "Метод add меняет поле конкретного объекта: 2 + 3 = 5.",
+      "methods": [
+        [
+          "По строкам",
+          "class Box:\n    def __init__(self, n):\n        self.n = n\n    def add(self, x):\n        self.n += x\nb = Box(2)\nb.add(3)\nprint(b.n)\n"
+        ],
+        [
+          "Другой способ",
+          "class Box:\n    def __init__(self, n):\n        self.n = n\nb = Box(2)\nb.n += 3\nprint(b.n)\n"
+        ]
+      ],
+      "concepts": [
+        "class",
+        "self"
+      ],
+      "difficulty": 4
+    },
+    {
+      "id": "objects14",
+      "stage": "objects",
+      "title": "Два отдельных счётчика",
+      "kind": "fix",
+      "prompt": "Введи a b. Создай два независимых счётчика и вызови inc для них a и b раз. Выведи оба значения.",
+      "starter": "class Counter:\n    value = 0\n    def inc(self):\n        Counter.value += 1\na, b = map(int, input().split())\nleft, right = Counter(), Counter()\nfor _ in range(a): left.inc()\nfor _ in range(b): right.inc()\nprint(left.value, right.value)\n",
+      "tests": [
+        {
+          "stdin": "2 1\n",
+          "expected": "2 1"
+        },
+        {
+          "stdin": "0 3\n",
+          "expected": "0 3"
+        }
+      ],
+      "answer": "",
+      "hint": "Поле класса общее, поле self.value — своё.",
+      "explanation": "Задай self.value в __init__ каждого объекта и изменяй через self.",
+      "walkthrough": "Задай self.value в __init__ каждого объекта и изменяй через self.",
+      "methods": [
+        [
+          "Исправленный код",
+          "class Counter:\n    def __init__(self):\n        self.value = 0\n    def inc(self):\n        self.value += 1\na, b = map(int, input().split())\nleft, right = Counter(), Counter()\nfor _ in range(a): left.inc()\nfor _ in range(b): right.inc()\nprint(left.value, right.value)\n"
+        ],
+        [
+          "Другой подход",
+          "class Counter:\n    def __init__(self):\n        self.value = 0\n    def add(self, n):\n        self.value += n\na, b = map(int, input().split())\nleft, right = Counter(), Counter()\nleft.add(a)\nright.add(b)\nprint(left.value, right.value)\n"
+        ]
+      ],
+      "concepts": [
+        "class",
+        "self",
+        "__init__"
+      ],
+      "difficulty": 4
+    },
+    {
+      "id": "algorithms13",
+      "stage": "algorithms",
+      "title": "Сдвигаем окно",
+      "kind": "predict",
+      "prompt": "Не запускай код. Определи, что появится на экране.",
+      "starter": "a = [3, 1, 5, 2]\nwindow = sum(a[:2])\nwindow += a[2] - a[0]\nprint(window)\n",
+      "tests": [],
+      "answer": "6",
+      "hint": "Первое окно [3, 1], второе [1, 5].",
+      "explanation": "Из суммы 4 вычитаем 3 и прибавляем 5. Получаем 6.",
+      "walkthrough": "Из суммы 4 вычитаем 3 и прибавляем 5. Получаем 6.",
+      "methods": [
+        [
+          "По строкам",
+          "a = [3, 1, 5, 2]\nwindow = sum(a[:2])\nwindow += a[2] - a[0]\nprint(window)\n"
+        ],
+        [
+          "Другой способ",
+          "a = [3, 1, 5, 2]\nprint(sum(a[1:3]))\n"
+        ]
+      ],
+      "concepts": [
+        "скользящее окно",
+        "срез"
+      ],
+      "difficulty": 4
+    },
+    {
+      "id": "algorithms14",
+      "stage": "algorithms",
+      "title": "Если нет совпадения",
+      "kind": "fix",
+      "prompt": "В первой строке числа, во второй — искомое. Выведи первый индекс или -1, если числа нет.",
+      "starter": "numbers = list(map(int, input().split()))\ntarget = int(input())\nprint(numbers.index(target))\n",
+      "tests": [
+        {
+          "stdin": "1 3 5\n3\n",
+          "expected": "1"
+        },
+        {
+          "stdin": "1 3 5\n2\n",
+          "expected": "-1"
+        },
+        {
+          "stdin": "2 2 3\n2\n",
+          "expected": "0"
+        }
+      ],
+      "answer": "",
+      "hint": "list.index() вызывает ValueError при отсутствии.",
+      "explanation": "Проверяй наличие элемента перед вызовом index либо лови ValueError.",
+      "walkthrough": "Проверяй наличие элемента перед вызовом index либо лови ValueError.",
+      "methods": [
+        [
+          "Исправленный код",
+          "a = list(map(int, input().split()))\nx = int(input())\nprint(a.index(x) if x in a else -1)\n"
+        ],
+        [
+          "Другой подход",
+          "a = list(map(int, input().split()))\nx = int(input())\ntry:\n    print(a.index(x))\nexcept ValueError:\n    print(-1)\n"
+        ]
+      ],
+      "concepts": [
+        "ValueError",
+        "список"
+      ],
+      "difficulty": 4
+    },
+    {
+      "id": "projects13",
+      "stage": "projects",
+      "title": "Остаток на складе",
+      "kind": "predict",
+      "prompt": "Не запускай код. Определи, что появится на экране.",
+      "starter": "stock = {'wood': 3}\nstock['wood'] -= 1\nprint(stock.get('wood', 0))\n",
+      "tests": [],
+      "answer": "2",
+      "hint": "Со склада взяли одну единицу.",
+      "explanation": "Значение wood уменьшилось с 3 до 2. get читает новый остаток.",
+      "walkthrough": "Значение wood уменьшилось с 3 до 2. get читает новый остаток.",
+      "methods": [
+        [
+          "По строкам",
+          "stock = {'wood': 3}\nstock['wood'] -= 1\nprint(stock.get('wood', 0))\n"
+        ],
+        [
+          "Другой способ",
+          "stock = {'wood': 2}\nprint(stock['wood'])\n"
+        ]
+      ],
+      "concepts": [
+        "dict",
+        "get"
+      ],
+      "difficulty": 4
+    },
+    {
+      "id": "projects14",
+      "stage": "projects",
+      "title": "Стоимость корзины",
+      "kind": "fix",
+      "prompt": "Введи n строк 'цена количество'. Сложи стоимость товаров, а не только цены за штуку.",
+      "starter": "n = int(input())\ntotal = 0\nfor _ in range(n):\n    price, qty = map(int, input().split())\n    total += price\nprint(total)\n",
+      "tests": [
+        {
+          "stdin": "2\n10 3\n4 2\n",
+          "expected": "38"
+        },
+        {
+          "stdin": "1\n7 5\n",
+          "expected": "35"
+        },
+        {
+          "stdin": "0\n",
+          "expected": "0"
+        }
+      ],
+      "answer": "",
+      "hint": "У каждой строки есть и цена, и количество.",
+      "explanation": "Для товара стоимость равна price * qty. Прибавляй произведение.",
+      "walkthrough": "Для товара стоимость равна price * qty. Прибавляй произведение.",
+      "methods": [
+        [
+          "Исправленный код",
+          "n = int(input())\ntotal = 0\nfor _ in range(n):\n    price, qty = map(int, input().split())\n    total += price * qty\nprint(total)\n"
+        ],
+        [
+          "Другой подход",
+          "n = int(input())\ncosts = []\nfor _ in range(n):\n    price, qty = map(int, input().split())\n    costs.append(price * qty)\nprint(sum(costs))\n"
+        ]
+      ],
+      "concepts": [
+        "смета",
+        "sum"
+      ],
+      "difficulty": 4
+    },
+    {
+      "id": "mastery13",
+      "stage": "mastery",
+      "title": "Очередь слева",
+      "kind": "predict",
+      "prompt": "Не запускай код. Определи, что появится на экране.",
+      "starter": "from collections import deque\nq = deque([1, 2])\nq.appendleft(0)\nprint(list(q))\n",
+      "tests": [],
+      "answer": "[0, 1, 2]",
+      "hint": "appendleft вставляет в начало.",
+      "explanation": "Перед 1, 2 встаёт 0. Итоговый список: [0, 1, 2].",
+      "walkthrough": "Перед 1, 2 встаёт 0. Итоговый список: [0, 1, 2].",
+      "methods": [
+        [
+          "По строкам",
+          "from collections import deque\nq = deque([1, 2])\nq.appendleft(0)\nprint(list(q))\n"
+        ],
+        [
+          "Другой способ",
+          "q = [1, 2]\nq.insert(0, 0)\nprint(q)\n"
+        ]
+      ],
+      "concepts": [
+        "deque",
+        "queue"
+      ],
+      "difficulty": 5
+    },
+    {
+      "id": "mastery14",
+      "stage": "mastery",
+      "title": "Победитель при равенстве",
+      "kind": "fix",
+      "prompt": "Введи n строк 'имя победы'. При равенстве побед выигрывает имя, идущее по алфавиту раньше.",
+      "starter": "n = int(input())\nrows = [input().split() for _ in range(n)]\nrows.sort(key=lambda row: -int(row[1]))\nprint(rows[0][0])\n",
+      "tests": [
+        {
+          "stdin": "2\nZara 5\nAnna 5\n",
+          "expected": "Anna"
+        },
+        {
+          "stdin": "3\nTim 2\nMax 7\nAlex 1\n",
+          "expected": "Max"
+        },
+        {
+          "stdin": "2\nB 1\nA 1\n",
+          "expected": "A"
+        }
+      ],
+      "answer": "",
+      "hint": "Ключ сортировки может быть кортежем.",
+      "explanation": "Ключ (-победы, имя) сначала сравнит победы, затем имена.",
+      "walkthrough": "Ключ (-победы, имя) сначала сравнит победы, затем имена.",
+      "methods": [
+        [
+          "Исправленный код",
+          "n = int(input())\nrows = [input().split() for _ in range(n)]\nrows.sort(key=lambda row: (-int(row[1]), row[0]))\nprint(rows[0][0])\n"
+        ],
+        [
+          "Другой подход",
+          "n = int(input())\nrows = [input().split() for _ in range(n)]\nwinner = min(rows, key=lambda row: (-int(row[1]), row[0]))\nprint(winner[0])\n"
+        ]
+      ],
+      "concepts": [
+        "sorted",
+        "lambda",
+        "key"
+      ],
+      "difficulty": 5
     }
   ],
   "topics": {
