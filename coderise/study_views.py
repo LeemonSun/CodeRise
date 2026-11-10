@@ -3,7 +3,7 @@ from html import escape
 
 from PySide6.QtCore import Qt
 from PySide6.QtWidgets import (
-    QDialog, QHBoxLayout, QLabel, QLineEdit, QListWidget, QPlainTextEdit,
+    QApplication, QDialog, QHBoxLayout, QLabel, QLineEdit, QListWidget, QPlainTextEdit,
     QPushButton, QSplitter, QTabWidget, QTextBrowser, QVBoxLayout, QWidget,
 )
 
@@ -115,8 +115,15 @@ class StudyDialog(QDialog):
         super().__init__(parent)
         self.exercise = exercise
         self.setWindowTitle('CodeRise — разбираем по шагам')
-        self.setMinimumSize(720, 550)
-        self.resize(980, 720)
+        screen = QApplication.primaryScreen()
+        if screen:
+            bounds = screen.availableGeometry()
+            width = min(980, max(460, int(bounds.width() * 0.92)))
+            height = min(720, max(340, int(bounds.height() * 0.90)))
+        else:
+            width, height = 900, 650
+        self.setMinimumSize(min(520, width), min(360, height))
+        self.resize(width, height)
         self.setStyleSheet(LEARNING_STYLE)
         layout = QVBoxLayout(self)
         layout.setContentsMargins(20, 18, 20, 18)
@@ -135,6 +142,7 @@ class StudyDialog(QDialog):
 
         foot = QLabel('Лучше разобраться в одном решении, чем бездумно переписать два.')
         foot.setStyleSheet('color:#93a6bf;font-size:12px;')
+        foot.setWordWrap(True)
         layout.addWidget(foot)
 
     @staticmethod
@@ -154,9 +162,9 @@ class StudyDialog(QDialog):
         splitter = QSplitter(Qt.Orientation.Horizontal)
         layout.addWidget(splitter)
         names = QListWidget()
-        names.setMinimumWidth(200)
+        names.setMinimumWidth(120)
         detail = QTextBrowser()
-        detail.setMinimumWidth(350)
+        detail.setMinimumWidth(190)
         splitter.addWidget(names)
         splitter.addWidget(detail)
         splitter.setSizes([220, 600])
