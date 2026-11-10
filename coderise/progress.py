@@ -17,6 +17,8 @@ class ProgressStore:
         self.path = path if path is not None else default_progress_path()
         self.solved: set[str] = set()
         self.drafts: dict[str, str] = {}
+        self.attempts: dict[str, int] = {}
+        self.failures: dict[str, int] = {}
         self.load()
 
     def load(self) -> None:
@@ -34,10 +36,28 @@ class ProgressStore:
                 for key, value in drafts.items()
                 if isinstance(key, str) and isinstance(value, str)
             }
+            self.attempts = self._read_counts(data.get("attempts", {}))
+            self.failures = self._read_counts(data.get("failures", {}))
         except (OSError, ValueError, TypeError, AttributeError):
             # Битый файл не должен мешать запуску программы.
             self.solved = set()
             self.drafts = {}
+            self.attempts = {}
+            self.failures = {}
+
+    @staticmethod
+    def _read_counts(value: object) -> dict[str, int]:
+        if not isinstance(value, dict):
+            return {}
+        return {
+            key: count for key, count in value.items()
+            if isinstance(key, str) and type(count) is int and 0 <= count <= 1_000_000
+        }
+
+    def record_attempt(self, exercise_id: str, success: bool) -> None:
+        self.attempts[exercise_id] = self.attempts.get(exercise_id, 0) + 1
+        if not success:
+            self.failures[exercise_id] = self.failures.get(exercise_id, 0) + 1
 
     def get_draft(self, exercise_id: str, fallback: str = "") -> str:
         return self.drafts.get(exercise_id, fallback)
@@ -51,9 +71,11 @@ class ProgressStore:
     def save(self) -> None:
         self.path.parent.mkdir(parents=True, exist_ok=True)
         payload = {
-            "version": 1,
+            "version": 2,
             "solved": sorted(self.solved),
             "drafts": self.drafts,
+            "attempts": self.attempts,
+            "failures": self.failures,
         }
         temporary = self.path.with_suffix(".tmp")
         temporary.write_text(
