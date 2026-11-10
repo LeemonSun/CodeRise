@@ -17,5 +17,9 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python-version }}
-      - name: Проверить задания, движок и прогресс
+      - name: Установить зависимости интерфейса
+        run: python -m pip install -r requirements.txt
+      - name: Проверить задания, движок и окно
+        env:
+          QT_QPA_PLATFORM: offscreen
         run: python -m unittest discover -s tests -v
