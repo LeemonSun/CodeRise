@@ -25,6 +25,7 @@ from PySide6.QtWidgets import (
 
 from .content import EXERCISES, STAGES, STAGES_BY_ID
 from .engine import check_solution
+from .editor import PythonEditor
 from .models import Exercise
 from .progress import ProgressStore
 
@@ -258,10 +259,7 @@ class CodeRiseWindow(QMainWindow):
         self.editor_stack.setMinimumHeight(250)
         main_layout.addWidget(self.editor_stack)
 
-        self.code_editor = QPlainTextEdit()
-        self.code_editor.setFont(QFont("Consolas", 12))
-        self.code_editor.setLineWrapMode(QPlainTextEdit.LineWrapMode.NoWrap)
-        self.code_editor.setTabStopDistance(32)
+        self.code_editor = PythonEditor()
         self.code_editor.setPlaceholderText("Пиши код здесь…")
         self.editor_stack.addWidget(self.code_editor)
 
