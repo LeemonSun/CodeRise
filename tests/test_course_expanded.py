@@ -12,12 +12,12 @@ from coderise.reference import GUIDES, TOPICS
 class ExpandedCourseTests(unittest.TestCase):
     def test_ten_rank_structure(self):
         self.assertEqual(len(MORE_STAGES), 6)
-        self.assertEqual(len(EXTRA_EXERCISES), 96)
+        self.assertEqual(len(EXTRA_EXERCISES), 116)
         counts = collections.Counter(ex.stage for ex in EXTRA_EXERCISES)
         self.assertEqual(counts, {
-            'start': 6, 'conditions': 6, 'loops': 6, 'data': 6,
-            'functions': 12, 'files': 12, 'objects': 12,
-            'algorithms': 12, 'projects': 12, 'mastery': 12,
+            'start': 8, 'conditions': 8, 'loops': 8, 'data': 8,
+            'functions': 14, 'files': 14, 'objects': 14,
+            'algorithms': 14, 'projects': 14, 'mastery': 14,
         })
 
     def test_every_exercise_has_two_methods_and_theory(self):
@@ -26,7 +26,10 @@ class ExpandedCourseTests(unittest.TestCase):
             with self.subTest(exercise=exercise.id):
                 self.assertNotIn(exercise.id, ids)
                 ids.add(exercise.id)
-                self.assertGreaterEqual(len(exercise.tests), 2)
+                if exercise.kind == "predict":
+                    self.assertTrue(exercise.answer)
+                else:
+                    self.assertGreaterEqual(len(exercise.tests), 2)
                 self.assertEqual(len(exercise.methods), 2)
                 self.assertTrue(exercise.hint.strip())
                 self.assertTrue(exercise.explanation.strip())
@@ -36,6 +39,17 @@ class ExpandedCourseTests(unittest.TestCase):
                 for label, code in exercise.methods:
                     self.assertTrue(label.strip())
                     compile(code, exercise.id, 'exec')
+
+    def test_predictions_match_both_examples(self):
+        for exercise in EXTRA_EXERCISES:
+            if exercise.kind != "predict":
+                continue
+            for label, code in [("начальный код", exercise.starter), *exercise.methods]:
+                with self.subTest(exercise=exercise.id, method=label):
+                    output = io.StringIO()
+                    with contextlib.redirect_stdout(output):
+                        exec(compile(code, exercise.id, "exec"), {"__name__": "__main__"})
+                    self.assertEqual(output.getvalue().strip(), exercise.answer.strip())
 
     def test_every_stage_has_study_guide(self):
         for code in ('start', 'conditions', 'loops', 'data', 'functions', 'files',
