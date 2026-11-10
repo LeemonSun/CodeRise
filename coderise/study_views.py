@@ -81,20 +81,33 @@ def stage_html(stage_code: str) -> str:
 
 
 def solutions_html(exercise) -> str:
-    sections = [title('Два подхода к задаче'),
-                paragraph('Не нужно запоминать готовый ответ. Сравни последовательность шагов: что читаем, где считаем, что выводим.')]
+    sections = [
+        title("Разбор решения"),
+        paragraph("Если ещё не пробовал сам — вернись к заданию. Здесь есть рабочие решения и примеры проверки."),
+    ]
     if exercise.walkthrough:
-        sections.append(hint_card('По шагам', exercise.walkthrough))
+        sections.append(hint_card("Как к этому прийти", exercise.walkthrough))
     for index, (label, source) in enumerate(exercise.methods, start=1):
-        sections.append(title(f'Вариант {index}: {label}'))
+        sections.append(title(f"{index}. {label}"))
         sections.append(code_block(source))
-        if index == 1:
-            sections.append(paragraph('Первый вариант лучше разобрать построчно, особенно если тема новая.'))
-        else:
-            sections.append(paragraph('Другой вариант показывает, что правильный ответ не обязан совпадать с одним шаблоном.'))
-    if not exercise.methods:
-        sections.append(paragraph('Для этого задания пока нет готовых вариантов.'))
-    return ''.join(sections)
+    if exercise.kind == "predict":
+        sections.append(title("Ответ"))
+        sections.append(code_block(exercise.answer))
+        sections.append(paragraph(exercise.explanation))
+    elif exercise.tests:
+        sections.append(title("Проверим на примерах"))
+        for index, case in enumerate(exercise.tests[:3], start=1):
+            input_text = case.stdin.strip() or "(ввод не нужен)"
+            output_text = case.expected.strip() or "(ничего не выводится)"
+            sections.extend((
+                hint_card(f"Пример {index}", "Ввод:"),
+                code_block(input_text),
+                paragraph("Ожидаемый результат:"),
+                code_block(output_text),
+            ))
+    else:
+        sections.append(paragraph("Для этого задания ещё нет проверочных примеров."))
+    return "".join(sections)
 
 
 class StudyDialog(QDialog):
@@ -120,7 +133,7 @@ class StudyDialog(QDialog):
         self.tabs.addTab(self.full_glossary(), 'Весь справочник')
         self.tabs.setCurrentIndex(tab)
 
-        foot = QLabel('Подсказки открыты специально: изучай примеры, потом попробуй решить без них.')
+        foot = QLabel('Лучше разобраться в одном решении, чем бездумно переписать два.')
         foot.setStyleSheet('color:#93a6bf;font-size:12px;')
         layout.addWidget(foot)
 
