@@ -3,7 +3,7 @@
 import sys
 from html import escape
 
-from PySide6.QtCore import QSize, Qt, QTimer
+from PySide6.QtCore import QSize, Qt, QTimer, QThread, Signal
 from PySide6.QtGui import QBrush, QColor, QFont, QKeySequence, QShortcut
 from PySide6.QtWidgets import (
     QAbstractItemView,
@@ -29,7 +29,7 @@ from PySide6.QtWidgets import (
 
 from .curriculum import EXERCISES, STAGES, STAGES_BY_ID
 from .study_views import StudyDialog
-from .engine import check_solution
+from .engine import CheckResult, check_solution
 from .editor import PythonEditor
 from .models import Exercise
 from .progress import ProgressStore
@@ -199,11 +199,33 @@ QPushButton#guide:hover { background: #263f56; }
 """
 
 
+class CheckWorker(QThread):
+    """Проверяет код вне потока интерфейса."""
+
+    result_ready = Signal(str, object)
+
+    def __init__(self, exercise: Exercise, source: str, parent=None):
+        super().__init__(parent)
+        self.exercise = exercise
+        self.source = source
+
+    def run(self) -> None:
+        try:
+            result = check_solution(self.exercise, self.source)
+        except Exception as error:
+            result = CheckResult(
+                False, "Не удалось завершить проверку.",
+                f"{type(error).__name__}: {error}",
+            )
+        self.result_ready.emit(self.exercise.id, result)
+
+
 class CodeRiseWindow(QMainWindow):
     def __init__(self):
         super().__init__()
         self.store = ProgressStore()
         self.current: Exercise | None = None
+        self._worker: CheckWorker | None = None
         self.setWindowTitle("CodeRise — Python")
         self.setMinimumSize(960, 670)
         self.resize(1220, 800)
@@ -597,33 +619,60 @@ class CodeRiseWindow(QMainWindow):
         self.store.save()
 
     def on_check(self) -> None:
-        if self.current is None:
+        if self.current is None or self._worker is not None:
             return
         submission = (
             self.answer_input.text()
             if self.current.kind == "predict"
             else self.code_editor.toPlainText()
         )
+        self.draft_timer.stop()
         self.save_current_draft()
-        result = check_solution(self.current, submission)
-        self.store.record_attempt(self.current.id, result.ok)
+        self.check_button.setEnabled(False)
+        self.check_button.setText("Проверяю…")
+        self.next_button.setEnabled(False)
+        self.reset_button.setEnabled(False)
+        self.exercise_list.setEnabled(False)
+        self.review_button.setEnabled(False)
+        self.status_label.setText("Проверка идёт. Окно можно прокручивать и открывать справку.")
+        self.result_box.hide()
+
+        worker = CheckWorker(self.current, submission, self)
+        self._worker = worker
+        worker.result_ready.connect(self.on_check_result)
+        worker.finished.connect(self.on_worker_finished)
+        worker.finished.connect(worker.deleteLater)
+        worker.start()
+
+    def on_check_result(self, exercise_id: str, result: CheckResult) -> None:
+        self.store.record_attempt(exercise_id, result.ok)
+        if result.ok:
+            self.store.mark_solved(exercise_id)
         self.store.save()
         self.update_progress()
+        if self.current is None or self.current.id != exercise_id:
+            self.rebuild_sidebar()
+            return
+
         self.result_box.setPlainText(
             result.message + ("\n\n" + result.details if result.details else "")
         )
         self.result_box.show()
+        self.rebuild_sidebar()
+        self.explanation_label.setVisible(result.ok)
+        self.status_label.setText(
+            "✓ Задание выполнено." if result.ok
+            else "Исправь код и проверь ещё раз."
+        )
 
-        if result.ok:
-            self.store.mark_solved(self.current.id)
-            self.store.save()
-            self.rebuild_sidebar()
-            self.explanation_label.show()
-            self.status_label.setText("✓ Задание выполнено.")
-        else:
-            self.explanation_label.hide()
-            self.rebuild_sidebar()
-            self.status_label.setText("Исправь код и проверь ещё раз.")
+    def on_worker_finished(self) -> None:
+        self._worker = None
+        self.check_button.setEnabled(True)
+        self.check_button.setText("Проверить")
+        self.reset_button.setEnabled(True)
+        self.exercise_list.setEnabled(True)
+        self.review_button.setEnabled(True)
+        self.next_button.setEnabled(self.current is not None and self.current != EXERCISES[-1])
 
     def toggle_hint(self) -> None:
         visible = not self.hint_label.isVisible()
@@ -657,6 +706,10 @@ class CodeRiseWindow(QMainWindow):
                 break
 
     def closeEvent(self, event) -> None:
+        if self._worker is not None and self._worker.isRunning():
+            self.status_label.setText("Сначала закончится текущая проверка. Она ограничена по времени.")
+            event.ignore()
+            return
         self.draft_timer.stop()
         self.save_current_draft()
         super().closeEvent(event)
