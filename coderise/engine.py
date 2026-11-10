@@ -7,6 +7,7 @@ import sys
 import tempfile
 
 from .models import Exercise
+from .error_guide import explain_python_error
 
 
 TIMEOUT_SECONDS = 3
@@ -97,8 +98,8 @@ def check_solution(exercise: Exercise, submission: str) -> CheckResult:
             if process.returncode != 0:
                 return CheckResult(
                     False,
-                    "Python остановился с ошибкой.",
-                    _preview(process.stderr),
+                    "Ошибка в программе.",
+                    explain_python_error(process.stderr) + "\n\nДетали Python:\n" + _preview(process.stderr),
                     index - 1,
                     len(exercise.tests),
                 )
