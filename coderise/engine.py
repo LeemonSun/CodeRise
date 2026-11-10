@@ -36,6 +36,17 @@ def _preview(value: str) -> str:
     return value
 
 
+def _interpreter_command(script: Path) -> list[str]:
+    # В сборке sys.executable указывает на CodeRise.exe, не на Python.
+    if getattr(sys, "frozen", False):
+        interpreter = Path(sys.executable).resolve().parent / "runtime" / "python.exe"
+        if not interpreter.is_file():
+            raise OSError("В сборке нет runtime/python.exe. Переустанови CodeRise.")
+    else:
+        interpreter = Path(sys.executable)
+    return [str(interpreter), "-X", "utf8", "-I", "-B", str(script)]
+
+
 def check_solution(exercise: Exercise, submission: str) -> CheckResult:
     if exercise.kind == "predict":
         answer = submission.strip()
@@ -60,7 +71,7 @@ def check_solution(exercise: Exercise, submission: str) -> CheckResult:
         for index, case in enumerate(exercise.tests, start=1):
             try:
                 process = subprocess.run(
-                    [sys.executable, "-X", "utf8", "-I", "-B", str(script)],
+                    _interpreter_command(script),
                     input=case.stdin,
                     text=True,
                     encoding="utf-8",
@@ -70,6 +81,7 @@ def check_solution(exercise: Exercise, submission: str) -> CheckResult:
                     cwd=directory,
                     timeout=TIMEOUT_SECONDS,
                     check=False,
+                    creationflags=getattr(subprocess, "CREATE_NO_WINDOW", 0),
                 )
             except subprocess.TimeoutExpired:
                 return CheckResult(
