@@ -258,6 +258,7 @@ class CodeRiseWindow(QMainWindow):
 
         self.progress_label = QLabel()
         self.progress_label.setObjectName("minor")
+        self.progress_label.setWordWrap(True)
         sidebar_layout.addSpacing(18)
         sidebar_layout.addWidget(self.progress_label)
 
@@ -302,6 +303,7 @@ class CodeRiseWindow(QMainWindow):
 
         self.chapter_label = QLabel()
         self.chapter_label.setObjectName("chapter")
+        self.chapter_label.setWordWrap(True)
         main_layout.addWidget(self.chapter_label)
 
         self.title_label = QLabel()
@@ -411,6 +413,7 @@ class CodeRiseWindow(QMainWindow):
 
         self.status_label = QLabel()
         self.status_label.setObjectName("status")
+        self.status_label.setWordWrap(True)
         main_layout.addWidget(self.status_label)
         shortcuts = QLabel("Ctrl+Enter — проверить    •    Ctrl+H — подсказка    •    Код запускается на твоём ПК")
         shortcuts.setObjectName("subtitle")
