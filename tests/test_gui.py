@@ -1,4 +1,4 @@
-"""Простой запуск интерфейса без монитора (для GitHub Actions)."""
+"""Локальная проверка окна в невидимом режиме."""
 
 import os
 import tempfile
@@ -11,6 +11,7 @@ os.environ.setdefault("QT_QPA_PLATFORM", "offscreen")
 from PySide6.QtWidgets import QApplication
 
 from coderise.app import CodeRiseWindow
+from coderise.curriculum import EXERCISES, STAGES
 from coderise.progress import ProgressStore
 
 
@@ -26,7 +27,14 @@ class GuiSmokeTests(unittest.TestCase):
                 window = CodeRiseWindow()
                 window.show()
                 self.assertEqual(window.current.id, "g01")
-                self.assertEqual(window.exercise_list.count(), 28)
+                self.assertEqual(window.exercise_list.count(), len(EXERCISES) + len(STAGES))
+                self.assertEqual(len(EXERCISES), 120)
+                self.assertIsNotNone(window.study_button)
+                self.assertIsNotNone(window.solutions_button)
+                self.assertIsNotNone(window.theory_button)
+                window.search_input.setText("Факториал")
+                self.assertLess(sum(not window.exercise_list.item(i).isHidden() for i in range(window.exercise_list.count())), window.exercise_list.count())
+                window.search_input.clear()
 
                 window.answer_input.setText("14")
                 window.on_check()
