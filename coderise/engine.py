@@ -60,7 +60,7 @@ def check_solution(exercise: Exercise, submission: str) -> CheckResult:
         for index, case in enumerate(exercise.tests, start=1):
             try:
                 process = subprocess.run(
-                    [sys.executable, "-I", "-B", str(script)],
+                    [sys.executable, "-X", "utf8", "-I", "-B", str(script)],
                     input=case.stdin,
                     text=True,
                     encoding="utf-8",
