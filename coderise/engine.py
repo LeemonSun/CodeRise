@@ -8,6 +8,7 @@ import tempfile
 
 from .models import Exercise
 from .error_guide import explain_python_error
+from .limited_run import execute_python
 
 
 TIMEOUT_SECONDS = 3
@@ -71,29 +72,31 @@ def check_solution(exercise: Exercise, submission: str) -> CheckResult:
         script.write_text(submission, encoding="utf-8")
         for index, case in enumerate(exercise.tests, start=1):
             try:
-                process = subprocess.run(
+                process = execute_python(
                     _interpreter_command(script),
-                    input=case.stdin,
-                    text=True,
-                    encoding="utf-8",
-                    errors="replace",
-                    stdout=subprocess.PIPE,
-                    stderr=subprocess.PIPE,
+                    stdin=case.stdin,
                     cwd=directory,
                     timeout=TIMEOUT_SECONDS,
-                    check=False,
-                    creationflags=getattr(subprocess, "CREATE_NO_WINDOW", 0),
                 )
-            except subprocess.TimeoutExpired:
+            except (OSError, ValueError) as error:
                 return CheckResult(
-                    False,
-                    "Программа выполняется слишком долго.",
-                    "Проверь цикл: возможно, он не заканчивается.",
-                    index - 1,
-                    len(exercise.tests),
+                    False, "Не удалось запустить решение.", str(error),
+                    index - 1, len(exercise.tests),
                 )
-            except OSError as error:
-                return CheckResult(False, "Не удалось запустить Python.", str(error))
+
+            if process.timed_out:
+                return CheckResult(
+                    False, "Программа слишком долго работает.",
+                    "Проверь, меняются ли значения в цикле и есть ли условие выхода.",
+                    index - 1, len(exercise.tests),
+                )
+            if process.too_much_output:
+                return CheckResult(
+                    False, "Программа выводит слишком много текста.",
+                    "Возможно, print оказался в бесконечном цикле. "
+                    "Проверь условие остановки и место вызова print().",
+                    index - 1, len(exercise.tests),
+                )
 
             if process.returncode != 0:
                 return CheckResult(
