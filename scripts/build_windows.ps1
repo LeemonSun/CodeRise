@@ -31,7 +31,7 @@ if ($LASTEXITCODE -ne 0) { throw "Не удалось создать значо�
 $pyinstallerArgs = @(
     "-m", "PyInstaller", "--noconfirm", "--clean", "--onedir",
     "--windowed", "--name", "CodeRise", "--icon", "build\coderise.ico",
-    "--add-data", "coderise\data;coderise\data",
+    "--add-data", "coderise\data:coderise\data",
     "--distpath", "dist", "--workpath", "build\pyinstaller", "main.py"
 )
 & $pythonExe @pyinstallerArgs
