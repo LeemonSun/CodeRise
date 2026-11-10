@@ -467,7 +467,7 @@ class CodeRiseWindow(QMainWindow):
                 done = exercise.id in self.store.solved
                 prefix = "✓" if done else ("↻" if self.store.failures.get(exercise.id) else f"{number:02}")
                 item = QListWidgetItem(f" {prefix}   {exercise.title}")
-            item.setToolTip(exercise.title + "\n" + exercise.prompt)
+                item.setToolTip(exercise.title + "\n" + exercise.prompt)
                 item.setData(Qt.ItemDataRole.UserRole, exercise.id)
                 item.setSizeHint(QSize(244, 38))
                 if done:
