@@ -119,7 +119,8 @@ class PythonEditor(QPlainTextEdit):
             block = block.next()
             number += 1
             top = bottom
-            bottom = top + round(self.blockBoundingRect(block).height())
+            if block.isValid():
+                bottom = top + round(self.blockBoundingRect(block).height())
 
     def highlight_current_line(self) -> None:
         selection = QTextEdit.ExtraSelection()
