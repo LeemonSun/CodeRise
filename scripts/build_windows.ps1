@@ -24,6 +24,10 @@ if ($LASTEXITCODE -ne 0) { throw "Не удалось установить за�
 if (-not $SkipTests) {
     & $pythonExe -m unittest discover -s tests -v
     if ($LASTEXITCODE -ne 0) { throw "Тесты не пройдены, сборка остановлена." }
+    & $pythonExe scripts\check_course.py --solutions
+    if ($LASTEXITCODE -ne 0) { throw "Проверка учебных материалов не пройдена." }
+    & $pythonExe scripts\ui_visual_check.py
+    if ($LASTEXITCODE -ne 0) { throw "Проверка интерфейса не пройдена." }
 }
 New-Item -ItemType Directory -Force -Path build | Out-Null
 & $pythonExe scripts\make_icon.py
