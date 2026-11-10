@@ -12,11 +12,15 @@ class ProgressTests(unittest.TestCase):
             path = Path(directory) / "progress.json"
             first = ProgressStore(path)
             first.mark_solved("g01")
+            first.record_attempt("g01", True)
+            first.record_attempt("g02", False)
             first.set_draft("g02", 'print("Мир")')
             first.save()
 
             second = ProgressStore(path)
             self.assertEqual(second.solved, {"g01"})
+            self.assertEqual(second.attempts["g02"], 1)
+            self.assertEqual(second.failures["g02"], 1)
             self.assertEqual(second.get_draft("g02"), 'print("Мир")')
             self.assertEqual(second.get_draft("missing", "fallback"), "fallback")
             self.assertFalse(path.with_suffix(".tmp").exists())
@@ -36,7 +40,7 @@ class ProgressTests(unittest.TestCase):
             store.save()
             raw = path.read_text(encoding="utf-8")
             self.assertIn("Привет", raw)
-            self.assertEqual(json.loads(raw)["version"], 1)
+            self.assertEqual(json.loads(raw)["version"], 2)
 
 
 if __name__ == "__main__":
