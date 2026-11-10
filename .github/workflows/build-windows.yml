@@ -2,13 +2,6 @@ name: Сборка CodeRise для Windows
 
 on:
   workflow_dispatch:
-  push:
-    branches: [main]
-    paths:
-      - "coderise/**"
-      - "main.py"
-      - "requirements.txt"
-      - ".github/workflows/build-windows.yml"
 
 jobs:
   build:
