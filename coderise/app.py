@@ -328,6 +328,11 @@ class CodeRiseWindow(QMainWindow):
 
         help_actions = QHBoxLayout()
         help_actions.setSpacing(10)
+        self.line_button = QPushButton("Разобрать строку")
+        self.line_button.setObjectName("guide")
+        self.line_button.setToolTip("Поставь курсор на нужную строку и нажми здесь")
+        self.line_button.clicked.connect(self.open_line_help)
+        help_actions.addWidget(self.line_button)
         self.study_button = QPushButton("Справка по заданию")
         self.study_button.setObjectName("guide")
         self.study_button.clicked.connect(lambda: self.open_study(0))
@@ -435,6 +440,50 @@ class CodeRiseWindow(QMainWindow):
     def open_study(self, tab: int = 0) -> None:
         if self.current is not None:
             StudyDialog(self.current, self, tab=tab).exec()
+
+    def open_line_help(self) -> None:
+        if self.current is None:
+            return
+        editor = self.readonly_code if self.current.kind == "predict" else self.code_editor
+        cursor = editor.textCursor()
+        number = cursor.blockNumber() + 1
+        selected = cursor.selectedText()
+        line, notes = explain_line(editor.toPlainText(), number, selected)
+
+        dialog = QDialog(self)
+        dialog.setWindowTitle("CodeRise — разбираем строку")
+        dialog.setMinimumSize(560, 400)
+        dialog.resize(750, 520)
+        layout = QVBoxLayout(dialog)
+        heading = QLabel(f"Строка {number}: что здесь происходит?")
+        heading.setStyleSheet("font-size:19px;font-weight:700;color:#d5edff;")
+        layout.addWidget(heading)
+        browser = QTextBrowser(dialog)
+        pieces = [
+            f'<pre style="padding:16px;background:#152437;color:#a5def5">'
+            f'{escape(line or "(пустая строка)")}</pre>'
+        ]
+        if not notes:
+            pieces.append("<p>Здесь нет известных команд. Проверь, где объявлены переменные.</p>")
+        for term, detail in notes:
+            if detail is None:
+                pieces.append("<p>После # стоит комментарий. Python его не выполняет.</p>")
+                continue
+            pieces.append(
+                f'<h3 style="color:#b3dfff">{escape(detail.title)}</h3>'
+                f'<p>{escape(detail.meaning)}</p>'
+                f'<pre style="color:#aee7bd">{escape(detail.example)}</pre>'
+                f'<p style="color:#e5cb92">Частая ошибка: {escape(detail.pitfall)}</p>'
+            )
+        browser.setHtml(
+            '<div style="font-family:Segoe UI;color:#e5edf9;line-height:1.5">'
+            + "".join(pieces) + "</div>"
+        )
+        layout.addWidget(browser)
+        close_button = QPushButton("Понятно")
+        close_button.clicked.connect(dialog.accept)
+        layout.addWidget(close_button)
+        dialog.exec()
 
     def on_selection_changed(
         self, current_item: QListWidgetItem | None, _previous: QListWidgetItem | None
