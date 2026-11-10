@@ -36,6 +36,36 @@ $pyinstallerArgs = @(
 )
 & $pythonExe @pyinstallerArgs
 if ($LASTEXITCODE -ne 0) { throw "Ошибка сборки приложения." }
+# Ученический код выполняет отдельный python.exe. В отличие от CodeRise.exe,
+# это настоящий интерпретатор, поэтому собранная программа не требует Python на ПК.
+$runtimePath = Join-Path $root "dist\CodeRise\runtime"
+New-Item -ItemType Directory -Path $runtimePath -Force | Out-Null
+$runtimeVersion = & $pythonExe -c "import platform; print(platform.python_version())"
+$architecture = & $pythonExe -c "import struct; print(struct.calcsize('P') * 8)"
+if ($architecture.Trim() -ne "64") {
+    throw "Для Windows-сборки нужен 64-битный Python."
+}
+$zipPath = Join-Path $root "build\python-embed.zip"
+$downloadVersions = @($runtimeVersion, "3.13.5") | Select-Object -Unique
+$downloaded = $false
+foreach ($candidate in $downloadVersions) {
+    $url = "https://www.python.org/ftp/python/$candidate/python-$candidate-embed-amd64.zip"
+    try {
+        Write-Host "Скачиваю встроенный Python $candidate с python.org..."
+        Invoke-WebRequest -Uri $url -OutFile $zipPath -UseBasicParsing
+        $downloaded = $true
+        break
+    } catch {
+        Write-Warning "Нет готового embedded-пакета Python $candidate."
+    }
+}
+if (-not $downloaded) {
+    throw "Не удалось скачать встроенный Python. Без него установщик работать не будет."
+}
+Expand-Archive -LiteralPath $zipPath -DestinationPath $runtimePath -Force
+if (-not (Test-Path (Join-Path $runtimePath "python.exe"))) {
+    throw "Внутри скачанного пакета нет python.exe."
+}
 Write-Host "Приложение: dist\CodeRise\CodeRise.exe" -ForegroundColor Green
 if (-not $NoInstaller) {
     $iscc = Get-Command ISCC.exe -ErrorAction SilentlyContinue
