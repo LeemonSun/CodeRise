@@ -2,9 +2,9 @@
 
 import re
 
-from PySide6.QtCore import Qt
-from PySide6.QtGui import QColor, QFont, QSyntaxHighlighter, QTextCharFormat
-from PySide6.QtWidgets import QPlainTextEdit
+from PySide6.QtCore import Qt, QSize
+from PySide6.QtGui import QColor, QFont, QPainter, QSyntaxHighlighter, QTextCharFormat, QTextFormat, QTextCursor
+from PySide6.QtWidgets import QPlainTextEdit, QTextEdit, QWidget
 
 
 class PythonHighlighter(QSyntaxHighlighter):
@@ -49,6 +49,20 @@ class PythonHighlighter(QSyntaxHighlighter):
                 self.setFormat(match.start(), match.end() - match.start(), fmt)
 
 
+class LineNumberArea(QWidget):
+    """Полоса с номерами строк у редактора."""
+
+    def __init__(self, editor):
+        super().__init__(editor)
+        self.editor = editor
+
+    def sizeHint(self):
+        return QSize(self.editor.line_number_width(), 0)
+
+    def paintEvent(self, event):
+        self.editor.paint_line_numbers(event)
+
+
 class PythonEditor(QPlainTextEdit):
     """Пробелы вместо табуляции и отступ после двоеточия."""
 
@@ -56,11 +70,80 @@ class PythonEditor(QPlainTextEdit):
         super().__init__(parent)
         self.setFont(QFont("Consolas", 12))
         self.setLineWrapMode(QPlainTextEdit.LineWrapMode.NoWrap)
-        self.setTabStopDistance(32)
+        self.setTabStopDistance(self.fontMetrics().horizontalAdvance("    "))
         self.highlighter = PythonHighlighter(self.document())
+        self.gutter = LineNumberArea(self)
+        self.blockCountChanged.connect(self.update_line_number_width)
+        self.updateRequest.connect(self.update_line_number_area)
+        self.cursorPositionChanged.connect(self.highlight_current_line)
+        self.update_line_number_width()
+        self.highlight_current_line()
+
+    def line_number_width(self) -> int:
+        digits = len(str(max(1, self.blockCount())))
+        return 15 + self.fontMetrics().horizontalAdvance("9") * digits + 10
+
+    def update_line_number_width(self, _count=None) -> None:
+        self.setViewportMargins(self.line_number_width(), 0, 0, 0)
+
+    def update_line_number_area(self, rect, dy) -> None:
+        if dy:
+            self.gutter.scroll(0, dy)
+        else:
+            self.gutter.update(0, rect.y(), self.gutter.width(), rect.height())
+        if rect.contains(self.viewport().rect()):
+            self.update_line_number_width()
+
+    def resizeEvent(self, event) -> None:
+        super().resizeEvent(event)
+        rect = self.contentsRect()
+        self.gutter.setGeometry(rect.left(), rect.top(), self.line_number_width(), rect.height())
+
+    def paint_line_numbers(self, event) -> None:
+        painter = QPainter(self.gutter)
+        painter.fillRect(event.rect(), QColor("#121c2a"))
+        block = self.firstVisibleBlock()
+        number = block.blockNumber()
+        top = round(self.blockBoundingGeometry(block).translated(self.contentOffset()).top())
+        bottom = top + round(self.blockBoundingRect(block).height())
+        current = self.textCursor().blockNumber()
+
+        while block.isValid() and top <= event.rect().bottom():
+            if block.isVisible() and bottom >= event.rect().top():
+                color = "#b8dfff" if number == current else "#718299"
+                painter.setPen(QColor(color))
+                painter.drawText(
+                    0, top, self.gutter.width() - 9, self.fontMetrics().height(),
+                    Qt.AlignmentFlag.AlignRight, str(number + 1)
+                )
+            block = block.next()
+            number += 1
+            top = bottom
+            bottom = top + round(self.blockBoundingRect(block).height())
+
+    def highlight_current_line(self) -> None:
+        selection = QTextEdit.ExtraSelection()
+        selection.format.setBackground(QColor("#1a2b40"))
+        selection.format.setProperty(QTextFormat.Property.FullWidthSelection, True)
+        selection.cursor = self.textCursor()
+        selection.cursor.clearSelection()
+        self.setExtraSelections([selection])
 
     def keyPressEvent(self, event) -> None:
+        if self.isReadOnly():
+            super().keyPressEvent(event)
+            return
         key = event.key()
+        if key == Qt.Key.Key_Backtab:
+            cursor = self.textCursor()
+            cursor.movePosition(QTextCursor.MoveOperation.StartOfBlock)
+            line = cursor.block().text()
+            count = min(4, len(line) - len(line.lstrip(" ")))
+            if count:
+                cursor.movePosition(QTextCursor.MoveOperation.Right,
+                                    QTextCursor.MoveMode.KeepAnchor, count)
+                cursor.removeSelectedText()
+            return
         if key == Qt.Key.Key_Tab:
             self.textCursor().insertText("    ")
             return
