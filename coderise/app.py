@@ -437,7 +437,8 @@ class CodeRiseWindow(QMainWindow):
     def resizeEvent(self, event) -> None:
         super().resizeEvent(event)
         # Leave enough width for the editor when working on a small screen.
-        self.sidebar.setFixedWidth(220 if self.width() < 960 else 270)
+        if hasattr(self, "sidebar"):
+            self.sidebar.setFixedWidth(220 if self.width() < 960 else 270)
 
     def update_progress(self) -> None:
         completed = sum(ex.id in self.store.solved for ex in EXERCISES)
