@@ -16,6 +16,7 @@ import tempfile
 from unittest.mock import patch
 
 from PySide6.QtWidgets import QApplication
+from PySide6.QtCore import Qt
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
@@ -60,7 +61,7 @@ def main() -> None:
             # Test the longest advanced task as well, not only the first lesson.
             for row in range(window.exercise_list.count()):
                 item = window.exercise_list.item(row)
-                if item.data(0x0100) == "mastery14":
+                if item.data(Qt.ItemDataRole.UserRole) == "mastery14":
                     window.exercise_list.setCurrentRow(row)
                     break
             app.processEvents()
