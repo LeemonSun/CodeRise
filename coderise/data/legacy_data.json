@@ -1,0 +1,279 @@
+{
+  "g01": [
+    "Сначала умножь 3 на 4, затем прибавь 2.",
+    [
+      "print(2 + 3 * 4)",
+      "x = 3 * 4\nprint(2 + x)"
+    ],
+    [
+      "*",
+      "print"
+    ]
+  ],
+  "g02": [
+    "Строка 'Мир' уже хранится в name — передай переменную в print.",
+    [
+      "name = 'Мир'\nprint(name)",
+      "name = 'Мир'\nmessage = name\nprint(message)"
+    ],
+    [
+      "переменная",
+      "print"
+    ]
+  ],
+  "g03": [
+    "Нужен ровно один вызов print с текстом в кавычках.",
+    [
+      "print(\"Привет, мир!\")",
+      "text = 'Привет, мир!'\nprint(text)"
+    ],
+    [
+      "print",
+      "строка"
+    ]
+  ],
+  "g04": [
+    "В Python переменные с разными именами считаются разными.",
+    [
+      "age = 18\nprint(age)",
+      "age = 18\nresult = age\nprint(result)"
+    ],
+    [
+      "переменная",
+      "print"
+    ]
+  ],
+  "g05": [
+    "// берёт целую часть от деления; остаток можно узнать через %.",
+    [
+      "print(9 // 2)",
+      "n = 9\nprint(n // 2)"
+    ],
+    [
+      "//",
+      "%"
+    ]
+  ],
+  "g06": [
+    "Прочитай каждую строку, преврати её в int, сложи и выведи.",
+    [
+      "a = int(input())\nb = int(input())\nprint(a + b)",
+      "numbers = [int(input()) for _ in range(2)]\nprint(sum(numbers))"
+    ],
+    [
+      "input",
+      "int",
+      "print"
+    ]
+  ],
+  "f01": [
+    "Сравни x и 5. При x=7 условие выполняется.",
+    [
+      "x = 7\nif x > 5:\n    print(\"да\")\nelse:\n    print(\"нет\")",
+      "x = 7\nprint(\"да\" if x > 5 else \"нет\")"
+    ],
+    [
+      "if",
+      "else",
+      ">"
+    ]
+  ],
+  "f02": [
+    "Для сравнения используй ==, не =.",
+    [
+      "number = int(input())\nprint(\"чётное\" if number % 2 == 0 else \"нечётное\")",
+      "n = int(input())\nif n % 2 == 0:\n    print(\"чётное\")\nelse:\n    print(\"нечётное\")"
+    ],
+    [
+      "if",
+      "%",
+      "=="
+    ]
+  ],
+  "f03": [
+    "Внутри if напиши печать с четырьмя пробелами в начале строки.",
+    [
+      "n = int(input())\nif n > 3:\n    print(\"да\")\nelse:\n    print(\"нет\")",
+      "n = int(input())\nprint(\"да\" if n > 3 else \"нет\")"
+    ],
+    [
+      "if",
+      "else",
+      ">"
+    ]
+  ],
+  "f04": [
+    "Понадобятся три ветки: положительное, отрицательное и ноль.",
+    [
+      "n = int(input())\nif n > 0:\n    print(\"плюс\")\nelif n < 0:\n    print(\"минус\")\nelse:\n    print(\"ноль\")",
+      "n = int(input())\nprint(\"плюс\" if n > 0 else \"минус\" if n < 0 else \"ноль\")"
+    ],
+    [
+      "if",
+      "elif",
+      "else"
+    ]
+  ],
+  "f05": [
+    "В and оба условия должны быть истинны; второе здесь ложно.",
+    [
+      "a = 4\nb = 9\nprint(a > 2 and b < 5)",
+      "left = 4 > 2\nright = 9 < 5\nprint(left and right)"
+    ],
+    [
+      "and",
+      "if"
+    ]
+  ],
+  "f06": [
+    "Сравни a и b или используй min(a, b).",
+    [
+      "a = int(input())\nb = int(input())\nprint(min(a, b))",
+      "a = int(input())\nb = int(input())\nif a <= b:\n    print(a)\nelse:\n    print(b)"
+    ],
+    [
+      "if",
+      "min"
+    ]
+  ],
+  "e01": [
+    "range(1, 5) даёт 1,2,3,4. После каждого шага растёт x.",
+    [
+      "x = 0\nfor i in range(1, 5):\n    x += i\nprint(x)",
+      "print(sum(range(1, 5)))"
+    ],
+    [
+      "for",
+      "range",
+      "sum"
+    ]
+  ],
+  "e02": [
+    "В if складывай лишь i больше трёх.",
+    [
+      "x = 0\nfor i in range(1, 6):\n    if i > 3:\n        x += i\nprint(x)",
+      "print(sum(i for i in range(1, 6) if i > 3))"
+    ],
+    [
+      "for",
+      "if",
+      "range"
+    ]
+  ],
+  "e03": [
+    "Тело цикла всегда с отступом.",
+    [
+      "for i in range(1, 4):\n    print(i)",
+      "print(*range(1, 4), sep='\\n')"
+    ],
+    [
+      "for",
+      "range"
+    ]
+  ],
+  "e04": [
+    "Поставь шаг 2 — 2,4,6 и так далее.",
+    [
+      "n = int(input())\nfor i in range(2, n + 1, 2):\n    print(i)",
+      "n = int(input())\nprint(*(i for i in range(1, n + 1) if i % 2 == 0), sep='\\n')"
+    ],
+    [
+      "for",
+      "range",
+      "%"
+    ]
+  ],
+  "e05": [
+    "range(3) начинается с 0, end='' убирает перенос.",
+    [
+      "for i in range(3):\n    print(i, end=\"\")",
+      "print(''.join(str(i) for i in range(3)))"
+    ],
+    [
+      "for",
+      "range",
+      "print"
+    ]
+  ],
+  "e06": [
+    "Факториал — последовательное умножение, для n=0 оставь 1.",
+    [
+      "n = int(input())\nresult = 1\nfor i in range(1, n + 1):\n    result *= i\nprint(result)",
+      "from math import factorial\nprint(factorial(int(input())))"
+    ],
+    [
+      "for",
+      "*",
+      "range"
+    ]
+  ],
+  "d01": [
+    "Индекс -1 означает последний элемент списка.",
+    [
+      "items = [3, 5, 8]\nprint(items[-1])",
+      "items = [3, 5, 8]\nprint(items[len(items) - 1])"
+    ],
+    [
+      "список",
+      "len"
+    ]
+  ],
+  "d02": [
+    "Функция len возвращает количество элементов.",
+    [
+      "words = [\"кот\", \"дом\", \"лес\"]\nprint(len(words))",
+      "words = [\"кот\", \"дом\", \"лес\"]\nprint(sum(1 for word in words))"
+    ],
+    [
+      "len",
+      "список"
+    ]
+  ],
+  "d03": [
+    "input возвращает строку. Квадрат считают уже от числа.",
+    [
+      "def square(x):\n    return x * x\nprint(square(int(input())))",
+      "def square(x):\n    return x ** 2\nnumber = int(input())\nprint(square(number))"
+    ],
+    [
+      "def",
+      "return",
+      "int"
+    ]
+  ],
+  "d04": [
+    "Раздели строку, преобразуй элементы в int и сложи.",
+    [
+      "numbers = list(map(int, input().split()))\nprint(sum(numbers))",
+      "total = 0\nfor item in input().split():\n    total += int(item)\nprint(total)"
+    ],
+    [
+      "split",
+      "map",
+      "sum"
+    ]
+  ],
+  "d05": [
+    "В срезе [1:4] берутся символы с индексами 1, 2 и 3.",
+    [
+      "word = \"python\"\nprint(word[1:4])",
+      "word = \"python\"\nprint(word[1] + word[2] + word[3])"
+    ],
+    [
+      "срез",
+      "строка"
+    ]
+  ],
+  "d06": [
+    "Остаток от деления на 2 равен нулю у чётного числа.",
+    [
+      "def is_even(n):\n    return n % 2 == 0\nprint(is_even(int(input())))",
+      "def is_even(n):\n    if n % 2 == 0:\n        return True\n    return False\nprint(is_even(int(input())))"
+    ],
+    [
+      "def",
+      "return",
+      "%"
+    ]
+  ]
+}
