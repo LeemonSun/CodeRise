@@ -185,6 +185,16 @@ QScrollArea {
     border: 0;
     background: #10141d;
 }
+
+QScrollBar:vertical { background: #171e2b; width: 10px; border: 0; }
+QScrollBar::handle:vertical { background: #40536c; border-radius: 5px; min-height: 24px; }
+QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical { height: 0; }
+QFrame#sidebar { background: #151d2a; }
+QLabel#logo { color: #c4f2ff; letter-spacing: 1px; }
+QPushButton#primary { background: #8bcfff; color: #0e2438; border: 0; }
+QPushButton#primary:hover { background: #b4e1ff; }
+QPushButton#guide { border-color: #395a78; background: #1a2b3f; }
+QPushButton#guide:hover { background: #263f56; }
 """
 
 
@@ -218,6 +228,9 @@ class CodeRiseWindow(QMainWindow):
         tagline = QLabel("Код, практика, результат")
         tagline.setObjectName("subtitle")
         sidebar_layout.addWidget(tagline)
+        version = QLabel("PYTHON  /  ОТ G ДО SSS")
+        version.setObjectName("chapter")
+        sidebar_layout.addWidget(version)
 
         self.progress_label = QLabel()
         self.progress_label.setObjectName("minor")
@@ -313,6 +326,7 @@ class CodeRiseWindow(QMainWindow):
         actions.addWidget(self.check_button)
 
         self.hint_button = QPushButton("Подсказка")
+        self.hint_button.setToolTip("Одна мысль, которая поможет решить самому")
         self.hint_button.clicked.connect(self.toggle_hint)
         actions.addWidget(self.hint_button)
 
@@ -370,7 +384,17 @@ class CodeRiseWindow(QMainWindow):
         self.status_label = QLabel()
         self.status_label.setObjectName("status")
         main_layout.addWidget(self.status_label)
+        shortcuts = QLabel("Ctrl+Enter — проверить    •    Ctrl+H — подсказка    •    Код запускается на твоём ПК")
+        shortcuts.setObjectName("subtitle")
+        shortcuts.setWordWrap(True)
+        main_layout.addWidget(shortcuts)
         main_layout.addStretch()
+
+        for sequence in ("Ctrl+Return", "Ctrl+Enter"):
+            shortcut = QShortcut(QKeySequence(sequence), self)
+            shortcut.activated.connect(self.on_check)
+        shortcut_hint = QShortcut(QKeySequence("Ctrl+H"), self)
+        shortcut_hint.activated.connect(self.toggle_hint)
 
         self.rebuild_sidebar()
         self.show_exercise(EXERCISES[0])
