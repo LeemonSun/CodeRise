@@ -312,8 +312,7 @@ class CodeRiseWindow(QMainWindow):
         predict_layout.setContentsMargins(0, 0, 0, 0)
         predict_layout.setSpacing(12)
 
-        self.readonly_code = QPlainTextEdit()
-        self.readonly_code.setFont(QFont("Consolas", 12))
+        self.readonly_code = PythonEditor()
         self.readonly_code.setReadOnly(True)
         self.readonly_code.setLineWrapMode(QPlainTextEdit.LineWrapMode.NoWrap)
         predict_layout.addWidget(self.readonly_code, stretch=1)
