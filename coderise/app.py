@@ -1,12 +1,14 @@
 """Главное окно CodeRise."""
 
 import sys
+from html import escape
 
 from PySide6.QtCore import QSize, Qt
-from PySide6.QtGui import QBrush, QColor, QFont
+from PySide6.QtGui import QBrush, QColor, QFont, QKeySequence, QShortcut
 from PySide6.QtWidgets import (
     QAbstractItemView,
     QApplication,
+    QDialog,
     QFrame,
     QHBoxLayout,
     QLabel,
@@ -18,6 +20,7 @@ from PySide6.QtWidgets import (
     QProgressBar,
     QPushButton,
     QScrollArea,
+    QTextBrowser,
     QStackedWidget,
     QVBoxLayout,
     QWidget,
@@ -29,6 +32,7 @@ from .engine import check_solution
 from .editor import PythonEditor
 from .models import Exercise
 from .progress import ProgressStore
+from .line_help import explain_line
 
 
 KIND_LABELS = {
@@ -190,8 +194,8 @@ class CodeRiseWindow(QMainWindow):
         self.store = ProgressStore()
         self.current: Exercise | None = None
         self.setWindowTitle("CodeRise — Python")
-        self.setMinimumSize(900, 640)
-        self.resize(1120, 740)
+        self.setMinimumSize(960, 670)
+        self.resize(1220, 800)
 
         container = QWidget()
         self.setCentralWidget(container)
@@ -211,7 +215,7 @@ class CodeRiseWindow(QMainWindow):
         logo.setObjectName("logo")
         sidebar_layout.addWidget(logo)
 
-        tagline = QLabel("Учи Python на практике")
+        tagline = QLabel("Код, практика, результат")
         tagline.setObjectName("subtitle")
         sidebar_layout.addWidget(tagline)
 
@@ -324,7 +328,7 @@ class CodeRiseWindow(QMainWindow):
 
         help_actions = QHBoxLayout()
         help_actions.setSpacing(10)
-        self.study_button = QPushButton("Что за что отвечает?")
+        self.study_button = QPushButton("Справка по заданию")
         self.study_button.setObjectName("guide")
         self.study_button.clicked.connect(lambda: self.open_study(0))
         help_actions.addWidget(self.study_button)
@@ -422,7 +426,7 @@ class CodeRiseWindow(QMainWindow):
                 continue
             exercise = next(ex for ex in EXERCISES if ex.id == exercise_id)
             stage = STAGES_BY_ID[exercise.stage]
-            matches = not term or term in exercise.title.casefold() or term in stage.title.casefold() or term in stage.rank.casefold()
+            matches = not term or term in exercise.title.casefold() or term in stage.title.casefold() or term in stage.rank.casefold() or term in exercise.prompt.casefold()
             item.setHidden(not matches)
             visible_stage = visible_stage or matches
         if header_row is not None:
