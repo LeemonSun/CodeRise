@@ -227,7 +227,7 @@ class CodeRiseWindow(QMainWindow):
         self.current: Exercise | None = None
         self._worker: CheckWorker | None = None
         self.setWindowTitle("CodeRise — Python")
-        self.setMinimumSize(960, 670)
+        self.setMinimumSize(800, 560)
         self.resize(1220, 800)
 
         container = QWidget()
@@ -238,7 +238,8 @@ class CodeRiseWindow(QMainWindow):
 
         sidebar = QFrame()
         sidebar.setObjectName("sidebar")
-        sidebar.setFixedWidth(302)
+        self.sidebar = sidebar
+        sidebar.setFixedWidth(270)
         outer.addWidget(sidebar)
         sidebar_layout = QVBoxLayout(sidebar)
         sidebar_layout.setContentsMargins(18, 24, 18, 20)
@@ -433,6 +434,11 @@ class CodeRiseWindow(QMainWindow):
         self.rebuild_sidebar()
         self.show_exercise(EXERCISES[0])
 
+    def resizeEvent(self, event) -> None:
+        super().resizeEvent(event)
+        # Leave enough width for the editor when working on a small screen.
+        self.sidebar.setFixedWidth(220 if self.width() < 960 else 270)
+
     def update_progress(self) -> None:
         completed = sum(ex.id in self.store.solved for ex in EXERCISES)
         self.progress_label.setText(
@@ -461,6 +467,7 @@ class CodeRiseWindow(QMainWindow):
                 done = exercise.id in self.store.solved
                 prefix = "✓" if done else ("↻" if self.store.failures.get(exercise.id) else f"{number:02}")
                 item = QListWidgetItem(f" {prefix}   {exercise.title}")
+            item.setToolTip(exercise.title + "\n" + exercise.prompt)
                 item.setData(Qt.ItemDataRole.UserRole, exercise.id)
                 item.setSizeHint(QSize(244, 38))
                 if done:
